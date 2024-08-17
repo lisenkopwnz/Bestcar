@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+
+{% if mein_trip%}
+
+{% for item in mein_trip  %}
+    <div>
+        <p> {{item.departure}} </p>
+        <p> {{item.arrival}} </p>
+        <p> {{item.departure_time}} </p>
+        <p> {{item.arrival_time}} </p>
+        <p> {{item.departure_time|date:"l:j:M"}} </p>
+    </div>
+{% endfor %}
+{% else %}
+
+<h1>Здесь появятся ваши будущие поездки.</h1>
+
+{% endif %}
+
+
+
+{% endblock content%}
