@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <title>Профиль пользователя</title>
+
+<form method="post" enctype = 'multipart/form-data'>
+    {% csrf_token %}
+    {% if user.photo %}
+    <p><img class = 'img-article-left thumb' src=" {{ user.photo.url}}"></p>
+    {% else %}
+    <p><img src ='{{default_image}}'></p>
+    {% endif %}
+    {{ form.as_p }}
+    <p><button type="submit">Сохранить</button></p>
+
+</form>
+<p> <a href="{% url 'users:password_change' %}" title ='Сменить пароль для текущего пользователя'>Сменить пароль</a> </p>
+<form action="{% url 'users:delete' %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-info">Удалить аккаунт</button>
+
+<form action="{% url 'users:logout' %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-info">Logout</button>
+            </form>
+</form>
+{% endblock %}

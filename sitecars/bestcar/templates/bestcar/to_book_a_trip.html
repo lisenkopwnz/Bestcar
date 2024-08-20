@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bestcar/css/style_to_book_a_trip.css' %}">
+
+<div id="frame">
+    <p id="departure"> {{object_list.departure}}</p>
+    <p id="arrival"> {{object_list.arrival}}</p>
+    <p id="departure_time"> {{object_list.departure_time|date:"H:i"}}</p>
+    <p id="arrival_time"> {{object_list.arrival_time|date:"H:i"}}</p>
+    <p id="price"> Итого {{object_list.price}}₽</p>
+    <p id="username"> {{object_list.author.username}}</p>
+        {%  if object_list.author.photo   %}
+            <img src="{{ object_list.author.photo.url }}" id="photo_user" />
+        {% else %}
+            <img src ='{{default_image}}' id="default_user_photo"  />
+        {% endif %}
+    <p id="load"><a href="{% url 'booking' object_list.slug %}" >Продолжить</a></p>
+</div>
+{% endblock %}

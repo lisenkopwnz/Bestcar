@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+
+<form action="{% url 'search' %}" method="get">
+  <input name="d" type="text" placeholder="Откуда...">
+    <input name="a" type="text" placeholder="Куда...">
+    <input name="s" type="text" placeholder="Количество пассажиров...">
+    <input name="t" type="datetime-local" placeholder="Когда...">
+    <input type="hidden" name="cat" value="#">
+
+    <p><button type="submit">Отпраить</button>
+</form>
+
+{% endblock %}
