@@ -40,7 +40,8 @@ class Publishing_a_trip(models.Model):
     departure_time = models.DateTimeField(verbose_name="время отправления", validators=[Validators_date_model()])
     arrival_time = models.DateTimeField(verbose_name="время прибытия", default=None,
                                         validators=[Validators_date_model()])
-    seating = models.PositiveSmallIntegerField(verbose_name='количество мест', choices=SEATING, default=1)
+    free_seating = models.PositiveSmallIntegerField(verbose_name='количество мест', choices=SEATING, default=1)
+    reserved_seats = models.PositiveIntegerField(verbose_name='количество бронированных мест', default=0)
     cat = models.ForeignKey('Category', verbose_name="категория", on_delete=models.PROTECT, default=1)
     price = models.PositiveSmallIntegerField(verbose_name="цена")
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,
@@ -78,10 +79,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-    def save(self, *args,
-             **kwargs):  # Переопределяем метод save, который убирает возможность удаленя поля в админпонели
-        if self.name != 'На машине' or 'На автобусе':
-            super(Category, self).delete(*args, **kwargs)
+
 
     class Meta:
         verbose_name = 'Категории'
@@ -91,7 +89,7 @@ class Category(models.Model):
 class Publishing_a_tripForm(forms.ModelForm):
     class Meta:
         model = Publishing_a_trip
-        fields = ['departure', 'arrival', 'models_auto', 'departure_time', 'arrival_time', 'seating', 'price', 'cat']
+        fields = ['departure', 'arrival', 'models_auto', 'departure_time', 'arrival_time', 'free_seating', 'price', 'cat']
         widgets = {'departure_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
                    'arrival_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'})
                    }
@@ -102,7 +100,7 @@ class Publishing_a_tripForm(forms.ModelForm):
             'models_auto': 'Введите марку автомобиля.',
             'departure_time': 'Введите время отправления.',
             'arrival_time': 'Введите время прибытия.',
-            'seating': 'Введите количество мест.',
+            'free_seating': 'Введите количество мест.',
             'price': 'Введите цену билета.',
             'cat': 'Выберите категорию.'
         }

@@ -62,11 +62,11 @@ class SearchTrip(DataMixin, ListView):
     def get_queryset(self):
         departure = self.request.GET.get('d')
         arrival = self.request.GET.get('a')
-        seating = self.request.GET.get('s')
+        free_seating = self.request.GET.get('s')
         data = self.request.GET.get('t')
         cat = self.request.GET.get('cat')
 
-        return TripFilterService.filter_trip(cat, departure, arrival, seating, data)
+        return TripFilterService.filter_trip(cat, departure, arrival,free_seating, data)
 
 
 class Post(DataMixin, LoginRequiredMixin, CreateView):

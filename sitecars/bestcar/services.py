@@ -9,7 +9,7 @@ class TripFilterService:
     в форме на главной странице
     '''
     @staticmethod
-    def filter_trip(cat, departure, arrival, seating, data):
+    def filter_trip(cat, departure, arrival, free_seating, data):
         filters_map = {
             'На машине ': Publishing_a_trip.car,
             'На автобусе': Publishing_a_trip.bus,
@@ -18,6 +18,6 @@ class TripFilterService:
         object_list = filters_map.get(cat, Publishing_a_trip.objects).filter(
             Q(departure__istartswith=departure) &
             Q(arrival__istartswith=arrival) &
-            Q(seating__istartswith=seating) &
+            Q(free_seating__istartswith=free_seating) &
             Q(departure_time__startswith=data))
         return object_list
