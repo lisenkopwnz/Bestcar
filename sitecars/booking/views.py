@@ -6,7 +6,7 @@ from django.views import View
 
 from bestcar.models import Publishing_a_trip
 from booking.models import Booking
-from booking.services import Confirmation_confirmation
+from booking.services import Confirmation
 
 
 class BaseView(View):
@@ -30,7 +30,7 @@ class Confirmation(BaseView):
         trip_slug = kwargs.get('trip_slug', None)
         if trip_slug is not None:
             try:
-                Confirmation_confirmation.confirmation(trip_slug,request)
+                Confirmation.confirmation(trip_slug,request)
             except Publishing_a_trip.DoesNotExist:
                 pass
             return redirect('home')

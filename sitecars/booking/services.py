@@ -6,7 +6,7 @@ from booking.exeption import SeatingError
 from booking.models import Booking
 
 
-class Confirmation_confirmation:
+class Confirmation:
     """
     Берем из модели Publishing_a_trip необходимые данные для создания записи в таблице
     Booking ,предварительно проверяя наличие свободных мест.

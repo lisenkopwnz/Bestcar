@@ -19,6 +19,7 @@ def booking_decorator(func):
         if trip.reserved_seats < trip.free_seating:
             trip.reserved_seats += 1
             trip.save()
+            
             return func(trip_slug, request, trip)
         else:
             raise SeatingError
