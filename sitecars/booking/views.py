@@ -30,7 +30,6 @@ class BaseView(View):
             "errorMessage": str(exeption),
             "status": status
         })
-
         return res
 
 
