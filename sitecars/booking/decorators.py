@@ -18,10 +18,8 @@ def booking_decorator(func):
         trip = Publishing_a_trip.objects.get(slug=trip_slug)
         if trip.reserved_seats < trip.free_seating:
             trip.reserved_seats += 1
-            
             trip.save()
             return func(trip_slug, request, trip)
         else:
             raise SeatingError
-
     return wrapper_decorator

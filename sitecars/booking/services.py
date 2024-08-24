@@ -1,4 +1,5 @@
 from django.db import transaction
+from django.http import JsonResponse
 
 from bestcar.models import Publishing_a_trip
 from booking.decorators import booking_decorator
@@ -6,7 +7,7 @@ from booking.exeption import SeatingError
 from booking.models import Booking
 
 
-class Confirmation:
+class Confirmation_services:
     """
     Берем из модели Publishing_a_trip необходимые данные для создания записи в таблице
     Booking ,предварительно проверяя наличие свободных мест.
@@ -29,5 +30,7 @@ class Confirmation:
                                   )
                 booking.save()
         except SeatingError as e:
-            return str(e)
-
+            return JsonResponse({
+                "errorMessage": str(e),
+                "status": 400
+            })
