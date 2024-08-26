@@ -2,10 +2,13 @@ from django.db import transaction
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
+from django.views.generic import ListView, DeleteView
 
 from bestcar.models import Publishing_a_trip
 from booking.models import Booking
-from booking.services import Confirmation_services
+from booking.services import Confirmation_services, UsersBookedTripsServices
+
+from bestcar.utils import DataMixin
 
 
 class BaseView(View):
@@ -24,13 +27,18 @@ class BaseView(View):
             return response
 
     @staticmethod
-    def _response(exeption, *, status=200):
-        """Форматируем HTTP ответ с описание ошибки"""
-        res = JsonResponse({
-            "errorMessage": str(exeption),
-            "status": status
-        })
-        
+    def _response(data, *, status=200):
+        """Форматируем HTTP ответ с описание ошибки или формируем JSON ответ в случае необходимости """
+        if status != 200:
+            res = JsonResponse({
+                "errorMessage": str(data),
+                "status": status
+            })
+        else:
+            res = JsonResponse({
+                "data": str(data),
+                "status": status
+            })
         return res
 
 
@@ -50,3 +58,21 @@ class Confirmation(BaseView):
                     "status": 400
                 })
             return redirect('home')
+
+
+class Users_booked_trips(DataMixin, BaseView, ListView):
+    context_object_name = 'mein_booked_trip'
+    model = Booking
+    template_name = 'booking/users_booked_trips.html'
+    title_page = 'Ваши забронированные поездки'
+
+    def get_queryset(self):
+        return UsersBookedTripsServices.users_booked_trips(name_companion=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return self.get_mixin_context(context)
+
+
+class Delete_a_reservation(DeleteView):
+    pass

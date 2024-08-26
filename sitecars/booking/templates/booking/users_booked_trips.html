@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    {% for trip in mein_booked_trip %}
+    <div>
+        <p> {{trip.departure}} </p>
+        <p> {{trip.arrival}} </p>
+        <p> {{trip.departure_time}} </p>
+        <p> {{trip.arrival_time}} </p>
+        <p> {{trip.cat}} </p>
+        <p> {{trip.price}} </p>
+        <p> {{trip.author_trip}} </p>
+
+    </div>
+{% endfor %}
+
+{% endblock %}
+
+

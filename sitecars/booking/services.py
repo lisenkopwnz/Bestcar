@@ -1,10 +1,9 @@
-from django.db import transaction
+from django.db import transaction, DatabaseError
 from django.http import JsonResponse
-
-from bestcar.models import Publishing_a_trip
 from booking.decorators import booking_decorator
 from booking.exeption import SeatingError
 from booking.models import Booking
+
 
 
 class Confirmation_services:
@@ -30,6 +29,19 @@ class Confirmation_services:
                                   )
                 booking.save()
         except SeatingError as e:
+            return JsonResponse({
+                "errorMessage": str(e),
+                "status": 400
+            })
+
+
+class UsersBookedTripsServices:
+    @staticmethod
+    def users_booked_trips(**kwargs):
+        try:
+            user = kwargs['name_companion']
+            return Booking.objects.filter(name_companion=user)
+        except DatabaseError as e:
             return JsonResponse({
                 "errorMessage": str(e),
                 "status": 400
