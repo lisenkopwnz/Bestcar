@@ -85,4 +85,3 @@ class Delete_a_reservation(BaseView,DeleteView):
         messages.success(request, "Task deleted!")
         return super().post(request, *args, **kwargs)
 
-
