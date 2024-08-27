@@ -5,8 +5,18 @@
 {% endblock %}
 
 {% block content %}
-    {% for trip in mein_booked_trip %}
+
+{% if messages %}
+    <div class="alert alert-{% if messages.tags %}{{ messages.tags }}{% endif %}">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% for trip in mein_booked_trip %}
     <div>
+        <p> {{trip.id}} </p>
         <p> {{trip.departure}} </p>
         <p> {{trip.arrival}} </p>
         <p> {{trip.departure_time}} </p>
@@ -14,6 +24,7 @@
         <p> {{trip.cat}} </p>
         <p> {{trip.price}} </p>
         <p> {{trip.author_trip}} </p>
+        <p><li> <a href="{% url 'booking:delete_reservation' trip.id %}">Удалить</a></li></p>
 
     </div>
 {% endfor %}

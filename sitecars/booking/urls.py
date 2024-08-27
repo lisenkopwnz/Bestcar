@@ -7,5 +7,5 @@ app_name = 'booking'
 urlpatterns = [
     path('confirm/<slug:trip_slug>/', Confirmation.as_view(), name='confirmation'),
     path('booked_trips/', Users_booked_trips.as_view(), name='booked_trips'),
-    path('delete/<slug:slug>/', Delete_a_reservation.as_view(), name='delete_reservation')
+    path('delete/<int:pk>/', Delete_a_reservation.as_view(), name='delete_reservation')
 ]

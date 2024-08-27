@@ -1,6 +1,8 @@
+from django.contrib import messages
 from django.db import transaction
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, DeleteView
 
@@ -74,5 +76,12 @@ class Users_booked_trips(DataMixin, BaseView, ListView):
         return self.get_mixin_context(context)
 
 
-class Delete_a_reservation(DeleteView):
-    pass
+class Delete_a_reservation(BaseView,DeleteView):
+    model = Booking
+    template_name = 'booking/delete_confirmation.html'
+    success_url = reverse_lazy('booking:booked_trips')
+
+    def post(self, request, *args, **kwargs):
+        messages.success(request, "Task deleted!")
+        return super().post(request, *args, **kwargs)
+
