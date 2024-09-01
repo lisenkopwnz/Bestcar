@@ -1,16 +1,15 @@
 from django.contrib import messages
-from django.db import transaction
-from django.http import JsonResponse, HttpResponse
-from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import ListView, DeleteView
-
-from bestcar.models import Publishing_a_trip
-from booking.models import Booking
-from booking.services import Confirmation_services, UsersBookedTripsServices
+from django.views.generic import ListView, DeleteView, DetailView
 
 from bestcar.utils import DataMixin
+from bestcar.models import Publishing_a_trip
+from booking.models import Booking
+from booking.services import Confirmation_services, UsersBookedTripsServices, Bookings_services
+from sitecars import settings
 
 
 class BaseView(View):
@@ -44,6 +43,39 @@ class BaseView(View):
         return res
 
 
+class Bookings(DataMixin, BaseView, ListView):
+    """
+        Представление в котором пользователь может ознакомиться с деталями поездки
+    """
+    model = Publishing_a_trip
+    template_name = 'bestcar/to_book_a_trip.html'
+    title_page = 'Потверждение'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.trip_slug = kwargs.get('trip_slug')
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        return Bookings_services.bookings_services(slug=self.trip_slug)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return self.get_mixin_context(context, default_image=settings.DEFAULT_USER_IMAGE)
+
+
+class Checkout(DataMixin, BaseView, DetailView):
+    """
+         Представление в котором пользователь может проверить детали поездки
+     """
+    model = Publishing_a_trip
+    template_name = 'bestcar/booking_checkout.html'
+    title_page = 'Проверьте детали поездки'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return self.get_mixin_context(context, default_image=settings.DEFAULT_USER_IMAGE)
+
+
 class Confirmation(BaseView):
     """
         Создает запись в базе данных о бронировании поездки
@@ -63,6 +95,9 @@ class Confirmation(BaseView):
 
 
 class Users_booked_trips(DataMixin, BaseView, ListView):
+    """
+        Добовляет отображения списка забронированных поездок
+    """
     context_object_name = 'mein_booked_trip'
     model = Booking
     template_name = 'booking/users_booked_trips.html'
@@ -76,7 +111,11 @@ class Users_booked_trips(DataMixin, BaseView, ListView):
         return self.get_mixin_context(context)
 
 
-class Delete_a_reservation(BaseView,DeleteView):
+class Delete_a_reservation(DataMixin, BaseView, DeleteView):
+    """
+        Позволяет удалять одну конкретную поездку
+    """
+    # добавь вместо pk слаг
     model = Booking
     template_name = 'booking/delete_confirmation.html'
     success_url = reverse_lazy('booking:booked_trips')
@@ -85,3 +124,6 @@ class Delete_a_reservation(BaseView,DeleteView):
         messages.success(request, "Task deleted!")
         return super().post(request, *args, **kwargs)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return self.get_mixin_context(context)

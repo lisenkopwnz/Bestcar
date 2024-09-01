@@ -15,6 +15,7 @@
         <p> {{item.departure_time}} </p>
         <p> {{item.arrival_time}} </p>
         <p> {{item.departure_time|date:"l:j:M"}} </p>
+        <p> <a href="{% url 'update_user_trip' item.slug %}">Изменить</a></p>
     </div>
 {% endfor %}
 {% else %}

@@ -25,8 +25,6 @@ class ObjectManager(models.Manager):
         return super().get_queryset().all()
 
 
-
-
 class Publishing_a_trip(models.Model):
     SEATING = [
         (1, '1'),
@@ -52,9 +50,6 @@ class Publishing_a_trip(models.Model):
     car = CarManager()
     bus = BusManager()
 
-    def get_absolute_url(self):
-        return reverse('to_book', kwargs={'trip_slug': self.slug})
-
     def save(self, *args, **kwargs):
         if not self.slug:
             all_symbols = string.ascii_uppercase + string.digits
@@ -70,16 +65,11 @@ class Publishing_a_trip(models.Model):
         return str(self.author)
 
 
-
-
-
 class Category(models.Model):
     name = models.CharField(max_length=100, db_index=True, verbose_name="Категория")
 
     def __str__(self):
         return self.name
-
-
 
     class Meta:
         verbose_name = 'Категории'
@@ -89,7 +79,8 @@ class Category(models.Model):
 class Publishing_a_tripForm(forms.ModelForm):
     class Meta:
         model = Publishing_a_trip
-        fields = ['departure', 'arrival', 'models_auto', 'departure_time', 'arrival_time', 'free_seating', 'price', 'cat']
+        fields = ['departure', 'arrival', 'models_auto', 'departure_time', 'arrival_time', 'free_seating', 'price',
+                  'cat']
         widgets = {'departure_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
                    'arrival_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'})
                    }

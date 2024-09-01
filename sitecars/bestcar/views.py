@@ -1,26 +1,48 @@
-from django.shortcuts import render
 from bestcar.utils import DataMixin
-
-from django.http import HttpResponse, HttpResponseNotFound, request, HttpRequest
-from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
-from django.template.loader import render_to_string
-from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, TemplateView, View, DetailView
-from django.contrib.auth.mixins import LoginRequiredMixin
-
-from bestcar.models import Publishing_a_trip, Publishing_a_tripForm
 from bestcar.models import *
+from bestcar.forms import Update_form
+from .services import TripFilterService, User_trip_object
+
 from sitecars import settings
 
-from django.db import transaction
-from django.core.exceptions import ObjectDoesNotExist
-
 from django.urls import reverse_lazy
+from django.http import HttpResponseNotFound, Http404, JsonResponse, HttpResponseRedirect
+from django.views.generic import ListView, CreateView, TemplateView, UpdateView, View
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .services import TripFilterService
+
+class BaseView(View):
+    """ Базовый класс который отлавливает все исклюяения ,которые
+        не были обработаны ранее """
+
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            response = super().dispatch(request, *args, **kwargs)
+        except Exception as e:
+            return self._response(e, status=400)
+
+        if isinstance(response, (dict, list)):
+            return self._response(response)
+        else:
+            return response
+
+    @staticmethod
+    def _response(data, *, status=200):
+        """Форматируем HTTP ответ с описание ошибки или формируем JSON ответ в случае необходимости """
+        if status != 200:
+            res = JsonResponse({
+                "errorMessage": str(data),
+                "status": status
+            })
+        else:
+            res = JsonResponse({
+                "data": str(data),
+                "status": status
+            })
+        return res
 
 
-class HommeBestcar(DataMixin, TemplateView):
+class HomeBestcar(DataMixin, TemplateView):
     model = Publishing_a_trip
     template_name = 'bestcar/index.html'
     title_page = 'Главная страница'
@@ -66,7 +88,7 @@ class SearchTrip(DataMixin, ListView):
         data = self.request.GET.get('t')
         cat = self.request.GET.get('cat')
 
-        return TripFilterService.filter_trip(cat, departure, arrival,free_seating, data)
+        return TripFilterService.filter_trip(cat, departure, arrival, free_seating, data)
 
 
 class Post(DataMixin, LoginRequiredMixin, CreateView):
@@ -85,36 +107,35 @@ class Post(DataMixin, LoginRequiredMixin, CreateView):
         return self.get_mixin_context(context)
 
 
-class Bookings(DataMixin, ListView):
+class Update_user_trip(DataMixin, BaseView, UpdateView):
+    """
+        Представление для извенения параметров поездки 
+    """
     model = Publishing_a_trip
-    template_name = 'bestcar/to_book_a_trip.html'
-    title_page = 'FFF'
+    form_class = Update_form
+    template_name = 'bestcar/update.html'
+    success_url = reverse_lazy('home')
+    title_page = 'Форма для изменения данных поездки'
 
-    def dispatch(self, request, *args, **kwargs):
-        self.trip_slug = kwargs.get('trip_slug')
-        return super().dispatch(request, *args, **kwargs)
+    def get(self, request, *args, **kwargs):
+        try:
+            slug = kwargs['slug']
+            User_trip_object.users_trip_object(slug)
+            return super().get(self, request, *args, **kwargs)
+        except Http404 as e:
+            return JsonResponse({
+                "errorMessage": str(e),
+                "status": 400
+            })
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        object_list = queryset.filter(slug=self.trip_slug).first()
-        return object_list
+    def form_valid(self, form):
+        # здесь нужно дабавить отправку сигнала ввиде сообщения об изменениях в поездке
+        self.object = form.save()
+        return HttpResponseRedirect(self.get_success_url())
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        return self.get_mixin_context(context, default_image=settings.DEFAULT_USER_IMAGE)
-
-
-class Checkout(DataMixin, DetailView):
-    model = Publishing_a_trip
-    template_name = 'bestcar/booking_checkout.html'
-    title_page = 'аааа'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return self.get_mixin_context(context, default_image=settings.DEFAULT_USER_IMAGE)
-
-
-
+        return self.get_mixin_context(context)
 
 
 def page_not_found(request, exception):

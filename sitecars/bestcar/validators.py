@@ -31,7 +31,7 @@ class Validators_language_model:
         self.message = message
 
     def __call__(self, value):
-        if re.search(r'[^а-яА-ЯёЁ]', value):
+        if re.search(r'[^а-яА-ЯёЁ0-9-,.]', value):
             raise ValidationError(self.message)
 
     def deconstruct(self):

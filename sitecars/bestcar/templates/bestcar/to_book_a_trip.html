@@ -23,6 +23,6 @@
         {% else %}
             <img src ='{{default_image}}' id="default_user_photo"  />
         {% endif %}
-    <p id="load"><a href="{% url 'booking' object_list.slug %}" >Продолжить</a></p>
+    <p id="load"><a href="{% url 'booking:booking' object_list.slug %}" >Продолжить</a></p>
 </div>
 {% endblock %}

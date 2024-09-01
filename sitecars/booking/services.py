@@ -1,5 +1,8 @@
 from django.db import transaction, DatabaseError
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
+from django.shortcuts import get_object_or_404
+
+from bestcar.models import Publishing_a_trip
 from booking.decorators import booking_decorator
 from booking.exeption import SeatingError
 from booking.models import Booking
@@ -45,3 +48,19 @@ class UsersBookedTripsServices:
                 "errorMessage": str(e),
                 "status": 400
             })
+
+
+class Bookings_services:
+    @staticmethod
+    def bookings_services(**kwargs):
+        try:
+            slug = kwargs['slug']
+            object_list = get_object_or_404(Publishing_a_trip, slug=slug)
+            return object_list
+        except Http404 as e:
+            return JsonResponse({
+                "errorMessage": str(e),
+                "status": 400
+            })
+
+
