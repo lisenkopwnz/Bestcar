@@ -15,6 +15,11 @@ class Update_form(forms.ModelForm):
         model = Publishing_a_trip
         fields = ['departure', 'arrival', 'models_auto', 'departure_time', 'arrival_time']
 
+        labels = {
+            'departure': 'Введите место отправление ',
+            'arrival': 'Введите место прибытия '
+        }
+
         widgets = {'departure_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
                    'arrival_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'})
                    }
@@ -29,8 +34,18 @@ class Update_form(forms.ModelForm):
         else:
             return data
 
-    def clean_departure(self):
-        return self.clean_data(self.cleaned_data['departure'])
+    def clean(self):
+        """
+            Переопределяем метод для внесения дополнительной логики валидации полей формы
 
-    def clean_arrival(self):
-        return self.clean_data(self.cleaned_data['arrival'])
+        """
+        cleaned_data = super().clean()
+        for field_name in ['departure', 'arrival']:
+            value = cleaned_data.get(field_name)
+            if value:
+                try:
+                    self.clean_data(value)
+                except ValidationError as e:
+                    cleaned_data[field_name] = None
+                    self.add_error(field_name, str(e))
+        return cleaned_data

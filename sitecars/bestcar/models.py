@@ -81,22 +81,13 @@ class Publishing_a_tripForm(forms.ModelForm):
         model = Publishing_a_trip
         fields = ['departure', 'arrival', 'models_auto', 'departure_time', 'arrival_time', 'free_seating', 'price',
                   'cat']
+        labels = {
+            'departure': 'Введите место отправление ',
+            'arrival': 'Введите место прибытия ',
+            'free_seating': 'Количество свободных мест',
+            'price': 'Цена поездки',
+            'cat': 'На чем поедете'
+        }
         widgets = {'departure_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
                    'arrival_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'})
                    }
-
-        help_texts = {
-            'departure': 'Введите место отправления.',
-            'arrival': 'Введите место прибытия.',
-            'models_auto': 'Введите марку автомобиля.',
-            'departure_time': 'Введите время отправления.',
-            'arrival_time': 'Введите время прибытия.',
-            'free_seating': 'Введите количество мест.',
-            'price': 'Введите цену билета.',
-            'cat': 'Выберите категорию.'
-        }
-
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
-            for field in self.fields.values():
-                field.widget.attrs['placeholder'] = field.help_text

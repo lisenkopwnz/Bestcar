@@ -9,7 +9,7 @@
 <h1>Опубликовать поездку</h1>
 <form action="{% url 'post' %}" method="post">
     {% csrf_token %}
-    {{ form.as_table}}
+    {{ form.as_p}}
     <p><button type="submit">Отпраить</button>
 </form>
 

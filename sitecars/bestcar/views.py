@@ -109,7 +109,7 @@ class Post(DataMixin, LoginRequiredMixin, CreateView):
 
 class Update_user_trip(DataMixin, BaseView, UpdateView):
     """
-        Представление для извенения параметров поездки 
+        Представление для извенения параметров поездки
     """
     model = Publishing_a_trip
     form_class = Update_form
