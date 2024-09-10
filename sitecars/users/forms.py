@@ -22,7 +22,9 @@ class Regestration_User_Form(UserCreationForm):
 
     class Meta:
         model = get_user_model()
-        fields = ['photo', 'username', 'first_name', 'last_name', 'email', 'password1', 'password2']
+        fields = ['photo', 'username', 'first_name',
+                  'last_name', 'email', 'password1', 'password2']
+
         labels = {'email': 'E-mail',
                   'first_name': 'Фамилия',
                   'last_name': 'Отчество',
@@ -33,8 +35,11 @@ class Regestration_User_Form(UserCreationForm):
                'last_name': forms.TextInput(attrs={'class': 'form-input'}),
                }
 
-    def clean_email(self):
-        email = self.cleaned_data['email']
+    def clean(self) -> str:
+        """ Переопределяем метод clean для проверки пороля на уникальность """
+        cleaned_data = super().clean()
+        email = cleaned_data.get('email')
+
         if get_user_model().objects.filter(email=email).exists():
             raise forms.ValidationError('Такая почта уже существует !')
         return email
@@ -60,7 +65,9 @@ class UserProfile(ModelForm):
 
 
 class User_Password_change_form(PasswordChangeForm):
-    old_password = forms.CharField(label='Старый пороль', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
-    new_password1 = forms.CharField(label='Новый пороль', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+    old_password = forms.CharField(label='Старый пороль',
+                                   widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+    new_password1 = forms.CharField(label='Новый пороль',
+                                    widget=forms.PasswordInput(attrs={'class': 'form-input'}))
     new_password2 = forms.CharField(label='Потверждение пороля',
                                     widget=forms.PasswordInput(attrs={'class': 'form-input'}))

@@ -1,6 +1,6 @@
 from bestcar.utils import DataMixin
 from bestcar.models import *
-from bestcar.forms import Update_form
+from bestcar.forms import Update_form,Publishing_a_tripForm
 from .services import TripFilterService, User_trip_object
 
 from sitecars import settings

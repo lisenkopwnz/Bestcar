@@ -6,6 +6,24 @@ from bestcar.models import Publishing_a_trip
 import re
 
 
+class Publishing_a_tripForm(forms.ModelForm):
+    class Meta:
+        model = Publishing_a_trip
+        fields = ['departure', 'arrival', 'models_auto', 'departure_time',
+                  'arrival_time', 'free_seating', 'price', 'cat']
+
+        labels = {
+            'departure': 'Введите место отправление ',
+            'arrival': 'Введите место прибытия ',
+            'free_seating': 'Количество свободных мест',
+            'price': 'Цена поездки',
+            'cat': 'На чем поедете'
+        }
+        widgets = {'departure_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
+                   'arrival_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'})
+                   }
+
+
 class Update_form(forms.ModelForm):
     """
         Форма предназначена для внесения изменений в существующие поездки
@@ -25,7 +43,7 @@ class Update_form(forms.ModelForm):
                    }
 
     @staticmethod
-    def clean_data(data):
+    def clean_data(data: str) -> str:
         """ Общий метод для валидации вводимых значений ,пользотель имеет право вводить
             только разпешенные символы.
         """
@@ -34,7 +52,7 @@ class Update_form(forms.ModelForm):
         else:
             return data
 
-    def clean(self):
+    def clean(self) -> dict:
         """
             Переопределяем метод для внесения дополнительной логики валидации полей формы
 

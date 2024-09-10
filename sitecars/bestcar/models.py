@@ -76,18 +76,3 @@ class Category(models.Model):
         verbose_name_plural = 'Категории'
 
 
-class Publishing_a_tripForm(forms.ModelForm):
-    class Meta:
-        model = Publishing_a_trip
-        fields = ['departure', 'arrival', 'models_auto', 'departure_time', 'arrival_time', 'free_seating', 'price',
-                  'cat']
-        labels = {
-            'departure': 'Введите место отправление ',
-            'arrival': 'Введите место прибытия ',
-            'free_seating': 'Количество свободных мест',
-            'price': 'Цена поездки',
-            'cat': 'На чем поедете'
-        }
-        widgets = {'departure_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
-                   'arrival_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'})
-                   }
