@@ -23,7 +23,7 @@ class Regestration_User_Form(UserCreationForm):
     class Meta:
         model = get_user_model()
         fields = ['photo', 'username', 'first_name',
-                  'last_name', 'email', 'password1', 'password2']
+                  'last_name', 'email', 'password1', 'password2','category']
 
         labels = {'email': 'E-mail',
                   'first_name': 'Фамилия',

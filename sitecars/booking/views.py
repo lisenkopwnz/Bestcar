@@ -4,6 +4,7 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, DeleteView, DetailView
+from django_currentuser.middleware import get_current_user
 
 from bestcar.utils import DataMixin
 from bestcar.models import Publishing_a_trip

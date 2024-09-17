@@ -15,7 +15,7 @@ class Booking(models.Model):
     cat = models.ForeignKey('bestcar.Category', verbose_name="категория", on_delete=models.PROTECT,default=1)
     price = models.PositiveSmallIntegerField(verbose_name="цена")
     author_trip = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="autho", null=True)
-    name_companion=models.ForeignKey(get_user_model(), verbose_name="Имя пассажира",on_delete=models.CASCADE,default='default')
+    name_companion=models.ForeignKey(get_user_model(), verbose_name="Имя пассажира",on_delete=models.CASCADE)
     slug = models.SlugField(max_length=100,  db_index=True)
 
     class Meta:

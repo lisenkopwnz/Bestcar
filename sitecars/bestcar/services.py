@@ -5,7 +5,6 @@ from django.http import Http404
 from .models import Publishing_a_trip
 
 
-
 class TripFilterService:
     """
     Производит фильтрацию на основе параметров который задал пользователь
@@ -31,6 +30,7 @@ class User_trip_object:
     """
         Возвращает объект поездки если таковой существует
     """
+
     @staticmethod
     def users_trip_object(slug):
         try:

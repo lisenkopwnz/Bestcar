@@ -1,12 +1,31 @@
 from django import forms
 from django.core.exceptions import ValidationError
-
+from typing import List, Tuple
 from bestcar.models import Publishing_a_trip
 
 import re
 
+from django_currentuser.middleware import get_current_user
+from django.contrib.auth import get_user_model
+
 
 class Publishing_a_tripForm(forms.ModelForm):
+
+    @staticmethod
+    def seating() -> List[Tuple[int, str]]:
+        """Определяем возможные значения 'choices' в поле 'free_seating' """
+        current_user_id = get_current_user().id
+
+        category = get_user_model().objects.get(id=current_user_id).category.name
+        if category == 'На машине':
+            return list(zip((x for x in range(1, 8)), (str(y) for y in range(1, 8))))
+        elif category == 'На автобусе':
+            return list(zip((x for x in range(1, 30)), (str(y) for y in range(1, 30))))
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['free_seating'].choices = Publishing_a_tripForm.seating()
+
     class Meta:
         model = Publishing_a_trip
         fields = ['departure', 'arrival', 'models_auto', 'departure_time',
