@@ -9,9 +9,9 @@ class Publishing_a_trip_admin(admin.ModelAdmin):
         ('Основная информация', {'fields': ['departure', 'arrival', 'departure_time', 'arrival_time', 'price']})
     ]
     list_display_links = ('id',)
-    list_filter = ('departure', 'arrival', 'departure_time', 'arrival_time', 'cat', 'price', 'free_seating')
-    list_display = ('id', 'departure', 'arrival', 'models_auto',
-                    'departure_time', 'arrival_time', 'free_seating', 'cat', 'price', 'slug')
+    list_filter = ('departure', 'arrival', 'departure_time', 'arrival_time', 'price', 'free_seating')
+    list_display = ('id', 'departure', 'arrival',
+                    'departure_time', 'arrival_time', 'free_seating', 'price', 'slug')
     ordering = ['departure', 'arrival', 'departure_time']
 
 

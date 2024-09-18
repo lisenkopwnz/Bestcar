@@ -15,7 +15,7 @@ def booking_decorator(func):
     """
     @functools.wraps(func)
     def wrapper_decorator(trip_slug, request):
-        trip = Publishing_a_trip.objects.get(slug=trip_slug)
+        trip = Publishing_a_trip.objects.select_related('author').get(slug=trip_slug)
         if trip.reserved_seats < trip.free_seating:
             trip.reserved_seats += 1
             trip.save()

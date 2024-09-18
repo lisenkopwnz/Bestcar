@@ -1,14 +1,10 @@
 from django.db import models
-from django import forms
 from django.contrib.auth import get_user_model
-from django.utils import timezone
-import datetime
-import pytz
+
 import string
 import random
-from django.urls import reverse
-from bestcar.validators import *
 
+from bestcar.validators import Validators_date_model,Validators_language_model
 
 
 class CarManager(models.Manager):
@@ -27,11 +23,6 @@ class ObjectManager(models.Manager):
 
 
 class Publishing_a_trip(models.Model):
-
-    SEATING = [
-        (1, '1'),
-    ]
-
     departure = models.CharField(
         max_length=100,
         verbose_name="отправление",
@@ -53,17 +44,11 @@ class Publishing_a_trip(models.Model):
     )
     free_seating = models.PositiveSmallIntegerField(
         verbose_name='количество мест',
-        choices=SEATING, default=1
+        default=1
     )
     reserved_seats = models.PositiveIntegerField(
         verbose_name='количество бронированных мест',
         default=0
-    )
-    cat = models.ForeignKey(
-        'Category',
-        verbose_name="категория",
-        on_delete=models.PROTECT,
-        default=1
     )
     price = models.PositiveSmallIntegerField(
         verbose_name="цена"
@@ -79,15 +64,13 @@ class Publishing_a_trip(models.Model):
         unique=True,
         db_index=True
     )
-    models_auto = models.CharField(
-        max_length=100,
-        verbose_name="модель автомобиля"
-    )
+
     objects = models.Manager()
     car = CarManager()
     bus = BusManager()
 
     def save(self, *args, **kwargs):
+        """ Переопределяем метод save для добавления слага"""
         if not self.slug:
             all_symbols = string.ascii_uppercase + string.digits
             self.slug = "".join(random.choice(all_symbols) for i in range(40))

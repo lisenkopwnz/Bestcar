@@ -19,7 +19,9 @@
         <p class="departure_time">{{item.departure_time|date:"H:i"}} </p>
         <p class="arrival_time">{{item.arrival_time|date:"H:i"}}</p>
         <p class="price"> {{item.price}} ₽</p>
-        {% if item.cat_id == 1 %}
+
+
+        {% if item.author.category_id == 1 %}
             <img src="{% static 'bestcar/images/car.png' %}" width="65" height="30" class="logo_cat"  />
         {% else %}
             <img src="{% static 'bestcar/images/avtobus.png' %}" width="65" height="30" class="logo_cat"  />

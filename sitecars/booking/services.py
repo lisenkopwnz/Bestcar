@@ -24,7 +24,7 @@ class Confirmation_services:
                                   departure_time=trip.departure_time,
                                   arrival_time=trip.arrival_time,
                                   price=trip.price,
-                                  cat=trip.cat,
+                                  cat=trip.author.category,
                                   author_trip=trip.author,
                                   name_companion=request.user,
                                   slug=trip.slug

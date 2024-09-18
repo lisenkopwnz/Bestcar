@@ -10,6 +10,10 @@ from django.contrib.auth import get_user_model
 
 
 class Publishing_a_tripForm(forms.ModelForm):
+    free_seating = forms.ChoiceField(
+        choices=[],
+        label='количество мест'
+    )
 
     @staticmethod
     def seating() -> List[Tuple[int, str]]:
@@ -28,15 +32,14 @@ class Publishing_a_tripForm(forms.ModelForm):
 
     class Meta:
         model = Publishing_a_trip
-        fields = ['departure', 'arrival', 'models_auto', 'departure_time',
-                  'arrival_time', 'free_seating', 'price', 'cat']
+        fields = ['departure', 'arrival', 'departure_time',
+                  'arrival_time', 'free_seating', 'price']
 
         labels = {
             'departure': 'Введите место отправление ',
             'arrival': 'Введите место прибытия ',
             'free_seating': 'Количество свободных мест',
-            'price': 'Цена поездки',
-            'cat': 'На чем поедете'
+            'price': 'Цена поездки'
         }
         widgets = {'departure_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
                    'arrival_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'})
@@ -50,7 +53,7 @@ class Update_form(forms.ModelForm):
 
     class Meta:
         model = Publishing_a_trip
-        fields = ['departure', 'arrival', 'models_auto', 'departure_time', 'arrival_time']
+        fields = ['departure', 'arrival',  'departure_time', 'arrival_time']
 
         labels = {
             'departure': 'Введите место отправление ',

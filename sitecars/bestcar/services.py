@@ -28,12 +28,12 @@ class TripFilterService:
 
 class User_trip_object:
     """
-        Возвращает объект поездки если таковой существует
+        Проверякм объект поездки на существование
     """
 
     @staticmethod
-    def users_trip_object(slug):
-        try:
-            return get_object_or_404(Publishing_a_trip, slug=slug)
-        except Exception:
-            raise Http404('Похоже эта поездка болше не существует')
+    def users_trip_object(slug: str) -> None:
+        if Publishing_a_trip.objects.filter(slug=slug).exists():
+            return
+        else:
+            raise Http404('Похоже эта поездка больше не существует')
