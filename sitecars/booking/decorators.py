@@ -1,5 +1,8 @@
 import functools
 
+from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import F
+
 from bestcar.models import Publishing_a_trip
 from .exeption import SeatingError
 
@@ -15,11 +18,14 @@ def booking_decorator(func):
     """
     @functools.wraps(func)
     def wrapper_decorator(trip_slug, request):
-        trip = Publishing_a_trip.objects.select_related('author').get(slug=trip_slug)
-        if trip.reserved_seats < trip.free_seating:
-            trip.reserved_seats += 1
-            trip.save()
-            return func(trip_slug, request, trip)
-        else:
-            raise SeatingError
+        try:
+            trip = Publishing_a_trip.objects.select_related('author').get(slug=trip_slug)
+            if trip.reserved_seats < trip.free_seating:
+                trip.reserved_seats = F('reserved_seats') + 1
+                trip.save(update_fields=['reserved_seats'])
+                return func(trip_slug, request, trip)
+            else:
+                raise SeatingError()
+        except ObjectDoesNotExist:
+            raise ValueError("Поездка не найдена")
     return wrapper_decorator
