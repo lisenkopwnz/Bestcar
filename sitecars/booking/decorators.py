@@ -29,3 +29,4 @@ def booking_decorator(func):
         except ObjectDoesNotExist:
             raise ValueError("Поездка не найдена")
     return wrapper_decorator
+
