@@ -8,6 +8,5 @@ app = Celery('sitecars')
 # Настройка брокера
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
-
 # Автоматический поиск задач
-app.autodiscover_tasks()
+app.autodiscover_tasks(['sitecars.utils'])

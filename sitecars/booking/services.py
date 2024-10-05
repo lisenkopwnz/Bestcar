@@ -30,7 +30,7 @@ class Confirmation_services:
                                   slug=trip.slug
                                   )
                 booking.save()
-        except SeatingError as e:
+        except (SeatingError, DatabaseError) as e:
             return JsonResponse({
                 "errorMessage": str(e),
                 "status": 400
@@ -62,5 +62,3 @@ class Bookings_services:
                 "errorMessage": str(e),
                 "status": 400
             })
-
-
