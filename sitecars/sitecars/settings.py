@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'bestcar.apps.BestcarConfig',
     'users',
     'booking',
-    'clear_cache'
+    'clear_cache',
+
 ]
 
 MIDDLEWARE = [

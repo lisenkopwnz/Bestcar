@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Здравствуйте!</h1>
+        <p>Это письмо отправлено вам от компанией Bestcar.</p>
+
+        <p>{{information}}</p>
+
+        <p>Если у вас есть вопросы, вы можете связаться с водителем.</p>
+
+        <p>С уважением,<br>Команда нашей компании</p>
+    </div>
+    <div class="footer">
+        <p>&copy; {{ current_data }} Ваша компания. Все права защищены.</p>
+    </div>
+</body>
+</html>
