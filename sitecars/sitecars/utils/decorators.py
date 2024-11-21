@@ -1,9 +1,12 @@
 import functools
+import logging
 
 from bestcar.models import Publishing_a_trip
 from booking.models import Booking
 
 from typing import Callable, Type, Any, List
+
+logger = logging.getLogger(__name__)
 
 
 def email_address_decorator(model: Type[Booking] | Type[Publishing_a_trip]) -> Callable:
@@ -39,10 +42,11 @@ def email_address_decorator(model: Type[Booking] | Type[Publishing_a_trip]) -> C
                 )
 
             if email_querySet is None:
-                raise ValueError(f"Неизвестная модель: {model}")
+                logging.error(f"Неизвестная модель: {model}")
 
             # Преобразуем QuerySet в список
-            email_list: List[str] = list(email_querySet)
+            email_list: List[str] = list(email_querySet) if email_querySet else []
+            logging.info(f'{email_list} успешно возвращены')
 
             match created:
                 case None:

@@ -1,3 +1,4 @@
+import logging
 from typing import List
 
 from celery import shared_task
@@ -29,6 +30,6 @@ def send_email_task(subject: str,
 
     # Присоединяем HTML-версию сообщения
     msg.attach_alternative(html_message, "text/html")
-
+    logging.info(f'сообщение для пользователей {recipient_list} готовится к отправке')
     # Отправляем сообщение
     msg.send()

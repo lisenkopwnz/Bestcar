@@ -1,3 +1,5 @@
+import logging
+
 from bestcar.utils import DataMixin
 from bestcar.models import *
 from bestcar.forms import Update_form, Publishing_a_tripForm
@@ -9,6 +11,9 @@ from django.urls import reverse_lazy
 from django.http import HttpResponseNotFound, Http404, JsonResponse, HttpResponseRedirect
 from django.views.generic import ListView, CreateView, TemplateView, UpdateView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+logger = logging.getLogger(__name__)
 
 
 class BaseView(View):
@@ -121,8 +126,10 @@ class Update_user_trip(DataMixin, BaseView, UpdateView):
         try:
             slug = kwargs['slug']
             User_trip_object.users_trip_object(slug)
+            logger.info('запись успешно найдена')
             return super().get(self, request, *args, **kwargs)
         except Http404 as e:
+            logger.error(f'произошла ошибка {e}')
             return JsonResponse({
                 "errorMessage": str(e),
                 "status": 400
