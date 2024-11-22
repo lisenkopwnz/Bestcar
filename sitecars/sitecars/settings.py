@@ -163,7 +163,7 @@ CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 CELERY_ACCEPT_CONTENT = ['json', 'application/json']
 CELERY_TASK_SERIALIZER = 'json'
 
-###############  Конфигурирация логирования  ###############
+# ---------------------------- Настройки логирования ---------------------------- #
 
 LOGGING_CONFIG = None
 logging.config.dictConfig({
@@ -201,3 +201,11 @@ logging.config.dictConfig({
         },
     },
 })
+
+# ---------------------------- Настройки Elasticsearch ---------------------------- #
+
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'localhost:9200'
+    }
+}
