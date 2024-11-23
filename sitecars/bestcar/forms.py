@@ -1,6 +1,10 @@
+import pytz
 from django import forms
 from django.core.exceptions import ValidationError
 from typing import List, Tuple
+
+from django.utils import timezone
+
 from bestcar.models import Publishing_a_trip
 
 import re
@@ -89,3 +93,33 @@ class Update_form(forms.ModelForm):
                     cleaned_data[field_name] = None
                     self.add_error(field_name, str(e))
         return cleaned_data
+
+class SearchForm(forms.Form):
+    departure = forms.CharField(max_length=200,
+                                widget=forms.TextInput(
+                                    attrs={'placeholder': 'Откуда...'})
+                                )
+    arrival = forms.CharField(max_length=200,
+                                widget=forms.TextInput(
+                                    attrs={'placeholder': 'Куда...'})
+                                )
+    seating = forms.IntegerField(min_value=1,
+                                 initial=1,
+                                 widget=forms.NumberInput(
+                                     attrs={'placeholder': 'Введите количество мест'})
+                                 )
+    datetime = forms.DateTimeField(widget=forms.DateTimeInput(
+                                        attrs={'type': 'datetime-local'})
+    )
+
+    def clean_datetime(self):
+        datetime_value = self.cleaned_data.get('datetime')
+
+        if datetime_value:
+            # Преобразуем в aware (с учетом текущего часового пояса)
+            aware_time = timezone.make_aware(datetime_value, timezone.get_current_timezone())
+
+            # Переводим в UTC
+            utc_time = aware_time.astimezone(pytz.UTC)
+            return utc_time
+        return None  # Возвращаем None, если нет значения

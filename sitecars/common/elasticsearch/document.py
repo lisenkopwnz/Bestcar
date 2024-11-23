@@ -15,7 +15,10 @@ class PublishingTripDocument(Document):
     price = fields.IntegerField(attr='price')
     slug = fields.KeywordField(attr='slug')
     author = fields.ObjectField(properties={
-        'username': fields.KeywordField(attr='username', index=False)
+        'username': fields.KeywordField(attr='username', index=False),
+        'category_id': fields.KeywordField(attr='category_id', index=False),
+        'photo.url': fields.KeywordField(attr='photo.url', index=False),
+        'models_auto': fields.KeywordField(attr='models_auto', index=False)
     })
 
     class Index:

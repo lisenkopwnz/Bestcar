@@ -1,9 +1,15 @@
 import logging
+from datetime import datetime
+
+from django.utils import timezone
+import pytz
+
 
 from bestcar.utils import DataMixin
 from bestcar.models import *
-from bestcar.forms import Update_form, Publishing_a_tripForm
-from .services import TripFilterService, User_trip_object
+from bestcar.forms import Update_form, Publishing_a_tripForm, SearchForm
+from common.elasticsearch.document import PublishingTripDocument
+from .services import TripFilterService, User_trip_object, elasticsearch_formatting_date
 
 from sitecars import settings
 
@@ -48,32 +54,38 @@ class BaseView(View):
 
 
 class HomeBestcar(DataMixin, TemplateView):
+    form_class = SearchForm
     model = Publishing_a_trip
     template_name = 'bestcar/index.html'
     title_page = 'Главная страница'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['form'] = self.form_class()
         return self.get_mixin_context(context)
 
 
 class Bus_trip(DataMixin, ListView):
+    form_class = SearchForm
     model = Publishing_a_trip
     template_name = 'bestcar/bus_trip.html'
     title_page = 'На автобусе'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['form'] = self.form_class()
         return self.get_mixin_context(context)
 
 
 class Car_trip(DataMixin, ListView):
+    form_class = SearchForm
     model = Publishing_a_trip
     template_name = 'bestcar/car_trip.html'
     title_page = 'На машине'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['form'] = self.form_class()
         return self.get_mixin_context(context)
 
 
@@ -86,14 +98,40 @@ class SearchTrip(DataMixin, ListView):
         context = super().get_context_data(**kwargs)
         return self.get_mixin_context(context, default_image=settings.DEFAULT_USER_IMAGE)
 
-    def get_queryset(self):
-        departure = self.request.GET.get('d')
-        arrival = self.request.GET.get('a')
-        free_seating = self.request.GET.get('s')
-        data = self.request.GET.get('t')
-        cat = self.request.GET.get('cat')
+    def get_data_request(self,form):
+        if form.is_valid():
+            # Данные формы
+            departure = form.cleaned_data['departure']
+            arrival = form.cleaned_data['arrival']
+            seating = form.cleaned_data['seating']
+            datetime_value = form.cleaned_data['datetime']
 
-        return TripFilterService.filter_trip(cat, departure, arrival, free_seating, data)
+            # Получаем значение скрытого поля из GET-запроса
+            cat = self.request.GET.get('cat')
+            return {
+                'departure':departure,
+                'arrival': arrival,
+                'seating': seating,
+                'datetime_value': datetime_value,
+                'cat':cat
+            }
+
+    def get_queryset(self):
+
+        # Создаем экземпляр формы
+        form = SearchForm(self.request.GET)
+
+        # Получаем данные из формы
+        data = self.get_data_request(form)
+
+        queryset = PublishingTripDocument.search().filter(
+            'range', departure_time={'gte': elasticsearch_formatting_date(timezone.now())}
+        )
+        return queryset
+
+
+
+        #return TripFilterService.filter_trip(cat, departure, arrival, free_seating, data)
 
 
 class Post(DataMixin, LoginRequiredMixin, CreateView):

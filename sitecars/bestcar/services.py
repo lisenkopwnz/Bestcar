@@ -37,3 +37,7 @@ class User_trip_object:
             return
         else:
             raise Http404('Похоже эта поездка больше не существует')
+
+
+def elasticsearch_formatting_date(date):
+    return date.strftime('%Y-%m-%dT%H:%M:%SZ')
