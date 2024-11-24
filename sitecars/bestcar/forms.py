@@ -112,14 +112,3 @@ class SearchForm(forms.Form):
                                         attrs={'type': 'datetime-local'})
     )
 
-    def clean_datetime(self):
-        datetime_value = self.cleaned_data.get('datetime')
-
-        if datetime_value:
-            # Преобразуем в aware (с учетом текущего часового пояса)
-            aware_time = timezone.make_aware(datetime_value, timezone.get_current_timezone())
-
-            # Переводим в UTC
-            utc_time = aware_time.astimezone(pytz.UTC)
-            return utc_time
-        return None  # Возвращаем None, если нет значения

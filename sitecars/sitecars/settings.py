@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bestcar.apps.BestcarConfig',
+    'django_elasticsearch_dsl',
     'users',
     'booking',
     'clear_cache',
@@ -206,6 +207,6 @@ logging.config.dictConfig({
 
 ELASTICSEARCH_DSL = {
     'default': {
-        'hosts': 'localhost:9200'
-    }
+        'hosts': 'http://localhost:9200',  # Убедитесь, что вы добавили схему http:// и указали правильный порт
+    },
 }

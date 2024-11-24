@@ -6,8 +6,8 @@ from bestcar.models import Publishing_a_trip
 
 @registry.register_document
 class PublishingTripDocument(Document):
-    departure = fields.KeywordField(attr='departure')
-    arrival = fields.KeywordField(attr='arrival')
+    departure = fields.TextField(attr='departure')
+    arrival = fields.TextField(attr='arrival')
     departure_time = fields.DateField(attr='departure_time')
     arrival_time = fields.DateField(attr='arrival_time')
     free_seating = fields.IntegerField(attr='free_seating')
@@ -16,7 +16,7 @@ class PublishingTripDocument(Document):
     slug = fields.KeywordField(attr='slug')
     author = fields.ObjectField(properties={
         'username': fields.KeywordField(attr='username', index=False),
-        'category_id': fields.KeywordField(attr='category_id', index=False),
+        'category_name': fields.KeywordField(attr='category.name'),
         'photo.url': fields.KeywordField(attr='photo.url', index=False),
         'models_auto': fields.KeywordField(attr='models_auto', index=False)
     })

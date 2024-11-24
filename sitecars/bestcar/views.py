@@ -112,7 +112,7 @@ class SearchTrip(DataMixin, ListView):
                 'departure':departure,
                 'arrival': arrival,
                 'seating': seating,
-                'datetime_value': datetime_value,
+                'datetime_value': elasticsearch_formatting_date(datetime_value),
                 'cat':cat
             }
 
@@ -127,11 +127,14 @@ class SearchTrip(DataMixin, ListView):
         queryset = PublishingTripDocument.search().filter(
             'range', departure_time={'gte': elasticsearch_formatting_date(timezone.now())}
         )
-        return queryset
+
+        cat = data.get('cat')
+        if cat == 'buss' or 'car':
+            queryset = queryset.filter('term', author__category_name=cat)
+            return TripFilterService.filter_trip( queryset, data)
 
 
-
-        #return TripFilterService.filter_trip(cat, departure, arrival, free_seating, data)
+        return TripFilterService.filter_trip( queryset, data)
 
 
 class Post(DataMixin, LoginRequiredMixin, CreateView):

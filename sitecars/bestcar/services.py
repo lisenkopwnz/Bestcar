@@ -2,6 +2,7 @@ from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.http import Http404
 
+from common.elasticsearch.document import PublishingTripDocument
 from .models import Publishing_a_trip
 
 
@@ -12,18 +13,21 @@ class TripFilterService:
     """
 
     @staticmethod
-    def filter_trip(cat, departure, arrival, free_seating, data):
-        filters_map = {
-            'На машине ': Publishing_a_trip.car,
-            'На автобусе': Publishing_a_trip.bus,
-        }
+    def filter_trip(queryset, data):
+        search_query = queryset.query(
+            'bool',
+            must=[
+                {'fuzzy': {'departure': {'value': data['departure'], 'fuzziness': 'AUTO'}}},
+                {'fuzzy': {'arrival': {'value': data['arrival'], 'fuzziness': 'AUTO'}}}
+            ],
+            filter=[
+                {'range': {'departure_time': {'gte': data['datetime_value']}}},
+                {'range': {'free_seating': {'gte': data['seating']}}}
+            ]
+        )
 
-        object_list = filters_map.get(cat, Publishing_a_trip.objects).filter(
-            Q(departure__istartswith=departure) &
-            Q(arrival__istartswith=arrival) &
-            Q(free_seating__istartswith=free_seating) &
-            Q(departure_time__startswith=data))
-        return object_list
+        results = search_query.execute()
+        return results
 
 
 class User_trip_object:
