@@ -25,9 +25,9 @@ class Publishing_a_tripForm(forms.ModelForm):
         current_user_id = get_current_user().id
 
         category = get_user_model().objects.get(id=current_user_id).category.name
-        if category == 'На машине':
+        if category == 'Автомобиль':
             return list(zip((x for x in range(1, 8)), (str(y) for y in range(1, 8))))
-        elif category == 'На автобусе':
+        elif category == 'Автобус':
             return list(zip((x for x in range(1, 30)), (str(y) for y in range(1, 30))))
 
     def __init__(self, *args, **kwargs):
