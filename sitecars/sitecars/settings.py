@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-k20078$#n&--mcid55e^481&c4z)m(p3v*=si748mi$n1s@klq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
 
 # Application definition
 
@@ -90,10 +90,10 @@ DATABASES = {
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST', default='172.18.80.1'),
+        'HOST': config('DB_HOST', default='db'),
         'PORT': config('DB_PORT', cast=int, default=5432),
         'OPTIONS': {
-            'client_encoding': 'UTF8',  # Указание кодировки
+            'client_encoding': 'UTF8',
         },
     }
 }
@@ -216,6 +216,6 @@ logging.config.dictConfig({
 
 ELASTICSEARCH_DSL = {
     'default': {
-        'hosts': 'http://localhost:9200',  # Убедитесь, что вы добавили схему http:// и указали правильный порт
-    },
+        'hosts': ['http://elasticsearch:9200'],  # Правильный ключ для указания хоста
+    }
 }
