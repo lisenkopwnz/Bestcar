@@ -129,7 +129,7 @@ class SearchTrip(DataMixin, ListView):
         )
 
         cat = data.get('cat')
-        if cat == 'buss' or 'car':
+        if cat == 'Автобус' or 'Автомобиль':
             queryset = queryset.filter('term', author__category_name=cat)
             return TripFilterService.filter_trip( queryset, data)
 

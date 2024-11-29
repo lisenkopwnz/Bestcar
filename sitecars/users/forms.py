@@ -2,13 +2,19 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 from django.forms import ModelForm
+from bestcar.models.category import Category
 
+import logging
+
+logger = logging.getLogger('duration_request_view')
 
 class LoginUserForms(AuthenticationForm):
     username = forms.CharField(label='Логин',
                                widget=forms.TextInput(attrs={'class': 'form-input'}))
     password = forms.CharField(label='Пароль',
                                widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+
+
 
     class Meta:
         model = get_user_model()
@@ -19,6 +25,11 @@ class Regestration_User_Form(UserCreationForm):
     username = forms.CharField(label='Имя', widget=forms.TextInput(attrs={'class': 'form-input'}))
     password1 = forms.CharField(label='Пороль', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
     password2 = forms.CharField(label='Повтор пороля', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+    category = forms.ModelChoiceField(
+        queryset=Category.objects.all(),
+        label='Категория',
+        widget=forms.Select(attrs={'class': 'form-input'})
+    )
 
     class Meta:
         model = get_user_model()
@@ -38,11 +49,13 @@ class Regestration_User_Form(UserCreationForm):
     def clean(self) -> str:
         """ Переопределяем метод clean для проверки пороля на уникальность """
         cleaned_data = super().clean()
+        logger.info(cleaned_data)
+
         email = cleaned_data.get('email')
 
         if get_user_model().objects.filter(email=email).exists():
             raise forms.ValidationError('Такая почта уже существует !')
-        return email
+        return cleaned_data
 
 
 class UserProfile(ModelForm):

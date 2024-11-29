@@ -15,7 +15,7 @@ class User(AbstractUser):
         on_delete=models.PROTECT,
         default=1,
         verbose_name='Категория транспортного средства'
-                                                                                           )
+    )
     models_auto = models.CharField(
         max_length=100,
         verbose_name="модель автомобиля"

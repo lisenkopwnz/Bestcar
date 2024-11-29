@@ -10,6 +10,10 @@ ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
 # Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /bestcar
 
+# Устанавливаем контейнер на UTC
+RUN ln -snf /usr/share/zoneinfo/UTC /etc/localtime && \
+    echo "UTC" > /etc/timezone
+
 # Копируем файл зависимостей в контейнер
 COPY requirements.txt ./
 
