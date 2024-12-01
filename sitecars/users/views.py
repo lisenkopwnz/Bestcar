@@ -15,7 +15,7 @@ from bestcar.models import Publishing_a_trip
 from bestcar.utils import DataMixin
 from sitecars import settings
 
-from users.forms import LoginUserForms, Regestration_User_Form, UserProfile, User_Password_change_form
+from users.forms import LoginUserForms, UserProfile, User_Password_change_form,Registration_User_Form
 
 
 class LoginUser(DataMixin, LoginView):
@@ -31,7 +31,7 @@ class LoginUser(DataMixin, LoginView):
 
 
 class RegisterUser(CreateView):
-    form_class = Regestration_User_Form
+    form_class = Registration_User_Form
     template_name = 'users/register.html'
     extra_context = {'title': 'Регистрация'}
     success_url = reverse_lazy('users:login')

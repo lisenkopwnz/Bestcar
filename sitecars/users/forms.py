@@ -1,8 +1,7 @@
 from PIL import Image
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
-from django.core.files.base import ContentFile
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, BaseUserCreationForm
 from django.forms import ModelForm
 from bestcar.models.category import Category
 
@@ -25,20 +24,29 @@ class LoginUserForms(AuthenticationForm):
         fields = ['username', 'password']
 
 
-class Regestration_User_Form(UserCreationForm):
-    username = forms.CharField(label='Имя', widget=forms.TextInput(attrs={'class': 'form-input'}))
-    password1 = forms.CharField(label='Пороль', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
-    password2 = forms.CharField(label='Повтор пороля', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
-    category = forms.ModelChoiceField(
-        queryset=Category.objects.all(),
-        label='Категория',
-        widget=forms.Select(attrs={'class': 'form-input'})
-    )
+class Registration_User_Form(BaseUserCreationForm):
+    username = forms.CharField(label='Имя',
+                               widget=forms.TextInput(attrs={'class': 'form-input'}))
+    password1 = forms.CharField(label='Пороль',
+                                widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+    password2 = forms.CharField(label='Повтор пороля',
+                                widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+    category = forms.ModelChoiceField(queryset=Category.objects.all(),
+                                label='Категория',
+                                widget=forms.Select(attrs={'class': 'form-input'}))
 
     class Meta:
         model = get_user_model()
-        fields = ['photo', 'username', 'first_name',
-                  'last_name', 'email', 'password1', 'password2', 'category','models_auto',]
+        fields = ['photo',
+                  'username',
+                  'first_name',
+                  'last_name',
+                  'email',
+                  'phone_number',
+                  'password1',
+                  'password2',
+                  'category',
+                  'models_auto']
 
         labels = {'email': 'E-mail',
                   'first_name': 'Фамилия',
@@ -49,16 +57,6 @@ class Regestration_User_Form(UserCreationForm):
                'first_name': forms.TextInput(attrs={'class': 'form-input'}),
                'last_name': forms.TextInput(attrs={'class': 'form-input'}),
                }
-
-    def clean(self) -> str:
-        """ Переопределяем метод clean для проверки пороля на уникальность """
-        cleaned_data = super().clean()
-
-        email = cleaned_data.get('email')
-
-        if get_user_model().objects.filter(email=email).exists():
-            raise forms.ValidationError('Такая почта уже существует !')
-        return cleaned_data
 
     def clean_photo(self):
         """
@@ -79,7 +77,7 @@ class Regestration_User_Form(UserCreationForm):
             img = Image.open(image)
 
             # Приводим изображение к одному размеру
-            img = resize_image(img, size=(500, 500))
+            img = resize_image(img, size=(200, 300))
 
             # Проверяем формат изображения и преобразуем его в JPEG, если нужно
             if img.format != 'JPEG':
