@@ -5,11 +5,7 @@
 
 <form method="post" enctype = 'multipart/form-data'>
     {% csrf_token %}
-    {% if user.photo %}
     <p><img class = 'img-article-left thumb' src=" {{ user.photo.url}}"></p>
-    {% else %}
-    <p><img src ='{{default_image}}'></p>
-    {% endif %}
     {{ form.as_p }}
     <p><button type="submit">Сохранить</button></p>
 

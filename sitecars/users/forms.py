@@ -1,10 +1,14 @@
+from PIL import Image
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
+from django.core.files.base import ContentFile
 from django.forms import ModelForm
 from bestcar.models.category import Category
 
 import logging
+
+from users.services.services_images import load_default_image, convert_to_jpeg_if_needed, resize_image
 
 logger = logging.getLogger('duration_request_view')
 
@@ -49,13 +53,43 @@ class Regestration_User_Form(UserCreationForm):
     def clean(self) -> str:
         """ Переопределяем метод clean для проверки пороля на уникальность """
         cleaned_data = super().clean()
-        logger.info(cleaned_data)
 
         email = cleaned_data.get('email')
 
         if get_user_model().objects.filter(email=email).exists():
             raise forms.ValidationError('Такая почта уже существует !')
         return cleaned_data
+
+    def clean_photo(self):
+        """
+        Проверяет и обрабатывает загруженное изображение.
+        Преобразует его в формат JPEG, приводит к заданному размеру и обрабатывает ошибку при загрузке.
+        Если изображение не загружено, используется изображение по умолчанию.
+
+        :return: Обработанное изображение в формате JPEG и нужного размера.
+        :raises ValidationError: Если не удается обработать изображение.
+        """
+        image = self.cleaned_data.get('photo')
+
+        # Если изображение не загружено, используем изображение по умолчанию
+        if not image:
+            image = load_default_image()
+        try:
+            # Открываем изображение через Pillow
+            img = Image.open(image)
+
+            # Приводим изображение к одному размеру
+            img = resize_image(img, size=(500, 500))
+
+            # Проверяем формат изображения и преобразуем его в JPEG, если нужно
+            if img.format != 'JPEG':
+                image = convert_to_jpeg_if_needed(img)
+
+        except Exception as e:
+            raise forms.ValidationError(f"Не удалось обработать изображение: {e}")
+
+        # Возвращаем обработанное изображение
+        return image
 
 
 class UserProfile(ModelForm):

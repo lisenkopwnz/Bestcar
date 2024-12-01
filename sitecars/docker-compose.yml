@@ -61,7 +61,7 @@ services:
 
 volumes:
   postgres_data:
-  elasticsearch_data:  # Òîì äëÿ äàííûõ Elasticsearch
+  elasticsearch_data:
 
 networks:
   backend:

@@ -9,7 +9,7 @@ class User(AbstractUser):
     photo = models.ImageField(
         upload_to='users/$Y/%m/%d/',
         verbose_name='Фотография',
-        default='users/default_user_image.jpg')
+    )
     category = models.ForeignKey(
         Category,
         on_delete=models.PROTECT,

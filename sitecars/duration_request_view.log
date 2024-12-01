@@ -1,35 +1,56 @@
-INFO 2024-11-29 17:13:58,455 forms {'photo': None, 'username': 'admin123', 'first_name': 'палено', 'last_name': 'палено', 'email': 'pal3noa@yandex.ru', 'password1': '123', 'password2': '123', 'category': <Category: Автобус>, 'models_auto': 'москвичссс'}
-INFO 2024-11-29 17:13:58,600 middleware Продолжительность запроса /users/register/ - 0.1989626 сек.
-INFO 2024-11-29 17:32:33,133 middleware Продолжительность запроса /users/register/ - 0.2863898 сек.
-INFO 2024-11-29 17:32:52,581 forms {'photo': None, 'username': 'admin123', 'first_name': 'палено', 'last_name': 'палено', 'email': 'pal3noa@yandex.ru', 'password1': '1234', 'password2': '1234', 'category': <Category: Автомобиль>, 'models_auto': 'москвичссс'}
-INFO 2024-11-29 17:32:52,829 middleware Продолжительность запроса /users/register/ - 0.3145785 сек.
-INFO 2024-11-29 17:33:06,559 forms {'photo': <InMemoryUploadedFile: -bsQ0LajqnE.jpg (image/jpeg)>, 'username': 'admin123', 'first_name': 'палено', 'last_name': 'палено', 'email': 'pal3noa@yandex.ru', 'password1': '123', 'password2': '123', 'category': <Category: Автомобиль>, 'models_auto': 'москвичссс'}
-INFO 2024-11-29 17:33:06,800 middleware Продолжительность запроса /users/register/ - 0.8345245 сек.
-INFO 2024-11-29 17:36:56,748 forms {'photo': <InMemoryUploadedFile: -bsQ0LajqnE.jpg (image/jpeg)>, 'username': 'admin123', 'first_name': 'палено', 'last_name': 'палено', 'email': 'pal3noa@yandex.ru', 'password1': '123', 'password2': '123', 'category': <Category: Автомобиль>, 'models_auto': 'москвичссс'}
-INFO 2024-11-29 17:36:56,858 middleware Продолжительность запроса /users/register/ - 0.3035135 сек.
-INFO 2024-11-29 17:37:28,187 forms {'photo': None, 'username': 'admin123', 'first_name': 'палено', 'last_name': 'палено', 'email': 'pal3noa@yandex.ru', 'password1': 'ABOBA260715', 'password2': 'ABOBA260715', 'category': <Category: Автомобиль>, 'models_auto': 'москвичссс'}
-INFO 2024-11-29 17:37:29,135 middleware Продолжительность запроса /users/register/ - 0.9747187 сек.
-INFO 2024-11-29 17:37:29,165 middleware Продолжительность запроса /users/login/ - 0.0196081 сек.
-INFO 2024-11-29 17:37:42,707 middleware Продолжительность запроса /users/login/ - 0.8730964 сек.
-INFO 2024-11-29 17:37:42,774 middleware Продолжительность запроса / - 0.0583687 сек.
-INFO 2024-11-29 17:37:47,826 middleware Продолжительность запроса /post/ - 0.1028193 сек.
-INFO 2024-11-29 17:38:00,443 middleware Продолжительность запроса /post/ - 0.4026289 сек.
-INFO 2024-11-29 17:38:09,752 middleware Продолжительность запроса /users/profile/ - 0.0567963 сек.
-INFO 2024-11-29 17:38:09,966 middleware Продолжительность запроса /media/users/photo.jpg - 0.1487679 сек.
-INFO 2024-11-29 17:38:17,503 middleware Продолжительность запроса /users/profile/ - 0.0955358 сек.
-INFO 2024-11-29 17:38:17,565 middleware Продолжительность запроса /users/profile/ - 0.0507572 сек.
-INFO 2024-11-29 17:38:17,716 middleware Продолжительность запроса /media/users/$Y/11/29/-bsQ0LajqnE.jpg - 0.0541148 сек.
-INFO 2024-11-29 17:38:20,656 middleware Продолжительность запроса /post/ - 0.0800693 сек.
-INFO 2024-11-29 17:38:36,026 middleware Продолжительность запроса /post/ - 4.1713313 сек.
-INFO 2024-11-29 17:38:36,042 middleware Продолжительность запроса / - 0.0060261 сек.
-INFO 2024-11-29 18:57:54,684 middleware Продолжительность запроса / - 0.0712842 сек.
-INFO 2024-11-29 18:57:57,893 middleware Продолжительность запроса /users/register/ - 0.0693257 сек.
-INFO 2024-11-29 18:58:29,169 forms {'photo': 'users/default_user_image.jpg', 'username': 'rot', 'first_name': 'палено', 'last_name': 'палено', 'email': 'pal3n1oa@yandex.ru', 'password1': 'aboba', 'password2': 'aboba', 'category': <Category: Автомобиль>, 'models_auto': 'москвич'}
-INFO 2024-11-29 18:58:29,235 middleware Продолжительность запроса /users/register/ - 0.1058735 сек.
-INFO 2024-11-29 18:58:42,694 forms {'photo': 'users/default_user_image.jpg', 'username': 'rot', 'first_name': 'палено', 'last_name': 'палено', 'email': 'pal3n1oa@yandex.ru', 'password1': 'aboba123', 'password2': 'aboba123', 'category': <Category: Автомобиль>, 'models_auto': 'москвич'}
-INFO 2024-11-29 18:58:43,595 middleware Продолжительность запроса /users/register/ - 0.9555097 сек.
-INFO 2024-11-29 18:58:43,623 middleware Продолжительность запроса /users/login/ - 0.0167721 сек.
-INFO 2024-11-29 18:58:52,197 middleware Продолжительность запроса /users/login/ - 0.8834910 сек.
-INFO 2024-11-29 18:58:52,216 middleware Продолжительность запроса / - 0.0082073 сек.
-INFO 2024-11-29 18:58:54,937 middleware Продолжительность запроса /users/profile/ - 0.0814381 сек.
-INFO 2024-11-29 18:58:55,148 middleware Продолжительность запроса /media/users/default_user_image.jpg - 0.1264329 сек.
+INFO 2024-11-30 20:21:19,492 middleware Продолжительность запроса /users/register/ - 0.1819477 сек.
+INFO 2024-11-30 20:21:47,923 forms (500, 500)
+INFO 2024-11-30 20:21:47,924 forms (500, 500)
+INFO 2024-11-30 20:21:47,967 forms {'photo': <InMemoryUploadedFile: -bsQ0LajqnE.jpg (image/jpeg)>, 'username': 'admin233', 'first_name': 'палено', 'last_name': 'палено', 'email': 'pal3n331oa@yandex.ru', 'password1': 'aboba123', 'password2': 'aboba123', 'category': <Category: Автомобиль>, 'models_auto': 'москвичссс'}
+INFO 2024-11-30 20:21:49,009 middleware Продолжительность запроса /users/register/ - 1.2937011 сек.
+INFO 2024-11-30 20:21:49,042 middleware Продолжительность запроса /users/login/ - 0.0209650 сек.
+INFO 2024-11-30 20:21:52,134 middleware Продолжительность запроса /users/login/ - 1.1897817 сек.
+INFO 2024-11-30 20:21:52,183 middleware Продолжительность запроса / - 0.0304811 сек.
+INFO 2024-11-30 20:22:10,674 middleware Продолжительность запроса /users/profile/ - 0.1195851 сек.
+INFO 2024-11-30 20:22:10,853 middleware Продолжительность запроса /media/users/$Y/11/30/-bsQ0LajqnE_0KC7LZj.jpg - 0.1088976 сек.
+INFO 2024-11-30 20:23:50,900 middleware Продолжительность запроса /favicon.ico - 0.3785599 сек.
+INFO 2024-11-30 20:23:50,925 middleware Продолжительность запроса /favicon.ico - 0.3996144 сек.
+INFO 2024-11-30 20:25:28,132 middleware Продолжительность запроса /media/users/$Y/11/30/-bsQ0LajqnE_0KC7LZj.jpg - 0.1544072 сек.
+INFO 2024-11-30 20:25:28,341 middleware Продолжительность запроса /favicon.ico - 0.1324331 сек.
+INFO 2024-11-30 20:25:29,879 middleware Продолжительность запроса /users/profile/ - 0.0695848 сек.
+INFO 2024-11-30 20:25:31,009 middleware Продолжительность запроса /users/profile/ - 0.0637984 сек.
+INFO 2024-11-30 20:25:32,027 middleware Продолжительность запроса /users/profile/ - 0.0465203 сек.
+INFO 2024-11-30 20:25:32,255 middleware Продолжительность запроса /users/profile/ - 0.0640293 сек.
+INFO 2024-11-30 20:25:32,460 middleware Продолжительность запроса /users/profile/ - 0.0951034 сек.
+INFO 2024-11-30 20:25:32,804 middleware Продолжительность запроса /users/profile/ - 0.0655719 сек.
+INFO 2024-11-30 20:25:33,402 middleware Продолжительность запроса /users/profile/ - 0.0542081 сек.
+INFO 2024-11-30 20:25:34,207 middleware Продолжительность запроса /users/profile/ - 0.0421422 сек.
+INFO 2024-11-30 20:25:55,029 middleware Продолжительность запроса /users/profile/ - 0.3041508 сек.
+INFO 2024-11-30 20:25:57,345 middleware Продолжительность запроса /users/profile/ - 0.2206502 сек.
+INFO 2024-11-30 20:26:03,067 middleware Продолжительность запроса /users/profile/ - 0.1649483 сек.
+INFO 2024-11-30 20:26:03,267 middleware Продолжительность запроса /media/users/$Y/11/30/-bsQ0LajqnE_0KC7LZj.jpg - 0.0696023 сек.
+INFO 2024-11-30 20:39:05,374 middleware Продолжительность запроса /users/profile/ - 1.0459795 сек.
+INFO 2024-11-30 20:39:05,866 middleware Продолжительность запроса /media/users/$Y/11/30/-bsQ0LajqnE_0KC7LZj.jpg - 0.1530333 сек.
+INFO 2024-11-30 20:39:09,477 middleware Продолжительность запроса /favicon.ico - 0.2995491 сек.
+INFO 2024-11-30 20:39:13,734 middleware Продолжительность запроса /users/register/ - 0.4293629 сек.
+INFO 2024-11-30 20:40:08,677 forms (500, 500)
+INFO 2024-11-30 20:40:08,678 forms (500, 500)
+INFO 2024-11-30 20:40:08,740 forms {'photo': <InMemoryUploadedFile: xxh.jfif (image/jpeg)>, 'username': None, 'first_name': 'палено', 'last_name': 'палено', 'email': 'pal3nowea@yandex.ru', 'password1': 'aboba123', 'password2': 'aboba123', 'category': <Category: Автомобиль>, 'models_auto': 'вмвмвм'}
+INFO 2024-11-30 20:40:08,883 middleware Продолжительность запроса /users/register/ - 0.7465250 сек.
+INFO 2024-11-30 20:40:28,154 forms (500, 500)
+INFO 2024-11-30 20:40:28,159 forms (500, 500)
+INFO 2024-11-30 20:40:28,205 forms {'photo': <InMemoryUploadedFile: xxh.jfif (image/jpeg)>, 'username': 'admin2333', 'first_name': 'палено', 'last_name': 'палено', 'email': 'pal3nowea@yandex.ru', 'password1': 'aboba123', 'password2': 'aboba123', 'category': <Category: Автомобиль>, 'models_auto': 'вмвмвм'}
+INFO 2024-11-30 20:40:31,723 middleware Продолжительность запроса /users/register/ - 3.6180195 сек.
+INFO 2024-11-30 20:40:31,837 middleware Продолжительность запроса /users/login/ - 0.0942664 сек.
+INFO 2024-11-30 20:40:36,728 middleware Продолжительность запроса /users/login/ - 3.3123189 сек.
+INFO 2024-11-30 20:40:37,838 middleware Продолжительность запроса / - 1.0820185 сек.
+INFO 2024-11-30 20:40:41,227 middleware Продолжительность запроса /users/profile/ - 0.1008305 сек.
+INFO 2024-11-30 20:40:41,395 middleware Продолжительность запроса /media/users/$Y/11/30/xxh.jfif - 0.0820879 сек.
+INFO 2024-11-30 21:03:26,662 middleware Продолжительность запроса /users/register/ - 0.2743449 сек.
+INFO 2024-11-30 21:03:26,710 middleware Продолжительность запроса /users/register/ - 0.1150184 сек.
+INFO 2024-11-30 21:03:26,850 middleware Продолжительность запроса /users/register/ - 0.0941198 сек.
+INFO 2024-11-30 21:03:28,925 middleware Продолжительность запроса /users/register/ - 0.0872875 сек.
+INFO 2024-11-30 21:03:53,193 forms (500, 500)
+INFO 2024-11-30 21:03:53,205 forms (500, 500)
+INFO 2024-11-30 21:03:53,244 forms {'photo': <ContentFile: Raw content>, 'username': 'admin2333d', 'first_name': 'палено', 'last_name': 'вячеславович', 'email': 'pal3nddddoa@yandex.ru', 'password1': 'aboba123', 'password2': 'aboba123', 'category': <Category: Автомобиль>, 'models_auto': 'москвичссс'}
+INFO 2024-11-30 21:03:54,438 middleware Продолжительность запроса /users/register/ - 1.4463138 сек.
+INFO 2024-11-30 21:03:54,476 middleware Продолжительность запроса /users/login/ - 0.0213720 сек.
+INFO 2024-11-30 21:03:57,718 middleware Продолжительность запроса /users/login/ - 1.5525928 сек.
+INFO 2024-11-30 21:03:57,756 middleware Продолжительность запроса / - 0.0260827 сек.
+INFO 2024-11-30 21:04:01,024 middleware Продолжительность запроса /users/profile/ - 0.0581613 сек.
+INFO 2024-11-30 21:04:01,179 middleware Продолжительность запроса /media/users/$Y/11/30/user_avatar_image.jpg - 0.1001310 сек.
