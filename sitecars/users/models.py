@@ -31,9 +31,7 @@ class User(AbstractUser):
     )
     phone_number = PhoneNumberField(
         unique=True,
-        verbose_name='Номер телефона пользователя',
-        null=False,
-        default='',
+        verbose_name='Номер телефона',
     )
     email = models.EmailField(
         unique=True,

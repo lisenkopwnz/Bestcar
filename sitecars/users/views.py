@@ -32,7 +32,7 @@ class LoginUser(DataMixin, LoginView):
 
 class RegisterUser(CreateView):
     form_class = Registration_User_Form
-    template_name = 'users/register.html'
+    template_name = 'users/registration.html'
     extra_context = {'title': 'Регистрация'}
     success_url = reverse_lazy('users:login')
 

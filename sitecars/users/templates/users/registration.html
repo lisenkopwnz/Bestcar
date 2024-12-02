@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <title>Регистрация</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'users/css/registration.css' %}">
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Поле photo -->
+        <div>
+            <label for="{{ form.photo.id_for_label }}">Фото профиля:</label>
+            {{ form.photo }}
+            {% if form.photo.errors %}
+                <ul class="errorlist">
+                    {% for error in form.photo.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- Поле username -->
+        <div>
+            <label for="{{ form.username.id_for_label }}">{{ form.username.label }}:</label>
+            {{ form.username }}
+            {% if form.username.errors %}
+                <ul class="errorlist">
+                    {% for error in form.username.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- Поле first_name -->
+        <div>
+            <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}:</label>
+            {{ form.first_name }}
+            {% if form.first_name.errors %}
+                <ul class="errorlist">
+                    {% for error in form.first_name.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- Поле last_name -->
+        <div>
+            <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}:</label>
+            {{ form.last_name }}
+            {% if form.last_name.errors %}
+                <ul class="errorlist">
+                    {% for error in form.last_name.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- Поле email -->
+        <div>
+            <label for="{{ form.email.id_for_label }}">{{ form.email.label }}:</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+                <ul class="errorlist">
+                    {% for error in form.email.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- Поле phone_number -->
+        <div>
+            <label for="{{ form.phone_number.id_for_label }}">Номер телефона:</label>
+            {{ form.phone_number }}
+            {% if form.phone_number.errors %}
+                <ul class="errorlist">
+                    {% for error in form.phone_number.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- Поле password1 -->
+        <div>
+            <label for="{{ form.password1.id_for_label }}">{{ form.password1.label }}:</label>
+            {{ form.password1 }}
+            {% if form.password1.errors %}
+                <ul class="errorlist">
+                    {% for error in form.password1.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- Поле password2 -->
+        <div>
+            <label for="{{ form.password2.id_for_label }}">{{ form.password2.label }}:</label>
+            {{ form.password2 }}
+            {% if form.password2.errors %}
+                <ul class="errorlist">
+                    {% for error in form.password2.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- Поле category -->
+        <div>
+            <label for="{{ form.category.id_for_label }}">{{ form.category.label }}:</label>
+            {{ form.category }}
+            {% if form.category.errors %}
+                <ul class="errorlist">
+                    {% for error in form.category.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- Поле models_auto -->
+        <div>
+            <label for="{{ form.models_auto.id_for_label }}">Модель автомобиля:</label>
+            {{ form.models_auto }}
+            {% if form.models_auto.errors %}
+                <ul class="errorlist">
+                    {% for error in form.models_auto.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- Кнопка отправки -->
+        <p><button type="submit">Регистрация</button></p>
+    </form>
+{% endblock %}

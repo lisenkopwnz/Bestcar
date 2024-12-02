@@ -25,38 +25,60 @@ class LoginUserForms(AuthenticationForm):
 
 
 class Registration_User_Form(BaseUserCreationForm):
-    username = forms.CharField(label='Имя',
-                               widget=forms.TextInput(attrs={'class': 'form-input'}))
-    password1 = forms.CharField(label='Пороль',
-                                widget=forms.PasswordInput(attrs={'class': 'form-input'}))
-    password2 = forms.CharField(label='Повтор пороля',
-                                widget=forms.PasswordInput(attrs={'class': 'form-input'}))
-    category = forms.ModelChoiceField(queryset=Category.objects.all(),
-                                label='Категория',
-                                widget=forms.Select(attrs={'class': 'form-input'}))
+    username = forms.CharField(
+        label='Имя',
+        widget=forms.TextInput(attrs={'class': 'form-input', 'id': 'username-input'})
+    )
+    password1 = forms.CharField(
+        label='Пароль',
+        widget=forms.PasswordInput(attrs={'class': 'form-input', 'id': 'password1-input'})
+    )
+    password2 = forms.CharField(
+        label='Повтор пароля',
+        widget=forms.PasswordInput(attrs={'class': 'form-input', 'id': 'password2-input'})
+    )
+    category = forms.ModelChoiceField(
+        queryset=Category.objects.all(),
+        label='Категория',
+        initial=Category.objects.first(),
+        widget=forms.Select(attrs={'class': 'form-input', 'id': 'category-input'})
+    )
 
     class Meta:
         model = get_user_model()
-        fields = ['photo',
-                  'username',
-                  'first_name',
-                  'last_name',
-                  'email',
-                  'phone_number',
-                  'password1',
-                  'password2',
-                  'category',
-                  'models_auto']
+        fields = [
+            'photo',
+            'username',
+            'first_name',
+            'last_name',
+            'email',
+            'phone_number',
+            'password1',
+            'password2',
+            'category',
+            'models_auto',
+        ]
+        labels = {
+            'email': 'E-mail',
+            'first_name': 'Фамилия',
+            'last_name': 'Отчество',
+        }
+        widgets = {
+            'email': forms.TextInput(attrs={'class': 'form-input', 'id': 'email-input'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-input', 'id': 'first-name-input'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-input', 'id': 'last-name-input'}),
+        }
+        error_messages = {
+            'email': {
+                'required': 'Адрес электронной почты обязателен для ввода!',
+                'unique': 'Этот адрес электронной почты уже используется!',
+            },
+            'phone_number': {
+                'required': 'Номер телефона обязателен для ввода!',
+                'unique': 'Этот номер телефона уже зарегистрирован!',
+            },
+        }
 
-        labels = {'email': 'E-mail',
-                  'first_name': 'Фамилия',
-                  'last_name': 'Отчество',
-                  }
-
-    widgets = {'email': forms.TextInput(attrs={'class': 'form-input'}),
-               'first_name': forms.TextInput(attrs={'class': 'form-input'}),
-               'last_name': forms.TextInput(attrs={'class': 'form-input'}),
-               }
 
     def clean_photo(self):
         """
