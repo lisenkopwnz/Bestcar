@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}
+    {{title}}
+{% endblock %}
+
 {% block content %}
-    <title>Регистрация</title>
 
     <link rel="stylesheet" type="text/css" href="{% static 'users/css/registration.css' %}">
 
@@ -24,7 +27,7 @@
 
         <!-- Поле username -->
         <div>
-            <label for="{{ form.username.id_for_label }}">{{ form.username.label }}:</label>
+            <label for="{{form.username.id_for_label}}">{{ form.username.label }}:</label>
             {{ form.username }}
             {% if form.username.errors %}
                 <ul class="errorlist">
