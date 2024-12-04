@@ -41,26 +41,29 @@ input:focus, select:focus, textarea:focus {
     box-shadow: 0 0 4px rgba(0, 86, 179, 0.6);
 }
 
-/* Контейнер для всех ошибок */
 .error_list {
     margin: 10px 0;
     padding: 15px;
-    background-color: #ffe6e6; /* Легкий красный фон */
-    border: 1px solid #ff4d4f; /* Красная рамка */
+    background-color: #ffe6e6;
+    border: 1px solid #ffe6e6;
     border-radius: 6px;
-    color: #ff0000; /* Красный текст */
+    color: #ff0000;
+    overflow: hidden;
+    word-wrap: break-word;
+    line-height: 1.5;
 }
 
-/* Каждый отдельный блок ошибки */
 .error_item {
     padding: 10px;
-    background-color: black; /* Легкий оттенок внутри */
-    color: red; /* Тёмно-красный текст */
+    background-color: #ffe6e6;
+    color: #a33;
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 5px;
     border-radius: 4px;
     display: block;
+    word-wrap: break-word;
+    white-space: pre-wrap;
 }
 
 button {

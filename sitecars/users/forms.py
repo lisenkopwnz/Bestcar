@@ -27,21 +27,6 @@ class LoginUserForms(AuthenticationForm):
         model = get_user_model()
         fields = ['username', 'password']
 
-    def clean(self):
-        username = self.cleaned_data.get("username")
-        password = self.cleaned_data.get("password")
-
-        if username is not None and password:
-            self.user_cache = authenticate(
-                self.request, username=username, password=password
-            )
-            if self.user_cache is None:
-                raise self.get_invalid_login_error()
-            else:
-                self.confirm_login_allowed(self.user_cache)
-
-        return self.cleaned_data
-
 
 class Registration_User_Form(BaseUserCreationForm):
     username = forms.CharField(
@@ -132,22 +117,28 @@ class Registration_User_Form(BaseUserCreationForm):
 
 
 class UserProfile(ModelForm):
-    username = forms.CharField(disabled=True, label='Имя',
+    username = forms.CharField(label='Имя',
                                widget=forms.TextInput(attrs={'class': 'form-input'}))
-    email = forms.CharField(disabled=True, label='email',
+    email = forms.CharField(label='email',
                             widget=forms.TextInput(attrs={'class': 'form-input'}))
 
     class Meta:
         model = get_user_model()
-        fields = ['photo', 'username', 'email', 'first_name', 'last_name']
-        labels = {'email': 'E-mail',
-                  'first_name': 'Фамилия',
-                  'last_name': 'Отчество',
-                  }
+        fields = [
+            'photo',
+            'username',
+            'email',
+            'first_name',
+            'last_name',
+            'phone_number',
+            'category',
+            'models_auto'
+        ]
 
-        widgets = {'first_name': forms.TextInput(attrs={'class': 'form-input'}),
-                   'last_name': forms.TextInput(attrs={'class': 'form-input'}),
-                   }
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'form-input'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-input'}),
+        }
 
 
 class User_Password_change_form(PasswordChangeForm):

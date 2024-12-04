@@ -30,16 +30,21 @@ class LoginUser(DataMixin, LoginView):
 
 
 
-class RegisterUser(CreateView):
+class RegisterUser(DataMixin, CreateView):
     form_class = Registration_User_Form
     template_name = 'users/registration.html'
-    extra_context = {'title': 'Регистрация'}
+    title_page = 'Регистрация'
     success_url = reverse_lazy('users:login')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return self.get_mixin_context(context)
 
 
 class ProfileUser(DataMixin, LoginRequiredMixin, UpdateView):
     model = get_user_model()
     form_class = UserProfile
+    title_page = 'Профиль'
     template_name = 'users/profile.html'
 
     def get_context_data(self, **kwargs):
