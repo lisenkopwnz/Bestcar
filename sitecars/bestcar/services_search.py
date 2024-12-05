@@ -1,9 +1,11 @@
-from django.db.models import Q
-from django.shortcuts import get_object_or_404
+import logging
+
 from django.http import Http404
 
-from common.elasticsearch.document import PublishingTripDocument
 from .models import Publishing_a_trip
+
+
+logger = logging.getLogger('duration_request_view')
 
 
 class TripFilterService:
@@ -11,6 +13,18 @@ class TripFilterService:
     Производит фильтрацию на основе параметров который задал пользователь
     в форме на главной странице
     """
+    @staticmethod
+    def parse_elastic_hits(result):
+        """
+            Парсит результаты поиска из Elasticsearch и извлекает документы.
+
+            :param result: объект результата поиска, полученный от Elasticsearch.
+            :return: список документов (словарей) из поля '_source' каждого хита.
+        """
+        result = (result.execute().to_dict())
+        hits = result['hits']['hits']
+        documents = [hit['_source'] for hit in hits]
+        return documents
 
     @staticmethod
     def filter_trip(queryset, data):
@@ -26,7 +40,7 @@ class TripFilterService:
             ]
         )
 
-        results = search_query.execute()
+        results = TripFilterService.parse_elastic_hits(search_query)
         return results
 
 
@@ -44,4 +58,10 @@ class User_trip_object:
 
 
 def elasticsearch_formatting_date(date):
-    return date.strftime('%Y-%m-%dT%H:%M:%SZ')
+    """
+        Форматирует дату в строку ISO 8601, подходящую для Elasticsearch.
+
+        :param date: объект даты, который необходимо отформатировать.
+        :return: строка, представляющая дату в формате ISO 8601.
+    """
+    return date.isoformat()

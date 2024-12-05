@@ -1,15 +1,13 @@
 import logging
-from datetime import datetime
 
 from django.utils import timezone
-import pytz
 
 
 from bestcar.utils import DataMixin
 from bestcar.models import *
 from bestcar.forms import Update_form, Publishing_a_tripForm, SearchForm
 from common.elasticsearch.document import PublishingTripDocument
-from .services import TripFilterService, User_trip_object, elasticsearch_formatting_date
+from .services_search import TripFilterService, User_trip_object, elasticsearch_formatting_date
 
 from sitecars import settings
 
@@ -19,7 +17,7 @@ from django.views.generic import ListView, CreateView, TemplateView, UpdateView,
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('duration_request_view')
 
 
 class BaseView(View):
@@ -90,16 +88,30 @@ class Car_trip(DataMixin, ListView):
 
 
 class SearchTrip(DataMixin, ListView):
+    """
+        Класс для поиска поездок с использованием формы поиска и фильтрации данных.
+        Наследует от ListView и DataMixin для работы с шаблонами и контекстом.
+    """
     context_object_name = 'search_trip_result'
     template_name = 'bestcar/search.html'
     title_page = 'Поиск'
 
     def get_context_data(self, **kwargs):
+        """
+            Возвращает контекст для шаблона, добавляя данные из миксина.
+        """
         context = super().get_context_data(**kwargs)
-        return self.get_mixin_context(context, default_image=settings.DEFAULT_USER_IMAGE)
+        return self.get_mixin_context(context)
 
     def get_data_request(self,form):
+        """
+            Извлекает и форматирует данные из формы поиска.
+
+            :param form: форма поиска.
+            :return: словарь с данными формы и дополнительной информацией из GET-запроса.
+        """
         if form.is_valid():
+
             # Данные формы
             departure = form.cleaned_data['departure']
             arrival = form.cleaned_data['arrival']
@@ -108,6 +120,7 @@ class SearchTrip(DataMixin, ListView):
 
             # Получаем значение скрытого поля из GET-запроса
             cat = self.request.GET.get('cat')
+
             return {
                 'departure':departure,
                 'arrival': arrival,
@@ -115,24 +128,43 @@ class SearchTrip(DataMixin, ListView):
                 'datetime_value': elasticsearch_formatting_date(datetime_value),
                 'cat':cat
             }
+    @staticmethod
+    def is_transport_category(cat):
+        """
+            Проверяет, является ли переданная категория транспортом.
+
+            :param cat: категория транспорта.
+            :return: True, если категория - автобус или автомобиль, иначе False.
+        """
+        if cat in ('Автобус', 'Автомобиль'):
+            return True
+        return False
 
     def get_queryset(self):
+        """
+            Формирует и возвращает запрос для поиска поездок, учитывая фильтрацию по времени и категориям.
+
+            :return: отфильтрованный запрос для поиска.
+        """
+
+        # Создаем запрос для поиска документов,
+        # где значение поля departure_time больше или равно текущему времени
+
+        queryset = PublishingTripDocument.search().filter(
+            'range', departure_time={'gte': elasticsearch_formatting_date(timezone.now())}
+        )
 
         # Создаем экземпляр формы
         form = SearchForm(self.request.GET)
 
         # Получаем данные из формы
         data = self.get_data_request(form)
-
-        queryset = PublishingTripDocument.search().filter(
-            'range', departure_time={'gte': elasticsearch_formatting_date(timezone.now())}
-        )
-
         cat = data.get('cat')
-        if cat == 'Автобус' or 'Автомобиль':
+
+        if SearchTrip.is_transport_category(cat):
+
             queryset = queryset.filter('term', author__category_name=cat)
             return TripFilterService.filter_trip( queryset, data)
-
 
         return TripFilterService.filter_trip( queryset, data)
 

@@ -9,33 +9,28 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'bestcar/css/style_search.css' %}">
 
-    <div class="bar"></div>
-    <div class="search_result" id="results-container">
-    {% for item in search_trip_result  %}
+<div class="bar"></div>
+<div class="search_result" id="results-container">
+    {% for item in search_trip_result %}
     <a href="{% url 'booking:to_book' item.slug %}">
-    <div class="result_trip" >
-        <p class="departure"> {{item.departure}} </p>
-        <p class="arrival"> {{item.arrival}} </p>
-        <p class="departure_time">{{item.departure_time|date:"H:i"}} </p>
-        <p class="arrival_time">{{item.arrival_time|date:"H:i"}}</p>
-        <p class="price"> {{item.price}} ₽</p>
+        <div class="result_trip">
+            <p class="departure">{{ item.departure }}</p>
+            <p class="arrival">{{ item.arrival }}</p>
+            <p class="departure_time">{{ item.departure_time|date:"H:i" }}</p>
+            <p class="arrival_time">{{ item.arrival_time|date:"H:i" }}</p>
+            <p class="price">{{ item.price }} ₽</p>
 
+            {% if item.author.category_name == 'Автобус' %}
+                <img src="{% static 'bestcar/images/avtobus.png' %}" width="65" height="30" class="logo_cat" />
+            {% else %}
+                <img src="{% static 'bestcar/images/car.png' %}" width="65" height="30" class="logo_cat" />
+            {% endif %}
 
-        {% if item.author.category_id == 1 %}
-            <img src="{% static 'bestcar/images/car.png' %}" width="65" height="30" class="logo_cat"  />
-        {% else %}
-            <img src="{% static 'bestcar/images/avtobus.png' %}" width="65" height="30" class="logo_cat"  />
-        {% endif %}
-        {%  if item.author.photo   %}
-            <img src="{{ item.author.photo.url }}" class="person_img" />
-        {% else %}
-            <img src ='{{default_image}}' class="default_img" />
-        {% endif %}
-        <p class="models_auto">{{item.author.models_auto}} </p>
-        <p class="username">{{item.author.username}} </p>
-
-    </div></a>
+            <p class="models_auto">{{ item.author.models_auto }}</p>
+            <p class="username">{{ item.author.username }}</p>
+        </div>
+    </a>
     {% endfor %}
-    </div>
+</div>
 
 {% endblock %}
