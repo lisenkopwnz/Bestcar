@@ -82,11 +82,11 @@ button:hover {
 p img {
     display: block;
     margin: 0 auto 15px;
-    width: 200px; /* Увеличиваем размер фото */
-    height: 200px; /* Увеличиваем размер фото */
+    width: 200px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 50%; /* Круглая рамка */
-    border: 2px solid #ddd; /* Легкая рамка вокруг изображения */
+    border-radius: 50%;
+    border: 2px solid #ddd;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     pointer-events: none;
 }
@@ -123,6 +123,5 @@ a:hover {
     background-color: #218838;
 }
 
-/* Убираем текст с именем файла под фото */
 input[type="file"] {
-    display: none; /* Скрываем поле выбора файла */
+    display: none;

@@ -1,19 +1,27 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
     {{ title }}
 {% endblock %}
 
 {% block content %}
-{% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'bestcar/css/style_search.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'bestcar/css/search.css' %}">
 
 <div class="bar"></div>
 <div class="search_result" id="results-container">
     {% for item in search_trip_result %}
     <a href="{% url 'booking:to_book' item.slug %}">
         <div class="result_trip">
+            <!-- Фото автора -->
+            <div class="author_info">
+                <img
+                    src="{{ item.author.photo}}"
+                    alt="Фото автора"
+                    class="author_photo"
+                />
+            </div>
             <p class="departure">{{ item.departure }}</p>
             <p class="arrival">{{ item.arrival }}</p>
             <p class="departure_time">{{ item.departure_time|date:"H:i" }}</p>

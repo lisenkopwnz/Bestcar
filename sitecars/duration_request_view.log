@@ -1,8 +1,0 @@
-INFO 2024-12-05 18:13:30,248 views 2024-12-06T20:31:00+00:00
-INFO 2024-12-05 18:13:30,263 services {'took': 4, 'timed_out': False, '_shards': {'total': 1, 'successful': 1, 'skipped': 0, 'failed': 0}, 'hits': {'total': {'value': 0, 'relation': 'eq'}, 'max_score': None, 'hits': []}}
-INFO 2024-12-05 18:13:30,265 middleware Продолжительность запроса /search/ - 0.0181777 сек.
-INFO 2024-12-05 18:18:29,328 views 2024-12-04T20:33:00+00:00
-INFO 2024-12-05 18:18:29,425 services {'took': 79, 'timed_out': False, '_shards': {'total': 1, 'successful': 1, 'skipped': 0, 'failed': 0}, 'hits': {'total': {'value': 1, 'relation': 'eq'}, 'max_score': 0.5753642, 'hits': [{'_index': 'trip_document', '_id': '4', '_score': 0.5753642, '_source': {'author': {'username': 'ww33', 'category_name': 'Автобус', 'photo.url': '/media/users/%24Y/12/04/user_avatar_image.jpg', 'models_auto': 'москвичввввв'}, 'departure_time': '2024-12-06T17:10:00+00:00', 'price': 1, 'arrival_time': '2024-12-31T17:10:00+00:00', 'slug': 'VW1QDCNBU0OZJ8CKCC0LEHAM3FKVY89BMV3476FK', 'departure': 'москва', 'reserved_seats': 0, 'free_seating': 12, 'arrival': 'ростов'}}]}}
-INFO 2024-12-05 18:18:29,444 middleware Продолжительность запроса /search/ - 0.1181290 сек.
-INFO 2024-12-05 18:50:04,644 middleware Продолжительность запроса /favicon.ico - 0.0559429 сек.
-INFO 2024-12-05 18:50:04,776 middleware Продолжительность запроса /favicon.ico - 0.0268634 сек.

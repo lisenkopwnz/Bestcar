@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.search_result {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.search_result .result_trip {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.search_result .result_trip:hover {
+    transform: scale(1.02);
+}
+
+.result_trip p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.departure, .arrival {
+    font-weight: bold;
+    color: #007BFF;
+}
+
+.departure_time, .arrival_time, .price {
+    font-size: 14px;
+    color: #555;
+}
+
+.logo_cat {
+    margin-top: 10px;
+    max-width: 65px;
+    height: auto;
+}
+
+.models_auto, .username {
+    font-size: 14px;
+    color: #777;
+}
+
+.search_result a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.search_result a:hover .result_trip {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+results-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.bar {
+    width: 100%;
+    height: 2px;
+    background-color: #007BFF;
+    margin-bottom: 20px;
+}
+

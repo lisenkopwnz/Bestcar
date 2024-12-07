@@ -41,6 +41,7 @@ class TripFilterService:
         )
 
         results = TripFilterService.parse_elastic_hits(search_query)
+        logger.info(results)
         return results
 
 

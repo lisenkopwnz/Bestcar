@@ -17,7 +17,7 @@ class PublishingTripDocument(Document):
     author = fields.ObjectField(properties={
         'username': fields.KeywordField(attr='username', index=False),
         'category_name': fields.KeywordField(attr='category.name'),
-        'photo.url': fields.KeywordField(attr='photo.url', index=False),
+        'photo': fields.KeywordField(attr='photo.url', index=False),
         'models_auto': fields.KeywordField(attr='models_auto', index=False)
     })
 
