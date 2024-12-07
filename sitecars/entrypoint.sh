@@ -38,6 +38,21 @@ fi
 echo "ќжидаю 4 минуты перед созданием индекса в Elasticsearch..."
 sleep 240
 
+# ќжидание запуска Redis
+echo "ќжидание запуска Redis на $REDIS_HOST:$REDIS_PORT..."
+timeout=120
+while ! nc -z $REDIS_HOST $REDIS_PORT; do
+    sleep 0.1
+    timeout=$((timeout - 1))
+
+    if [ $timeout -le 0 ]; then
+        echo "ќшибка: Redis не запустилс€ за ожидаемое врем€."
+        exit 1
+    fi
+done
+
+echo "Redis доступен."
+
 # —оздание индекса в Elasticsearch
 echo "—оздаю индекс в Elasticsearch..."
 if ! python manage.py search_index --create; then

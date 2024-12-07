@@ -11,9 +11,14 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import logging.config
 import os
+
 from pathlib import Path
+from dotenv import load_dotenv
 
 from decouple import config
+
+# Загружаем переменные из .env
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -165,13 +170,16 @@ MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 DEFAULT_USER_IMAGE = MEDIA_URL + 'users/photo.jpg'
 
-###############  Настройка брокера сообшений  ###############
-REDIS_HOST = '127.0.0.1'
-REDIS_PORT = '6379'
-CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
-CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
-CELERY_ACCEPT_CONTENT = ['json', 'application/json']
-CELERY_TASK_SERIALIZER = 'json'
+# ---------------------------- Настройка брокера сообшений ---------------------------- #
+
+REDIS_HOST = os.getenv('REDIS_HOST', 'localhost')
+REDIS_PORT = os.getenv('REDIS_PORT', '6379')
+
+CELERY_BROKER_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
+CELERY_RESULT_BACKEND = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
+
+CELERY_ACCEPT_CONTENT = os.getenv('CELERY_ACCEPT_CONTENT', 'json').split(',')
+CELERY_TASK_SERIALIZER = os.getenv('CELERY_TASK_SERIALIZER', 'json')
 
 # ---------------------------- Настройки логирования ---------------------------- #
 
@@ -216,6 +224,6 @@ logging.config.dictConfig({
 
 ELASTICSEARCH_DSL = {
     'default': {
-        'hosts': ['http://elasticsearch:9200'],  # Правильный ключ для указания хоста
+        'hosts': ['http://elasticsearch:9200'],
     }
 }

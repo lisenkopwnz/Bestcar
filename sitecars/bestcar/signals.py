@@ -4,9 +4,9 @@ from django.template.loader import render_to_string
 from django.utils import timezone
 from django.utils.html import strip_tags
 
-from sitecars.utils.decorators import email_address_decorator
+from common.celery.utils.decorators import email_address_decorator
 from .models.publishing_a_trip import Publishing_a_trip
-from sitecars.utils.tasks import send_email_task
+from common.celery.utils.tasks import send_email_task
 
 from typing import List
 

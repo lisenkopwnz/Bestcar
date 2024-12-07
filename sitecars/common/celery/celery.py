@@ -9,4 +9,4 @@ app = Celery('sitecars')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
 # Автоматический поиск задач
-app.autodiscover_tasks(['sitecars.utils'])
+app.autodiscover_tasks(['celery.utils'])

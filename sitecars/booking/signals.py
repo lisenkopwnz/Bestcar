@@ -7,9 +7,8 @@ from django.utils import timezone
 from django.utils.html import strip_tags
 
 from booking.models import Booking
-
-from sitecars.utils.tasks import send_email_task
-from sitecars.utils.decorators import email_address_decorator
+from common.celery.utils.decorators import email_address_decorator
+from common.celery.utils.tasks import send_email_task
 
 
 @receiver(post_save, sender=Booking)

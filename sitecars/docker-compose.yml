@@ -16,6 +16,7 @@ services:
     depends_on:
       - db
       - elasticsearch
+      - redis
     networks:
       - backend
     healthcheck:
@@ -58,6 +59,34 @@ services:
       test: [ "CMD", "curl", "-f", "http://elasticsearch:9200" ]
       interval: 10s
       retries: 5
+
+  redis:
+    image: redis:latest
+    container_name: redis-platform_bestcar
+    ports:
+      - '6379:6379'
+    networks:
+      - 'backend'
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      retries: 3
+
+  celery:
+    build:
+      context: .
+    container_name: celery_worker
+    command: celery -A sitecars worker --loglevel=info
+    volumes:
+      - .:/bestcar
+    env_file:
+      - ./.env
+    depends_on:
+      - elasticsearch
+      - redis
+      - db
+    networks:
+      - backend
 
 volumes:
   postgres_data:
