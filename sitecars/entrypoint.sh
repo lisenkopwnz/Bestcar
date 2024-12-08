@@ -60,5 +60,9 @@ if ! python manage.py search_index --create; then
     exit 1
 fi
 
+# Запуск Celery вручную
+echo "Запускаю Celery..."
+celery -A sitecars worker --loglevel=info &
+
 # Запускаем приложение Django
 exec "$@"

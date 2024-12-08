@@ -1,3 +1,5 @@
+import logging
+
 from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import redirect
@@ -12,6 +14,7 @@ from booking.models import Booking
 from booking.services import Confirmation_services, UsersBookedTripsServices, Bookings_services
 from sitecars import settings
 
+logger = logging.getLogger('duration_request_view')
 
 class BaseView(View):
     """ Базовый класс который отлавливает все исклюяения ,которые
@@ -84,6 +87,7 @@ class Confirmation(BaseView):
 
     def get(self, request, *args, **kwargs):
         trip_slug = kwargs.get('trip_slug', None)
+        logger.info(trip_slug)
         if trip_slug is not None:
             try:
                 Confirmation_services.confirmation(trip_slug, request)

@@ -72,22 +72,6 @@ services:
       interval: 5s
       retries: 3
 
-  celery:
-    build:
-      context: .
-    container_name: celery_worker
-    command: celery -A sitecars worker --loglevel=info
-    volumes:
-      - .:/bestcar
-    env_file:
-      - ./.env
-    depends_on:
-      - elasticsearch
-      - redis
-      - db
-    networks:
-      - backend
-
 volumes:
   postgres_data:
   elasticsearch_data:

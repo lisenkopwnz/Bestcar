@@ -1,3 +1,5 @@
+import logging
+
 from django.db import transaction, DatabaseError
 from django.http import JsonResponse, Http404
 from django.shortcuts import get_object_or_404
@@ -7,6 +9,7 @@ from booking.decorators import booking_decorator
 from booking.exeption import SeatingError
 from booking.models import Booking
 
+logger = logging.getLogger('duration_request_view')
 
 class Confirmation_services:
     """
@@ -29,6 +32,7 @@ class Confirmation_services:
                                   name_companion=request.user,
                                   slug=trip.slug
                                   )
+                logger.info(booking)
                 booking.save()
         except (SeatingError, DatabaseError) as e:
             return JsonResponse({

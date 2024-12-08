@@ -41,7 +41,6 @@ class TripFilterService:
         )
 
         results = TripFilterService.parse_elastic_hits(search_query)
-        logger.info(results)
         return results
 
 
@@ -56,13 +55,3 @@ class User_trip_object:
             return
         else:
             raise Http404('Похоже эта поездка больше не существует')
-
-
-def elasticsearch_formatting_date(date):
-    """
-        Форматирует дату в строку ISO 8601, подходящую для Elasticsearch.
-
-        :param date: объект даты, который необходимо отформатировать.
-        :return: строка, представляющая дату в формате ISO 8601.
-    """
-    return date.isoformat()
