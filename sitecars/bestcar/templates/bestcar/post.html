@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
     {{ title }}
@@ -6,10 +7,88 @@
 
 {% block content %}
 
-<h1>Опубликовать поездку</h1>
+<link rel="stylesheet" type="text/css" href="{% static 'bestcar/css/post.css' %}">
 <form action="{% url 'post' %}" method="post">
     {% csrf_token %}
-    {{ form.as_p}}
+
+    <!-- Поле departure -->
+    <div>
+        <label for="{{ form.departure.id_for_label }}">Отправление:</label>
+        {{ form.departure }}
+        {% if form.departure.errors %}
+                <ul class="errorlist">
+                    {% for error in form.departure.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+    </div>
+
+    <!-- Поле arrival -->
+    <div>
+        <label for="{{ form.arrival.id_for_label }}">Прибытие:</label>
+        {{ form.arrival }}
+        {% if form.arrival.errors %}
+                <ul class="errorlist">
+                    {% for error in form.arrival.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+    </div>
+
+    <!-- Поле departure_time -->
+    <div>
+        <label for="{{ form.departure_time.id_for_label }}">Время отправление:</label>
+        {{ form.departure_time }}
+        {% if form.departure_time.errors %}
+                <ul class="errorlist">
+                    {% for error in form.departure_time.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+    </div>
+
+    <!-- Поле arrival_time -->
+    <div>
+        <label for="{{ form.arrival_time.id_for_label }}">Время прибытия:</label>
+        {{ form.arrival_time }}
+        {% if form.arrival_time.errors %}
+                <ul class="errorlist">
+                    {% for error in form.arrival_time.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+    </div>
+
+    <!-- Поле free_seating -->
+    <div>
+        <label for="{{ form.free_seating.id_for_label }}">Свободные места:</label>
+        {{ form.free_seating }}
+        {% if form.free_seating.errors %}
+                <ul class="errorlist">
+                    {% for error in form.free_seating.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+    </div>
+
+    <!-- Поле price -->
+    <div>
+        <label for="{{ form.price.id_for_label }}">Цена:</label>
+        {{ form.price }}
+        {% if form.price.errors %}
+                <ul class="errorlist">
+                    {% for error in form.price.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+    </div>
+
     <p><button type="submit">Отпраить</button>
 </form>
 

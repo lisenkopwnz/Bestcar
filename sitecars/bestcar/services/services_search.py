@@ -2,8 +2,7 @@ import logging
 
 from django.http import Http404
 
-from .models import Publishing_a_trip
-
+from bestcar.models import Publishing_a_trip
 
 logger = logging.getLogger('duration_request_view')
 

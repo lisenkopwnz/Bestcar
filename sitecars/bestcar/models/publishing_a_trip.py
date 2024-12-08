@@ -1,79 +1,80 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
-import string
-import random
-
+from bestcar.managers import CarManager, BusManager, ObjectManager
+from bestcar.services.services import generate_slug
 from bestcar.validators import Validators_date_model, Validators_language_model
 
 
-class CarManager(models.Manager):
-    def get_queryset(self):
-        return super().get_queryset().filter(cat_id=1)
-
-
-class BusManager(models.Manager):
-    def get_queryset(self):
-        return super().get_queryset().filter(cat_id=2)
-
-
-class ObjectManager(models.Manager):
-    def get_queryset(self):
-        return super().get_queryset().all()
 
 
 class Publishing_a_trip(models.Model):
-    departure = models.CharField(
+    """
+        Модель, представляющая информацию о поездке.
+
+        Attributes:
+            departure (str): Место отправления.
+            arrival (str): Место прибытия.
+            departure_time (datetime): Время отправления.
+            arrival_time (datetime): Время прибытия.
+            free_seating (int): Количество свободных мест в транспорте.
+            reserved_seats (int): Количество забронированных мест.
+            price (int): Стоимость поездки.
+            author (ForeignKey): Автор поездки (пользователь).
+            slug (str): Уникальный идентификатор поездки.
+    """
+    departure: str = models.CharField(
         max_length=100,
         verbose_name="отправление",
-        validators=[Validators_language_model()]
+        validators=[Validators_language_model()],
     )
-    arrival = models.CharField(
+    arrival: str = models.CharField(
         max_length=100,
         verbose_name="прибытие",
-        validators=[Validators_language_model()]
+        validators=[Validators_language_model()],
     )
     departure_time = models.DateTimeField(
         verbose_name="время отправления",
-        validators=[Validators_date_model()]
+        validators=[Validators_date_model()],
     )
     arrival_time = models.DateTimeField(
         verbose_name="время прибытия",
         default=None,
-        validators=[Validators_date_model()]
+        validators=[Validators_date_model()],
     )
-    free_seating = models.PositiveSmallIntegerField(
+    free_seating: int = models.PositiveSmallIntegerField(
         verbose_name='количество мест',
-        default=1
+        default=1,
     )
-    reserved_seats = models.PositiveIntegerField(
+    reserved_seats: int = models.PositiveIntegerField(
         verbose_name='количество бронированных мест',
-        default=0
+        default=0,
     )
-    price = models.PositiveSmallIntegerField(
-        verbose_name="цена"
+    price: int = models.PositiveSmallIntegerField(
+        verbose_name="цена",
     )
     author = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
         related_name="author",
-        null=True, default=None
     )
-    slug = models.SlugField(
+    slug: str = models.SlugField(
         max_length=100,
         unique=True,
-        db_index=True
+        db_index=True,
     )
 
-    objects = models.Manager()
+    objects = ObjectManager()
     car = CarManager()
     bus = BusManager()
 
     def save(self, *args, **kwargs):
-        """ Переопределяем метод save для добавления слага"""
+        """
+        Переопределяет метод сохранения для автоматической генерации slug,
+        если он отсутствует.
+        """
         if not self.slug:
-            all_symbols = string.ascii_uppercase + string.digits
-            self.slug = "".join(random.choice(all_symbols) for i in range(40))
+            self.slug = generate_slug(100)
         super().save(*args, **kwargs)
 
     class Meta:
@@ -81,12 +82,11 @@ class Publishing_a_trip(models.Model):
         verbose_name_plural = 'Опубликованные поездки'
         ordering = ('departure_time',)
 
-        indexes = [
-            models.Index(
-                fields=['departure', 'arrival', 'free_seating', 'departure_time'],
-                name='trip_filter_idx'
-            )
-        ]
+    def __str__(self) -> str:
+        """
+        Возвращает строковое представление модели.
 
-    def __str__(self):
+        Returns:
+            str: Имя автора поездки.
+        """
         return str(self.author)

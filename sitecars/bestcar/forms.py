@@ -1,16 +1,13 @@
-import pytz
 from django import forms
 from django.core.exceptions import ValidationError
-from typing import List, Tuple
-
-from django.utils import timezone
+from django_currentuser.middleware import get_current_user
+from django.contrib.auth import get_user_model
 
 from bestcar.models import Publishing_a_trip
 
 import re
 
-from django_currentuser.middleware import get_current_user
-from django.contrib.auth import get_user_model
+from typing import List, Tuple
 
 
 class Publishing_a_tripForm(forms.ModelForm):
