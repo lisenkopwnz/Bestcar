@@ -1,23 +1,18 @@
-import logging
-
-from django.utils import timezone
+import re
 
 from django.core.exceptions import ValidationError
 
 import inspect
 
-logger = logging.getLogger('duration_request_view')
 
 class Validators_date_model:
-    def __init__(self, message='Р’РµРґРёС‚Рµ РєРѕСЂРµРєС‚РЅСѓСЋ РґР°С‚Сѓ.'):
+    def __init__(self, message='Номер телефона должен начинаться с +7 и содержать 10 цифр.'):
         self.message = message
 
     def __call__(self, value):
-        now = timezone.now()
-        logger.info(now)
-        logger.info(value)
-        if value < now:
+        if not re.match(r'^\+7\d{10}$', str(value)):
             raise ValidationError(self.message)
+
 
     def deconstruct(self):
         path = "%s.%s" % (

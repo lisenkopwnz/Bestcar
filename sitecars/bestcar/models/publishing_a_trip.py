@@ -3,9 +3,8 @@ from django.contrib.auth import get_user_model
 
 from bestcar.managers import CarManager, BusManager, ObjectManager
 from bestcar.services.services import generate_slug
-from bestcar.validators import Validators_date_model, Validators_language_model
-
-
+from bestcar.validators import Validators_date_model
+from common.utils.validators import address_validator
 
 
 class Publishing_a_trip(models.Model):
@@ -24,14 +23,18 @@ class Publishing_a_trip(models.Model):
             slug (str): Уникальный идентификатор поездки.
     """
     departure: str = models.CharField(
-        max_length=100,
+        max_length=150,
         verbose_name="отправление",
-        validators=[Validators_language_model()],
+        validators=[
+            address_validator
+        ]
     )
     arrival: str = models.CharField(
-        max_length=100,
+        max_length=150,
         verbose_name="прибытие",
-        validators=[Validators_language_model()],
+        validators=[
+            address_validator
+        ]
     )
     departure_time = models.DateTimeField(
         verbose_name="время отправления",

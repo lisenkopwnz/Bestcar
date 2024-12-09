@@ -1,27 +1,22 @@
-INFO 2024-12-08 16:35:28,481 views 8HDRQAD7V0NCJD0YSIX6GE0HHHMMLG8G6IHZQ1W7
-INFO 2024-12-08 16:35:28,569 decorators 2024-12-10 22:43:00+00:00
-INFO 2024-12-08 16:35:29,057 middleware Продолжительность запроса /booking/confirm/8HDRQAD7V0NCJD0YSIX6GE0HHHMMLG8G6IHZQ1W7/ - 0.5886057 сек.
-INFO 2024-12-08 16:37:44,407 middleware Продолжительность запроса /booking/booking/checkout/8HDRQAD7V0NCJD0YSIX6GE0HHHMMLG8G6IHZQ1W7/ - 0.1000308 сек.
-INFO 2024-12-08 16:37:45,414 middleware Продолжительность запроса /booking/booking/checkout/8HDRQAD7V0NCJD0YSIX6GE0HHHMMLG8G6IHZQ1W7/ - 0.0432743 сек.
-INFO 2024-12-08 16:37:47,056 views 8HDRQAD7V0NCJD0YSIX6GE0HHHMMLG8G6IHZQ1W7
-INFO 2024-12-08 16:37:47,101 decorators 2024-12-10 22:43:00+00:00
-INFO 2024-12-08 16:37:47,102 middleware Продолжительность запроса /booking/confirm/8HDRQAD7V0NCJD0YSIX6GE0HHHMMLG8G6IHZQ1W7/ - 0.0463694 сек.
-INFO 2024-12-08 16:38:00,850 middleware Продолжительность запроса /booking/to_book/8HDRQAD7V0NCJD0YSIX6GE0HHHMMLG8G6IHZQ1W7/ - 0.0482503 сек.
-INFO 2024-12-08 16:38:02,141 middleware Продолжительность запроса /booking/booking/checkout/8HDRQAD7V0NCJD0YSIX6GE0HHHMMLG8G6IHZQ1W7/ - 0.0379570 сек.
-INFO 2024-12-08 16:38:03,106 views 8HDRQAD7V0NCJD0YSIX6GE0HHHMMLG8G6IHZQ1W7
-INFO 2024-12-08 16:38:03,146 decorators 2024-12-10 22:43:00+00:00
-INFO 2024-12-08 16:38:03,147 middleware Продолжительность запроса /booking/confirm/8HDRQAD7V0NCJD0YSIX6GE0HHHMMLG8G6IHZQ1W7/ - 0.0410080 сек.
-INFO 2024-12-08 16:38:11,128 middleware Продолжительность запроса /search/ - 0.9479259 сек.
-INFO 2024-12-08 16:38:11,136 middleware Продолжительность запроса /search/ - 0.5242504 сек.
-INFO 2024-12-08 16:38:12,111 middleware Продолжительность запроса /booking/to_book/D806U77LFGSL4Q31PSMBC7EOZYUXT6TFWMNS7RG4/ - 0.0748827 сек.
-INFO 2024-12-08 16:38:13,340 middleware Продолжительность запроса /booking/booking/checkout/D806U77LFGSL4Q31PSMBC7EOZYUXT6TFWMNS7RG4/ - 0.0358470 сек.
-INFO 2024-12-08 16:38:13,973 views D806U77LFGSL4Q31PSMBC7EOZYUXT6TFWMNS7RG4
-INFO 2024-12-08 16:38:14,002 decorators 2024-12-15 18:29:00+00:00
-INFO 2024-12-08 16:38:14,011 services 2024-12-15 18:29:00+00:00
-INFO 2024-12-08 16:38:14,011 services 2024-12-29 18:29:00+00:00
-INFO 2024-12-08 16:38:14,040 services Booking object (None)
-INFO 2024-12-08 16:38:14,306 middleware Продолжительность запроса /booking/confirm/D806U77LFGSL4Q31PSMBC7EOZYUXT6TFWMNS7RG4/ - 0.3342959 сек.
-INFO 2024-12-08 16:38:14,350 middleware Продолжительность запроса / - 0.0323492 сек.
-INFO 2024-12-08 16:42:00,769 middleware Продолжительность запроса /post/ - 0.1236330 сек.
-INFO 2024-12-08 17:06:48,472 middleware Продолжительность запроса /post/ - 0.1526579 сек.
-INFO 2024-12-08 17:46:02,705 middleware Продолжительность запроса /post/ - 0.2778791 сек.
+INFO 2024-12-09 18:27:56,454 middleware Продолжительность запроса /bus_trip/ - 0.6217776 сек.
+INFO 2024-12-09 18:27:59,771 middleware Продолжительность запроса /post/ - 0.4023905 сек.
+INFO 2024-12-09 18:28:26,767 validators 2024-12-09 18:28:26.767892+00:00
+INFO 2024-12-09 18:28:26,768 validators 2024-12-08 11:51:00+00:00
+INFO 2024-12-09 18:28:26,769 validators 2024-12-09 18:28:26.769610+00:00
+INFO 2024-12-09 18:28:26,770 validators 2024-12-07 11:51:00+00:00
+INFO 2024-12-09 18:28:26,788 middleware Продолжительность запроса /post/ - 0.1202921 сек.
+INFO 2024-12-09 18:28:52,901 validators 2024-12-09 18:28:52.901361+00:00
+INFO 2024-12-09 18:28:52,902 validators 2024-12-08 11:53:00+00:00
+INFO 2024-12-09 18:28:52,902 validators 2024-12-09 18:28:52.902541+00:00
+INFO 2024-12-09 18:28:52,903 validators 2024-12-08 11:53:00+00:00
+INFO 2024-12-09 18:28:52,914 middleware Продолжительность запроса /post/ - 0.0645701 сек.
+INFO 2024-12-09 18:28:57,816 validators 2024-12-09 18:28:57.816707+00:00
+INFO 2024-12-09 18:28:57,817 validators 2024-12-08 11:53:00+00:00
+INFO 2024-12-09 18:28:57,817 validators 2024-12-09 18:28:57.817890+00:00
+INFO 2024-12-09 18:28:57,818 validators 2024-12-08 11:56:00+00:00
+INFO 2024-12-09 18:28:57,828 middleware Продолжительность запроса /post/ - 0.0577608 сек.
+INFO 2024-12-09 18:29:17,011 validators 2024-12-09 18:29:17.011283+00:00
+INFO 2024-12-09 18:29:17,011 validators 2024-12-10 11:53:00+00:00
+INFO 2024-12-09 18:29:17,012 validators 2024-12-09 18:29:17.012392+00:00
+INFO 2024-12-09 18:29:17,012 validators 2024-12-10 11:53:00+00:00
+INFO 2024-12-09 18:29:17,023 middleware Продолжительность запроса /post/ - 0.0634378 сек.
