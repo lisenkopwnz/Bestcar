@@ -31,6 +31,20 @@ class Publishing_a_tripForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['free_seating'].choices = Publishing_a_tripForm.seating()
 
+    def clean(self):
+        """
+            Переопределяет метод clean для выполнения проверки логики времени отправления и прибытия.
+
+            Этот метод выполняет проверку, чтобы убедиться, что время отправления (departure_time)
+            не может быть больше или равно времени прибытия (arrival_time). Если это условие нарушается,
+            генерируется исключение ValidationError с соответствующим сообщением.
+        """
+        cleaned_data = super().clean()
+        if cleaned_data['departure_time'] >= cleaned_data['arrival_time']:
+            raise ValidationError('отправления не может быть болше времени прибытия.')
+        return cleaned_data
+
+
     class Meta:
         model = Publishing_a_trip
         fields = ['departure', 'arrival', 'departure_time',

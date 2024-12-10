@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -79,6 +80,7 @@ class Publishing_a_trip(models.Model):
         if not self.slug:
             self.slug = generate_slug(100)
         super().save(*args, **kwargs)
+
 
     class Meta:
         verbose_name = 'Опубликованные поездки'
