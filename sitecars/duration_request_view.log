@@ -20,3 +20,93 @@ INFO 2024-12-09 18:29:17,011 validators 2024-12-10 11:53:00+00:00
 INFO 2024-12-09 18:29:17,012 validators 2024-12-09 18:29:17.012392+00:00
 INFO 2024-12-09 18:29:17,012 validators 2024-12-10 11:53:00+00:00
 INFO 2024-12-09 18:29:17,023 middleware Продолжительность запроса /post/ - 0.0634378 сек.
+INFO 2024-12-09 18:59:13,405 validators 2024-12-09 18:59:13.404225+00:00
+INFO 2024-12-09 18:59:13,409 validators 2024-12-10 11:53:00+00:00
+INFO 2024-12-09 18:59:13,410 validators 2024-12-09 18:59:13.410546+00:00
+INFO 2024-12-09 18:59:13,411 validators 2024-12-10 11:53:00+00:00
+INFO 2024-12-09 18:59:18,547 middleware Продолжительность запроса /post/ - 6.2008040 сек.
+INFO 2024-12-09 18:59:18,682 middleware Продолжительность запроса / - 0.1167723 сек.
+INFO 2024-12-09 20:24:20,968 middleware Продолжительность запроса /search/ - 1.8658116 сек.
+INFO 2024-12-09 20:24:21,954 middleware Продолжительность запроса /favicon.ico - 0.2655567 сек.
+INFO 2024-12-09 20:24:26,594 middleware Продолжительность запроса / - 1.0017744 сек.
+INFO 2024-12-09 20:24:33,023 middleware Продолжительность запроса /post/ - 0.2452201 сек.
+INFO 2024-12-09 20:24:57,190 validators 2024-12-09 20:24:57.190246+00:00
+INFO 2024-12-09 20:24:57,192 validators 2024-12-22 13:48:00+00:00
+INFO 2024-12-09 20:24:57,195 validators 2024-12-09 20:24:57.195265+00:00
+INFO 2024-12-09 20:24:57,195 validators 2024-12-29 13:48:00+00:00
+INFO 2024-12-09 20:24:58,318 middleware Продолжительность запроса /post/ - 1.1884778 сек.
+INFO 2024-12-09 20:24:58,357 middleware Продолжительность запроса / - 0.0132343 сек.
+INFO 2024-12-09 20:25:08,719 middleware Продолжительность запроса /search/ - 1.5540913 сек.
+INFO 2024-12-09 20:25:08,923 middleware Продолжительность запроса /media/users/$Y/12/07/user_avatar_image.jpg - 0.1629595 сек.
+INFO 2024-12-09 20:25:09,984 middleware Продолжительность запроса /booking/to_book/0SGVFJO9SIV8VXME0J9JZIGXHZKBQOGMHTL42T6HDJ1Z5W8RVLG3QXXI7G6UVXDVOVEZGTFW3MG6VIDMKCGTD2OCLDBJ6DRZWWFT/ - 0.2314260 сек.
+INFO 2024-12-09 20:25:14,340 middleware Продолжительность запроса /booking/booking/checkout/0SGVFJO9SIV8VXME0J9JZIGXHZKBQOGMHTL42T6HDJ1Z5W8RVLG3QXXI7G6UVXDVOVEZGTFW3MG6VIDMKCGTD2OCLDBJ6DRZWWFT/ - 0.4927836 сек.
+INFO 2024-12-09 20:25:22,694 views 0SGVFJO9SIV8VXME0J9JZIGXHZKBQOGMHTL42T6HDJ1Z5W8RVLG3QXXI7G6UVXDVOVEZGTFW3MG6VIDMKCGTD2OCLDBJ6DRZWWFT
+INFO 2024-12-09 20:25:22,789 decorators 2024-12-22 13:48:00+00:00
+INFO 2024-12-09 20:25:22,853 services Booking object (None)
+INFO 2024-12-09 20:25:24,008 middleware Продолжительность запроса /booking/confirm/0SGVFJO9SIV8VXME0J9JZIGXHZKBQOGMHTL42T6HDJ1Z5W8RVLG3QXXI7G6UVXDVOVEZGTFW3MG6VIDMKCGTD2OCLDBJ6DRZWWFT/ - 1.3145084 сек.
+INFO 2024-12-09 20:25:24,046 middleware Продолжительность запроса / - 0.0158568 сек.
+INFO 2024-12-09 20:25:28,281 middleware Продолжительность запроса /booking/booked_trips/ - 0.1614549 сек.
+INFO 2024-12-09 20:25:34,659 middleware Продолжительность запроса /users/users_trips_current/ - 0.1977814 сек.
+INFO 2024-12-09 20:25:46,441 views запись успешно найдена
+INFO 2024-12-09 20:25:46,971 middleware Продолжительность запроса /update/0SGVFJO9SIV8VXME0J9JZIGXHZKBQOGMHTL42T6HDJ1Z5W8RVLG3QXXI7G6UVXDVOVEZGTFW3MG6VIDMKCGTD2OCLDBJ6DRZWWFT/ - 0.5832997 сек.
+INFO 2024-12-09 20:25:50,461 validators 2024-12-09 20:25:50.461880+00:00
+INFO 2024-12-09 20:25:50,462 validators 2024-12-22 13:48:00+00:00
+INFO 2024-12-09 20:25:50,463 validators 2024-12-09 20:25:50.463465+00:00
+INFO 2024-12-09 20:25:50,464 validators 2024-12-29 13:48:00+00:00
+INFO 2024-12-09 20:25:50,615 middleware Продолжительность запроса /update/0SGVFJO9SIV8VXME0J9JZIGXHZKBQOGMHTL42T6HDJ1Z5W8RVLG3QXXI7G6UVXDVOVEZGTFW3MG6VIDMKCGTD2OCLDBJ6DRZWWFT/ - 0.1843050 сек.
+INFO 2024-12-09 20:25:50,630 middleware Продолжительность запроса / - 0.0070970 сек.
+INFO 2024-12-10 12:51:17,768 middleware Продолжительность запроса / - 0.2566881 сек.
+INFO 2024-12-10 12:51:18,912 middleware Продолжительность запроса /favicon.ico - 0.4065313 сек.
+INFO 2024-12-10 12:58:13,989 middleware Продолжительность запроса /booking/booked_trips/ - 1.0034067 сек.
+INFO 2024-12-10 12:58:15,785 middleware Продолжительность запроса /users/users_trips_current/ - 0.1667282 сек.
+INFO 2024-12-10 12:58:18,348 views запись успешно найдена
+INFO 2024-12-10 12:58:18,422 middleware Продолжительность запроса /update/0SGVFJO9SIV8VXME0J9JZIGXHZKBQOGMHTL42T6HDJ1Z5W8RVLG3QXXI7G6UVXDVOVEZGTFW3MG6VIDMKCGTD2OCLDBJ6DRZWWFT/ - 0.1270938 сек.
+INFO 2024-12-10 12:58:21,738 validators 2024-12-10 12:58:21.738595+00:00
+INFO 2024-12-10 12:58:21,754 validators 2024-12-22 13:48:00+00:00
+INFO 2024-12-10 12:58:21,770 validators 2024-12-10 12:58:21.770446+00:00
+INFO 2024-12-10 12:58:21,771 validators 2024-12-29 13:48:00+00:00
+INFO 2024-12-10 12:58:30,303 middleware Продолжительность запроса /update/0SGVFJO9SIV8VXME0J9JZIGXHZKBQOGMHTL42T6HDJ1Z5W8RVLG3QXXI7G6UVXDVOVEZGTFW3MG6VIDMKCGTD2OCLDBJ6DRZWWFT/ - 8.6580029 сек.
+INFO 2024-12-10 12:58:30,356 middleware Продолжительность запроса / - 0.0327275 сек.
+INFO 2024-12-10 12:58:40,211 middleware Продолжительность запроса /booking/booked_trips/ - 0.0847972 сек.
+INFO 2024-12-10 12:58:44,815 middleware Продолжительность запроса /users/users_trips_current/ - 0.0827772 сек.
+INFO 2024-12-10 12:58:46,869 views запись успешно найдена
+INFO 2024-12-10 12:58:46,892 middleware Продолжительность запроса /update/0SGVFJO9SIV8VXME0J9JZIGXHZKBQOGMHTL42T6HDJ1Z5W8RVLG3QXXI7G6UVXDVOVEZGTFW3MG6VIDMKCGTD2OCLDBJ6DRZWWFT/ - 0.0647567 сек.
+INFO 2024-12-10 12:58:49,211 validators 2024-12-10 12:58:49.211829+00:00
+INFO 2024-12-10 12:58:49,212 validators 2024-12-22 13:48:00+00:00
+INFO 2024-12-10 12:58:49,213 validators 2024-12-10 12:58:49.213213+00:00
+INFO 2024-12-10 12:58:49,213 validators 2024-12-29 13:48:00+00:00
+INFO 2024-12-10 12:58:49,707 middleware Продолжительность запроса /update/0SGVFJO9SIV8VXME0J9JZIGXHZKBQOGMHTL42T6HDJ1Z5W8RVLG3QXXI7G6UVXDVOVEZGTFW3MG6VIDMKCGTD2OCLDBJ6DRZWWFT/ - 0.5402339 сек.
+INFO 2024-12-10 12:58:49,727 middleware Продолжительность запроса / - 0.0103319 сек.
+INFO 2024-12-10 14:54:13,231 middleware Продолжительность запроса / - 0.6621711 сек.
+INFO 2024-12-10 14:54:14,839 middleware Продолжительность запроса / - 0.0273224 сек.
+INFO 2024-12-10 14:54:15,535 middleware Продолжительность запроса / - 0.0098914 сек.
+INFO 2024-12-10 14:54:15,704 middleware Продолжительность запроса / - 0.0066895 сек.
+INFO 2024-12-10 14:54:15,921 middleware Продолжительность запроса / - 0.0067983 сек.
+INFO 2024-12-10 14:54:16,116 middleware Продолжительность запроса / - 0.0182179 сек.
+INFO 2024-12-10 14:54:16,315 middleware Продолжительность запроса / - 0.0075221 сек.
+INFO 2024-12-10 14:54:16,503 middleware Продолжительность запроса / - 0.0058068 сек.
+INFO 2024-12-10 14:54:16,692 middleware Продолжительность запроса / - 0.0081929 сек.
+INFO 2024-12-10 14:54:16,887 middleware Продолжительность запроса / - 0.0107951 сек.
+INFO 2024-12-10 14:54:17,068 middleware Продолжительность запроса / - 0.0154629 сек.
+INFO 2024-12-10 14:54:17,251 middleware Продолжительность запроса / - 0.0159815 сек.
+INFO 2024-12-10 14:54:17,431 middleware Продолжительность запроса / - 0.0074197 сек.
+INFO 2024-12-10 14:54:20,842 middleware Продолжительность запроса /users/users_trips_current/ - 0.2053513 сек.
+INFO 2024-12-10 14:54:23,896 views запись успешно найдена
+INFO 2024-12-10 14:54:24,179 middleware Продолжительность запроса /update/0SGVFJO9SIV8VXME0J9JZIGXHZKBQOGMHTL42T6HDJ1Z5W8RVLG3QXXI7G6UVXDVOVEZGTFW3MG6VIDMKCGTD2OCLDBJ6DRZWWFT/ - 0.3601741 сек.
+INFO 2024-12-10 14:54:27,229 validators 2024-12-10 14:54:27.229472+00:00
+INFO 2024-12-10 14:54:27,230 validators 2024-12-22 13:48:00+00:00
+INFO 2024-12-10 14:54:27,230 validators 2024-12-10 14:54:27.230937+00:00
+INFO 2024-12-10 14:54:27,231 validators 2024-12-29 13:48:00+00:00
+INFO 2024-12-10 14:54:29,686 middleware Продолжительность запроса /update/0SGVFJO9SIV8VXME0J9JZIGXHZKBQOGMHTL42T6HDJ1Z5W8RVLG3QXXI7G6UVXDVOVEZGTFW3MG6VIDMKCGTD2OCLDBJ6DRZWWFT/ - 2.5200444 сек.
+INFO 2024-12-10 14:54:29,749 middleware Продолжительность запроса / - 0.0205432 сек.
+INFO 2024-12-10 15:02:39,910 middleware Продолжительность запроса / - 0.2369224 сек.
+INFO 2024-12-10 15:14:04,239 middleware Продолжительность запроса / - 0.1274351 сек.
+INFO 2024-12-10 15:14:09,910 middleware Продолжительность запроса /users/users_trips_current/ - 0.1844898 сек.
+INFO 2024-12-10 15:14:12,908 views запись успешно найдена
+INFO 2024-12-10 15:14:12,945 middleware Продолжительность запроса /update/0SGVFJO9SIV8VXME0J9JZIGXHZKBQOGMHTL42T6HDJ1Z5W8RVLG3QXXI7G6UVXDVOVEZGTFW3MG6VIDMKCGTD2OCLDBJ6DRZWWFT/ - 0.0846431 сек.
+INFO 2024-12-10 15:14:15,822 validators 2024-12-10 15:14:15.822040+00:00
+INFO 2024-12-10 15:14:15,823 validators 2024-12-22 13:48:00+00:00
+INFO 2024-12-10 15:14:15,825 validators 2024-12-10 15:14:15.825255+00:00
+INFO 2024-12-10 15:14:15,826 validators 2024-12-29 13:48:00+00:00
+INFO 2024-12-10 15:14:18,178 middleware Продолжительность запроса /update/0SGVFJO9SIV8VXME0J9JZIGXHZKBQOGMHTL42T6HDJ1Z5W8RVLG3QXXI7G6UVXDVOVEZGTFW3MG6VIDMKCGTD2OCLDBJ6DRZWWFT/ - 2.4074918 сек.
+INFO 2024-12-10 15:14:18,220 middleware Продолжительность запроса / - 0.0285634 сек.

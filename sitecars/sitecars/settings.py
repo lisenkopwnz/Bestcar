@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'users',
     'booking',
     'clear_cache',
-    'common'
+    'common',
+    'django_celery_results',
 
 ]
 
@@ -175,11 +176,12 @@ DEFAULT_USER_IMAGE = MEDIA_URL + 'users/photo.jpg'
 REDIS_HOST = os.getenv('REDIS_HOST', 'localhost')
 REDIS_PORT = os.getenv('REDIS_PORT', '6379')
 
-CELERY_BROKER_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
-CELERY_RESULT_BACKEND = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
-
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', f'redis://{REDIS_HOST}:{REDIS_PORT}/0')
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND', 'django-db')
 CELERY_ACCEPT_CONTENT = os.getenv('CELERY_ACCEPT_CONTENT', 'json').split(',')
 CELERY_TASK_SERIALIZER = os.getenv('CELERY_TASK_SERIALIZER', 'json')
+CELERY_TASK_TRACK_STARTED = os.getenv('CELERY_TASK_TRACK_STARTED', 'False') == 'True'
+CELERY_TASK_IGNORE_RESULT = os.getenv('CELERY_TASK_IGNORE_RESULT', 'False') == 'True'
 
 # ---------------------------- Настройки логирования ---------------------------- #
 
