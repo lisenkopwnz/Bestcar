@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
     {{ title }}
@@ -6,24 +7,26 @@
 
 {% block content %}
 
-{% if mein_trip%}
+<link rel="stylesheet" type="text/css" href="{% static 'users/css/user_trips_current.css' %}">
 
-{% for item in mein_trip  %}
-    <div>
-        <p> {{item.departure}} </p>
-        <p> {{item.arrival}} </p>
-        <p> {{item.departure_time}} </p>
-        <p> {{item.arrival_time}} </p>
-        <p> {{item.departure_time|date:"l:j:M"}} </p>
-        <p> <a href="{% url 'update_user_trip' item.slug %}">Изменить</a></p>
-    </div>
-{% endfor %}
-{% else %}
-
-<h1>Здесь появятся ваши будущие поездки.</h1>
-
-{% endif %}
-
-
-
-{% endblock content%}
+<div class="trip-container">
+    {% if mein_trip %}
+        {% for item in mein_trip %}
+        <div class="trip-card">
+            <h2>{{ item.departure }} - {{ item.arrival }}</h2>
+            <p><strong>Место отправления:</strong> {{ item.departure }}</p>
+            <p><strong>Место прибытия:</strong> {{ item.arrival }}</p>
+            <p><strong>Дата отправления:</strong> {{ item.departure_time|date:"l, j F Y" }}</p>
+            <p><strong>Дата прибытия:</strong> {{ item.arrival_time|date:"l, j F Y" }}</p>
+            <p><strong>Время отправления:</strong> {{ item.departure_time|date:"H:i" }}</p>
+            <p><strong>Время прибытия:</strong> {{ item.arrival_time|date:"H:i" }}</p>
+            <p><strong>Осталось свободных мест:</strong> {{ item.free_seating }}</p>
+            <p><strong>Цена:</strong> {{ item.price }} руб.</p>
+            <p><a class="btn" href="{% url 'update_user_trip' item.slug %}">Изменить</a></p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h1>Здесь появятся ваши будущие поездки.</h1>
+    {% endif %}
+</div>
+{% endblock %}

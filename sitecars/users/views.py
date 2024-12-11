@@ -1,21 +1,23 @@
-from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, PasswordChangeView
-from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponse, HttpResponseRedirect, request, JsonResponse
-from django.shortcuts import render
+
+from django.http import HttpResponseRedirect, JsonResponse
+
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView, ListView
-
-from django.contrib import messages
 
 from bestcar.models import Publishing_a_trip
 from bestcar.utils import DataMixin
 from sitecars import settings
 
-from users.forms import LoginUserForms, UserProfile, User_Password_change_form,Registration_User_Form
+from users.forms import (
+                         LoginUserForms,
+                         UserProfile,
+                         User_Password_change_form,
+                         Registration_User_Form
+                         )
 
 
 class LoginUser(DataMixin, LoginView):
@@ -26,8 +28,6 @@ class LoginUser(DataMixin, LoginView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return self.get_mixin_context(context)
-
-
 
 
 class RegisterUser(DataMixin, CreateView):
@@ -49,7 +49,7 @@ class ProfileUser(DataMixin, LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        return self.get_mixin_context(context, default_image=settings.DEFAULT_USER_IMAGE)
+        return self.get_mixin_context(context)
 
     def get_success_url(self):
         return reverse_lazy('users:profile')
@@ -64,6 +64,20 @@ class Users_Password_change(PasswordChangeView):
     template_name = "users/password_change_form.html"
 
 
+class User_trip(LoginRequiredMixin, DataMixin, ListView):
+    context_object_name = 'mein_trip'
+    template_name = 'users/users_trips_current.html'
+    title_page = 'Ваши поездки'
+
+    def get_queryset(self):
+        mein_trip = Publishing_a_trip.objects.filter(author=self.request.user)
+        return mein_trip
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return self.get_mixin_context(context)
+
+
 @login_required
 def delete_user(request):
     user = request.user
@@ -71,19 +85,3 @@ def delete_user(request):
     return HttpResponseRedirect(reverse('users:register'))
 
 
-class User_trip(LoginRequiredMixin, DataMixin, ListView):
-    context_object_name = 'mein_trip'
-    model = Publishing_a_trip
-    template_name = 'users/users_trips_current.html'
-    title_page = 'Ваши поездки'
-
-    def get_queryset(self):
-        try:
-            mein_trip = Publishing_a_trip.objects.filter(author=self.request.user)
-            return mein_trip
-        except Exception as e:  # Обработка всех типов исключений
-            return JsonResponse({'error': str(e)}, status=500)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return self.get_mixin_context(context)

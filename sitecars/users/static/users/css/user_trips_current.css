@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.trip-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 15px;
+}
+
+.trip-card {
+    background: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+.trip-card h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.trip-card p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.trip-card a.btn {
+    background-color: #007BFF;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.trip-card a.btn:hover {
+    background-color: #0056b3;
+}
+
+.trip-card strong {
+    font-weight: bold;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+}

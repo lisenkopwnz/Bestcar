@@ -41,7 +41,7 @@ class Publishing_a_tripForm(forms.ModelForm):
         """
         cleaned_data = super().clean()
         if cleaned_data['departure_time'] >= cleaned_data['arrival_time']:
-            raise ValidationError('отправления не может быть болше времени прибытия.')
+            raise ValidationError('Отправления не может быть раньше прибытия.')
         return cleaned_data
 
 
