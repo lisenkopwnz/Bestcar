@@ -20,20 +20,14 @@ class Confirmation_services:
     @staticmethod
     @booking_decorator
     def confirmation(trip_slug, request, trip):
+        logger.info(trip)
         try:
             with transaction.atomic():
-                booking = Booking(departure=trip.departure,
-                                  arrival=trip.arrival,
-                                  departure_time=trip.departure_time,
-                                  arrival_time=trip.arrival_time,
-                                  price=trip.price,
-                                  cat=trip.author.category,
-                                  author_trip=trip.author,
-                                  name_companion=request.user,
-                                  slug=trip.slug
+                booking = Booking(trip = trip,
+                                  name_companion=request.user
                                   )
-                logger.info(booking)
                 booking.save()
+                logger.info(booking)
         except (SeatingError, DatabaseError) as e:
             return JsonResponse({
                 "errorMessage": str(e),

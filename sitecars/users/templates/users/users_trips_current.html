@@ -14,8 +14,6 @@
         {% for item in mein_trip %}
         <div class="trip-card">
             <h2>{{ item.departure }} - {{ item.arrival }}</h2>
-            <p><strong>Место отправления:</strong> {{ item.departure }}</p>
-            <p><strong>Место прибытия:</strong> {{ item.arrival }}</p>
             <p><strong>Дата отправления:</strong> {{ item.departure_time|date:"l, j F Y" }}</p>
             <p><strong>Дата прибытия:</strong> {{ item.arrival_time|date:"l, j F Y" }}</p>
             <p><strong>Время отправления:</strong> {{ item.departure_time|date:"H:i" }}</p>

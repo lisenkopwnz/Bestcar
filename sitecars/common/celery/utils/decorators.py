@@ -29,7 +29,7 @@ def email_address_decorator(model: Type[Booking] | Type[Publishing_a_trip]) -> C
                 email_querySet = (
                     Booking.objects
                     .select_related('name_companion')
-                    .filter(slug=instance.slug)
+                    .filter(trip__slug=instance.trip.slug)
                     .values_list('name_companion__email', flat=True)
                 )
 

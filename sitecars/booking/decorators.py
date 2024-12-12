@@ -22,7 +22,7 @@ def booking_decorator(func):
     def wrapper_decorator(trip_slug, request):
         try:
             trip = Publishing_a_trip.objects.select_related('author').get(slug=trip_slug)
-            logger.info(trip.departure_time)
+            logger.info(trip_slug)
             if trip.reserved_seats < trip.free_seating:
                 Publishing_a_trip.objects.filter(slug=trip_slug).update(reserved_seats=F('reserved_seats') + 1)
                 return func(trip_slug, request, trip)

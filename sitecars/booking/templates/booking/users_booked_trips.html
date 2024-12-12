@@ -16,14 +16,14 @@
 
 {% for trip in mein_booked_trip %}
     <div>
-        <p> {{trip.id}} </p>
-        <p> {{trip.departure}} </p>
-        <p> {{trip.arrival}} </p>
-        <p> {{trip.departure_time}} </p>
-        <p> {{trip.arrival_time}} </p>
-        <p> {{trip.cat}} </p>
-        <p> {{trip.price}} </p>
-        <p> {{trip.author_trip}} </p>
+        <p> {{trip.trip.id}} </p>
+        <p> {{trip.trip.departure}} </p>
+        <p> {{trip.trip.arrival}} </p>
+        <p> {{trip.trip.departure_time}} </p>
+        <p> {{trip.trip.arrival_time}} </p>
+        <p> {{trip.trip.cat}} </p>
+        <p> {{trip.trip.price}} </p>
+        <p> {{trip.trip.author_trip}} </p>
         <p><li> <a href="{% url 'booking:delete_reservation' trip.id %}">Удалить</a></li></p>
 
     </div>

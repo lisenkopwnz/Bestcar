@@ -70,7 +70,8 @@ class User_trip(LoginRequiredMixin, DataMixin, ListView):
     title_page = 'Ваши поездки'
 
     def get_queryset(self):
-        mein_trip = Publishing_a_trip.objects.filter(author=self.request.user)
+        mein_trip = (Publishing_a_trip.objects.filter(author=self.request.user)
+                     .defer('reserved_seats','author'))
         return mein_trip
 
     def get_context_data(self, **kwargs):
