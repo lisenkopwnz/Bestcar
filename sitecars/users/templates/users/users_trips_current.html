@@ -21,6 +21,15 @@
             <p><strong>Осталось свободных мест:</strong> {{ item.free_seating }}</p>
             <p><strong>Цена:</strong> {{ item.price }} руб.</p>
             <p><a class="btn" href="{% url 'update_user_trip' item.slug %}">Изменить</a></p>
+            <ul>
+            {% for booking in item.bookings.all %}
+                {% if booking.name_companion.photo %}
+                    <img src="{{ booking.name_companion.photo.url }}" alt="{{ booking.name_companion.username }}">
+                {% else %}
+                    <img src="{% static 'images/logodef.jpg' %}" alt="Default User Photo">
+                {% endif %}
+            {% endfor %}
+            </ul>
         </div>
         {% endfor %}
     {% else %}

@@ -1,7 +1,11 @@
+import logging
+from multiprocessing.util import get_logger
+
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, PasswordChangeView
+from django.db.models import Prefetch
 
 from django.http import HttpResponseRedirect, JsonResponse
 
@@ -10,7 +14,8 @@ from django.views.generic import CreateView, UpdateView, ListView
 
 from bestcar.models import Publishing_a_trip
 from bestcar.utils import DataMixin
-from sitecars import settings
+from booking.models import Booking
+
 
 from users.forms import (
                          LoginUserForms,
@@ -19,6 +24,7 @@ from users.forms import (
                          Registration_User_Form
                          )
 
+logger = logging.getLogger('duration_request_view')
 
 class LoginUser(DataMixin, LoginView):
     form_class = LoginUserForms
@@ -70,9 +76,17 @@ class User_trip(LoginRequiredMixin, DataMixin, ListView):
     title_page = 'Ваши поездки'
 
     def get_queryset(self):
-        mein_trip = (Publishing_a_trip.objects.filter(author=self.request.user)
-                     .defer('reserved_seats','author'))
+        # Используем select_related для подгрузки связанных объектов с использованием FK (например, автор поездки)
+        mein_trip = Publishing_a_trip.objects.filter(author=self.request.user).select_related('author')
+
+        # Используем prefetch_related для бронирований и их фотографий, делаем выборку только нужных полей
+        mein_trip = mein_trip.prefetch_related(
+            Prefetch('bookings',
+                     queryset=Booking.objects.select_related('name_companion').only('name_companion__photo'))
+        )
+
         return mein_trip
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
