@@ -120,13 +120,13 @@ class Delete_a_reservation(DataMixin, BaseView, DeleteView):
     """
         Позволяет удалять одну конкретную поездку
     """
-    # добавь вместо pk слаг
+
     model = Booking
     template_name = 'booking/delete_confirmation.html'
     success_url = reverse_lazy('booking:booked_trips')
 
     def post(self, request, *args, **kwargs):
-        messages.success(request, "Task deleted!")
+        messages.success(request, "Бронирование отменено")
         return super().post(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):

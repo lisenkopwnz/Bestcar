@@ -17,6 +17,17 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 from decouple import config
+import socket
+
+# Изначальные IP-адреса
+INTERNAL_IPS = ['127.0.0.1', ]
+
+# Получаем IP хостовой машины (того устройства, на котором работает Docker)
+ip = socket.gethostbyname(socket.gethostname())
+
+# Добавляем IP-адрес локальной сети (например, 192.168.1.1) в список INTERNAL_IPS
+INTERNAL_IPS += [ip[:-1] + '1']
+
 
 # Загружаем переменные из .env
 load_dotenv()
@@ -53,6 +64,7 @@ INSTALLED_APPS = [
     'clear_cache',
     'common',
     'django_celery_results',
+    'debug_toolbar',
 
 ]
 
@@ -66,6 +78,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_currentuser.middleware.ThreadLocalUserMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'sitecars.urls'
@@ -230,5 +243,7 @@ logging.config.dictConfig({
 ELASTICSEARCH_DSL = {
     'default': {
         'hosts': ['http://elasticsearch:9200'],
+        'timeout': 60,
     }
 }
+

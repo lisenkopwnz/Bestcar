@@ -7,9 +7,23 @@ body {
 }
 
 .trip-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 40px auto;
-    padding: 15px;
+    padding: 0 30px; /* Добавлены отступы слева и справа */
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.alert {
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
 }
 
 .trip-card {
@@ -19,24 +33,32 @@ body {
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
     position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .trip-card h2 {
     font-size: 24px;
     color: #333;
+    margin-bottom: 10px;
 }
 
 .trip-card p {
     font-size: 16px;
-    margin: 10px 0;
+    margin: 8px 0;
 }
 
-.trip-card a.btn {
+.trip-card strong {
+    font-weight: bold;
+    color: #007BFF;
+}
+
+.btn {
     background-color: #007BFF;
     color: #ffffff;
     border: none;
-    padding: 12px 24px;
-    font-size: 18px;
+    padding: 10px 20px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     border-radius: 6px;
@@ -44,22 +66,11 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.trip-card a.btn:hover {
+.btn:hover {
     background-color: #0056b3;
 }
 
-.trip-card strong {
-    font-weight: bold;
-    color: #333;
-}
-
-h1 {
-    text-align: center;
-    font-size: 24px;
-    color: #333;
-}
-
-.trip-card ul {
+ul {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
@@ -70,14 +81,14 @@ h1 {
     padding: 0;
 }
 
-.trip-card ul li {
+ul li {
     list-style-type: none;
 }
 
-.trip-card ul img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #007BFF;
+ul li a.btn-danger {
+    background-color: #d9534f;
+}
+
+ul li a.btn-danger:hover {
+    background-color: #c9302c;
 }

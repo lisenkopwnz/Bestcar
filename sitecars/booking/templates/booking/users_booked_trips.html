@@ -1,34 +1,41 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
     {{ title }}
 {% endblock %}
 
 {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'users/css/profile.css' %}">
 
-{% if messages %}
-    <div class="alert alert-{% if messages.tags %}{{ messages.tags }}{% endif %}">
-        {% for message in messages %}
-            {{ message }}
+    <div class="trip-container">
+        {% if messages %}
+            <div class="alert alert-{{ messages.tags }}">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <h1>Ваши забронированные поездки</h1>
+
+        {% for trip in mein_booked_trip %}
+            <div class="trip-card">
+                <h2>{{ trip.trip.departure }} - {{ trip.trip.arrival }}</h2>
+                <p><strong>Дата отправления:</strong> {{ trip.trip.departure_time }}</p>
+                <p><strong>Дата прибытия:</strong> {{ trip.trip.arrival_time }}</p>
+                <p><strong>Категория:</strong> {{ trip.trip.cat }}</p>
+                <p><strong>Цена:</strong> {{ trip.trip.price }} руб.</p>
+                <p><strong>Автор поездки:</strong> {{ trip.trip.author_trip }}</p>
+
+                <ul>
+                    <li>
+                        <a href="{% url 'booking:delete_reservation' trip.id %}" class="btn btn-danger">Удалить</a>
+                    </li>
+                </ul>
+            </div>
         {% endfor %}
     </div>
-{% endif %}
-
-{% for trip in mein_booked_trip %}
-    <div>
-        <p> {{trip.trip.id}} </p>
-        <p> {{trip.trip.departure}} </p>
-        <p> {{trip.trip.arrival}} </p>
-        <p> {{trip.trip.departure_time}} </p>
-        <p> {{trip.trip.arrival_time}} </p>
-        <p> {{trip.trip.cat}} </p>
-        <p> {{trip.trip.price}} </p>
-        <p> {{trip.trip.author_trip}} </p>
-        <p><li> <a href="{% url 'booking:delete_reservation' trip.id %}">Удалить</a></li></p>
-
-    </div>
-{% endfor %}
-
 {% endblock %}
 
 

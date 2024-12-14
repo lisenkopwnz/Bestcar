@@ -20,18 +20,21 @@ from django.contrib import admin
 from django.urls import path, include
 from bestcar.views import page_not_found
 from sitecars import settings
+import debug_toolbar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('bestcar.urls', )),
     path('users/', include(('users.urls', 'users'), namespace='users')),
-    path('booking/', include(('booking.urls', 'booking'), namespace='booking'))
+    path('booking/', include(('booking.urls', 'booking'), namespace='booking')),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]
 
 handler404 = page_not_found
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 admin.site.site_header = 'Панель администрирования'
 admin.site.index_title = 'Опубликованные поездки'

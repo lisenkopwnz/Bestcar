@@ -40,7 +40,7 @@ class UsersBookedTripsServices:
     def users_booked_trips(**kwargs):
         try:
             user = kwargs['name_companion']
-            return Booking.objects.filter(name_companion=user)
+            return Booking.objects.filter(name_companion=user).select_related('trip')
         except DatabaseError as e:
             return JsonResponse({
                 "errorMessage": str(e),
