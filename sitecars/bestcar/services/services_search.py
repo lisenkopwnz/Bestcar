@@ -1,6 +1,9 @@
 import logging
+from typing import Dict, Any, List
 
 from django.http import Http404
+from elasticsearch_dsl import Search
+from elasticsearch_dsl.search_base import SearchBase
 
 from bestcar.models import Publishing_a_trip
 
@@ -12,8 +15,18 @@ class TripFilterService:
     Производит фильтрацию на основе параметров который задал пользователь
     в форме на главной странице
     """
+    def __init__(self,queryset: SearchBase, data: Dict[str, Any]) -> None:
+        """
+               Конструктор для инициализации объекта с queryset и данными.
+
+               :param queryset: Запрос к Elasticsearch (объект Search).
+               :param data: Словарь данных с ключами типа str и значениями любого типа.
+        """
+        self.queryset = queryset
+        self.data = data
+
     @staticmethod
-    def parse_elastic_hits(result):
+    def parse_elastic_hits(result: Search) -> List[Dict[str, Any]]:
         """
             Парсит результаты поиска из Elasticsearch и извлекает документы.
 
@@ -25,17 +38,21 @@ class TripFilterService:
         documents = [hit['_source'] for hit in hits]
         return documents
 
-    @staticmethod
-    def filter_trip(queryset, data):
-        search_query = queryset.query(
+
+    def filter_trip(self)-> List[Dict[str, Any]]:
+        """
+            Основной метод для фильтрации поездок
+        :return:
+        """
+        search_query = self.queryset.query(
             'bool',
             must=[
-                {'fuzzy': {'departure': {'value': data['departure'], 'fuzziness': 'AUTO'}}},
-                {'fuzzy': {'arrival': {'value': data['arrival'], 'fuzziness': 'AUTO'}}}
+                {'fuzzy': {'departure': {'value': self.data['departure'], 'fuzziness': 'AUTO'}}},
+                {'fuzzy': {'arrival': {'value': self.data['arrival'], 'fuzziness': 'AUTO'}}}
             ],
             filter=[
-                {'range': {'departure_time': {'gte': data['datetime_value']}}},
-                {'range': {'free_seating': {'gte': data['seating']}}}
+                {'range': {'departure_time': {'gte': self.data['datetime_value']}}},
+                {'range': {'free_seating': {'gte': self.data['seating']}}}
             ]
         )
 

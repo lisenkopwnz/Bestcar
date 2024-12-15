@@ -1,14 +1,14 @@
 
 #frame{
 margin: 10px;
-width: 500px; /*высота*/
-height: 400px; /*ширина*/
+width: 500px;
+height: 400px;
 padding: 5px;
 outline-width: 2px;
-outline-style:solid; /*стиль контура*/
-outline-color: #4D88FF ;  /*цвет*/
-margin-bottom: 1rem; /*толщина отступа*/
-border-radius: 13px; /*ширина радиуса в пиксилях*/
+outline-style:solid;
+outline-color: #4D88FF;
+margin-bottom: 1rem;
+border-radius: 13px;
 margin-top: 60px;
 margin-left: 400px;
 }
@@ -19,7 +19,7 @@ height: 35px;
 position: relative;
 top: 170px;
 left: 10px;
-border-radius: 100px; /* Радиус скругления */
+border-radius: 100px;
 border: 2px solid #4D88FF;
 }
 

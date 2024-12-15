@@ -165,9 +165,10 @@ class SearchTrip(DataMixin, ListView):
         if SearchTrip.is_transport_category(cat):
 
             queryset = queryset.filter('term', author__category_name=cat)
-            return TripFilterService.filter_trip( queryset, data)
 
-        return TripFilterService.filter_trip( queryset, data)
+            return TripFilterService(queryset, data).filter_trip()
+
+        return TripFilterService(queryset, data).filter_trip()
 
 
 class Post(DataMixin, LoginRequiredMixin, CreateView):

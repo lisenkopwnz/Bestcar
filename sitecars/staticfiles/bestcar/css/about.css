@@ -1,0 +1,52 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+.content-container {
+    max-width: 900px; /* Ограничение ширины */
+    margin: 50px auto; /* Центрирование блока */
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 10px; /* Закругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для выделения */
+    text-align: justify; /* Выровнять текст по ширине */
+}
+
+h1, h2 {
+    color: #007bff; /* Цвет заголовков */
+    text-align: center; /* Заголовки по центру */
+    margin-bottom: 20px;
+}
+
+p {
+    margin: 15px 0; /* Отступы между абзацами */
+    font-size: 1.1em; /* Увеличение шрифта для улучшения читаемости */
+}
+
+ul {
+    list-style-type: disc;
+    margin: 20px 0;
+    padding-left: 30px;
+    font-size: 1em;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 30px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.author-rights {
+    text-align: center;
+    font-size: 1.1em;
+    color: #888;
+    margin-top: 40px;
+}
