@@ -47,20 +47,13 @@ class BaseView(View):
         return res
 
 
-class Bookings(DataMixin, BaseView, ListView):
+class Bookings(DataMixin, BaseView, DetailView):
     """
         Представление в котором пользователь может ознакомиться с деталями поездки
     """
     model = Publishing_a_trip
-    template_name = 'bestcar/to_book_a_trip.html'
+    template_name = 'booking/to_book_a_trip.html'
     title_page = 'Потверждение'
-
-    def dispatch(self, request, *args, **kwargs):
-        self.trip_slug = kwargs.get('trip_slug')
-        return super().dispatch(request, *args, **kwargs)
-
-    def get_queryset(self):
-        return Bookings_services.bookings_services(slug=self.trip_slug)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -72,7 +65,7 @@ class Checkout(DataMixin, BaseView, DetailView):
          Представление в котором пользователь может проверить детали поездки
      """
     model = Publishing_a_trip
-    template_name = 'bestcar/booking_checkout.html'
+    template_name = 'booking/booking_checkout.html'
     title_page = 'Проверьте детали поездки'
 
     def get_context_data(self, **kwargs):

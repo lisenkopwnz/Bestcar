@@ -5,7 +5,7 @@ from booking.views import Confirmation, Users_booked_trips, Delete_a_reservation
 app_name = 'booking'
 
 urlpatterns = [
-    path('to_book/<slug:trip_slug>/', Bookings.as_view(), name='to_book'),
+    path('to_book/<slug:slug>/', Bookings.as_view(), name='to_book'),
     path('booking/checkout/<slug:slug>/', Checkout.as_view(), name='booking'),
     path('confirm/<slug:trip_slug>/', Confirmation.as_view(), name='confirmation'),
     path('booked_trips/', Users_booked_trips.as_view(), name='booked_trips'),

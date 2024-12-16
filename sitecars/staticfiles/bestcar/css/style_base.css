@@ -1,6 +1,3 @@
-
-
-
 .menu {
     display: flex;
     background: white;
@@ -9,12 +6,10 @@
     padding-left: 0;
     align-items: center;
 
-   /*justify-content: space-between;*/
   }
 
-
 a {
-  text-decoration: none; /* Убираем подчеркивания для ссылок */
+  text-decoration: none;
 }
 
 li {
@@ -27,7 +22,6 @@ li {
   text-decoration: none;
   transition-duration: 0.5s;
 }
-
 
 li a {
   color: #4D88FF;

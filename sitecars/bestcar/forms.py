@@ -71,8 +71,10 @@ class Update_form(forms.ModelForm):
         fields = ['departure', 'arrival',  'departure_time', 'arrival_time']
 
         labels = {
-            'departure': 'Введите место отправление ',
-            'arrival': 'Введите место прибытия '
+            'departure': 'Введите место отправления:',
+            'arrival': 'Введите место прибытия:',
+            'departure_time': 'Введите время отправления:',
+            'arrival_time': 'Введите время прибытия:',
         }
 
         widgets = {'departure_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
