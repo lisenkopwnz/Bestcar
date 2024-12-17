@@ -1,18 +1,16 @@
 import logging
 
 from django.utils import timezone
+from django.urls import reverse_lazy
 
 from bestcar.services.services_search import TripFilterService, User_trip_object
 from bestcar.utils import DataMixin
 from bestcar.models import *
 from bestcar.forms import Update_form, Publishing_a_tripForm, SearchForm
+
 from common.elasticsearch.document import PublishingTripDocument
 from common.services.services import elasticsearch_formatting_date
 
-
-from sitecars import settings
-
-from django.urls import reverse_lazy
 from django.http import HttpResponseNotFound, Http404, JsonResponse, HttpResponseRedirect
 from django.views.generic import ListView, CreateView, TemplateView, UpdateView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -23,8 +21,8 @@ logger = logging.getLogger('duration_request_view')
 
 class BaseView(View):
     """ Базовый класс который отлавливает все исклюяения ,которые
-        не были обработаны ранее """
-
+        не были обработаны ранее
+    """
     def dispatch(self, request, *args, **kwargs):
         try:
             response = super().dispatch(request, *args, **kwargs)
@@ -52,7 +50,10 @@ class BaseView(View):
         return res
 
 
-class HomeBestcar(DataMixin, TemplateView):
+class HomeBestcar(DataMixin, BaseView, TemplateView):
+    """
+        Представление которое обрабатывает главную страницу
+    """
     form_class = SearchForm
     model = Publishing_a_trip
     template_name = 'bestcar/index.html'
@@ -64,7 +65,7 @@ class HomeBestcar(DataMixin, TemplateView):
         return self.get_mixin_context(context)
 
 
-class Bus_trip(DataMixin, ListView):
+class Bus_trip(DataMixin, BaseView, ListView):
     form_class = SearchForm
     model = Publishing_a_trip
     template_name = 'bestcar/bus_trip.html'
@@ -76,7 +77,7 @@ class Bus_trip(DataMixin, ListView):
         return self.get_mixin_context(context)
 
 
-class Car_trip(DataMixin, ListView):
+class Car_trip(DataMixin, BaseView, ListView):
     form_class = SearchForm
     model = Publishing_a_trip
     template_name = 'bestcar/car_trip.html'
@@ -88,7 +89,7 @@ class Car_trip(DataMixin, ListView):
         return self.get_mixin_context(context)
 
 
-class SearchTrip(DataMixin, ListView):
+class SearchTrip(DataMixin, BaseView, ListView):
     """
         Класс для поиска поездок с использованием формы поиска и фильтрации данных.
         Наследует от ListView и DataMixin для работы с шаблонами и контекстом.
@@ -112,7 +113,6 @@ class SearchTrip(DataMixin, ListView):
             :return: словарь с данными формы и дополнительной информацией из GET-запроса.
         """
         if form.is_valid():
-
             # Данные формы
             departure = form.cleaned_data['departure']
             arrival = form.cleaned_data['arrival']
@@ -150,7 +150,6 @@ class SearchTrip(DataMixin, ListView):
 
         # Создаем запрос для поиска документов,
         # где значение поля departure_time больше или равно текущему времени
-
         queryset = PublishingTripDocument.search().filter(
             'range', departure_time={'gte': elasticsearch_formatting_date(timezone.now())}
         )
@@ -176,11 +175,6 @@ class Post(DataMixin, LoginRequiredMixin, CreateView):
     template_name = 'bestcar/post.html'
     success_url = reverse_lazy('home')
     title_page = 'Опубликовать поездку'
-
-    def form_valid(self, form):
-        w = form.save(commit=False)
-        w.author = self.request.user
-        return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

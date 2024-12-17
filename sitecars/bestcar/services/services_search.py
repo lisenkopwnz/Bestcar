@@ -6,6 +6,7 @@ from elasticsearch_dsl import Search
 from elasticsearch_dsl.search_base import SearchBase
 
 from bestcar.models import Publishing_a_trip
+from bestcar.models.publishing_trip_dto import TripDTO
 
 logger = logging.getLogger('duration_request_view')
 
@@ -26,23 +27,22 @@ class TripFilterService:
         self.data = data
 
     @staticmethod
-    def parse_elastic_hits(result: Search) -> List[Dict[str, Any]]:
+    def parse_elastic_hits(result: Search) -> List[TripDTO]:
         """
-            Парсит результаты поиска из Elasticsearch и извлекает документы.
+        Парсит результаты поиска из Elasticsearch и извлекает документы как объекты TripDTO.
 
             :param result: объект результата поиска, полученный от Elasticsearch.
-            :return: список документов (словарей) из поля '_source' каждого хита.
+            :return: список объектов TripDTO.
         """
         result = (result.execute().to_dict())
         hits = result['hits']['hits']
-        documents = [hit['_source'] for hit in hits]
+        documents = [TripDTO.from_dict(hit['_source']) for hit in hits]
         return documents
 
 
-    def filter_trip(self)-> List[Dict[str, Any]]:
+    def filter_trip(self)-> List[TripDTO]:
         """
             Основной метод для фильтрации поездок
-        :return:
         """
         search_query = self.queryset.query(
             'bool',

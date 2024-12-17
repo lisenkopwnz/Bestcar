@@ -1,6 +1,6 @@
-from django.core.exceptions import ValidationError
 from django.db import models
 from django.contrib.auth import get_user_model
+from django_currentuser.middleware import get_current_user
 
 from bestcar.managers import CarManager, BusManager, ObjectManager
 from bestcar.services.services import generate_slug
@@ -74,9 +74,12 @@ class Publishing_a_trip(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Переопределяет метод сохранения для автоматической генерации slug,
-        если он отсутствует.
+        Переопределяет метод сохранения для автоматической генерации slug
+        и добавления поля автор если они отсутствует.
         """
+        # Добавляем значение поля author
+        self.author = get_current_user()
+
         if not self.slug:
             self.slug = generate_slug(100)
         super().save(*args, **kwargs)

@@ -17,7 +17,7 @@
             <!-- Фото автора -->
             <div class="author_info">
                 <img
-                    src="{{ item.author.photo}}"
+                    src="{{ item.photo}}"
                     alt="Фото автора"
                     class="author_photo"
                 />
@@ -28,14 +28,14 @@
             <p class="arrival_time">{{ item.arrival_time|date:"H:i" }}</p>
             <p class="price">{{ item.price }} ₽</p>
 
-            {% if item.author.category_name == 'Автобус' %}
+            {% if item.category_name == 'Автобус' %}
                 <img src="{% static 'bestcar/images/avtobus.png' %}" width="65" height="30" class="logo_cat" />
             {% else %}
                 <img src="{% static 'bestcar/images/car.png' %}" width="65" height="30" class="logo_cat" />
             {% endif %}
 
-            <p class="models_auto">{{ item.author.models_auto }}</p>
-            <p class="username">{{ item.author.username }}</p>
+            <p class="models_auto">{{ item.models_auto }}</p>
+            <p class="username">{{ item.username }}</p>
         </div>
     </a>
     {% endfor %}
