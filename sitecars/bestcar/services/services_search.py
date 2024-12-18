@@ -1,11 +1,9 @@
 import logging
 from typing import Dict, Any, List
 
-from django.http import Http404
 from elasticsearch_dsl import Search
 from elasticsearch_dsl.search_base import SearchBase
 
-from bestcar.models import Publishing_a_trip
 from bestcar.models.publishing_trip_dto import TripDTO
 
 logger = logging.getLogger('duration_request_view')
@@ -58,16 +56,3 @@ class TripFilterService:
 
         results = TripFilterService.parse_elastic_hits(search_query)
         return results
-
-
-class User_trip_object:
-    """
-        Проверякм объект поездки на существование
-    """
-
-    @staticmethod
-    def users_trip_object(slug: str) -> None:
-        if Publishing_a_trip.objects.filter(slug=slug).exists():
-            return
-        else:
-            raise Http404('Похоже эта поездка больше не существует')

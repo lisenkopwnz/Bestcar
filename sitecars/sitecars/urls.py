@@ -14,13 +14,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls import handler404
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from bestcar.views import page_not_found
 from sitecars import settings
-import debug_toolbar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,7 +27,7 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
 ]
 
-handler404 = page_not_found
+handler404 = 'bestcar.views.page_not_found'
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

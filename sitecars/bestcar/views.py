@@ -3,7 +3,8 @@ import logging
 from django.utils import timezone
 from django.urls import reverse_lazy
 
-from bestcar.services.services_search import TripFilterService, User_trip_object
+from bestcar.services.repository import Repository
+from bestcar.services.services_search import TripFilterService
 from bestcar.utils import DataMixin
 from bestcar.models import *
 from bestcar.forms import Update_form, Publishing_a_tripForm, SearchForm
@@ -11,7 +12,7 @@ from bestcar.forms import Update_form, Publishing_a_tripForm, SearchForm
 from common.elasticsearch.document import PublishingTripDocument
 from common.services.services import elasticsearch_formatting_date
 
-from django.http import HttpResponseNotFound, Http404, JsonResponse, HttpResponseRedirect
+from django.http import HttpResponseNotFound, Http404, JsonResponse
 from django.views.generic import ListView, CreateView, TemplateView, UpdateView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -190,24 +191,19 @@ class Update_user_trip(DataMixin, BaseView, UpdateView):
     template_name = 'bestcar/update.html'
     success_url = reverse_lazy('home')
     title_page = 'Форма для изменения данных поездки'
+    repository = Repository(Publishing_a_trip)
 
     def get(self, request, *args, **kwargs):
+        slug = kwargs['slug']
         try:
-            slug = kwargs['slug']
-            User_trip_object.users_trip_object(slug)
-            logger.info('запись успешно найдена')
+            if self.repository.exists(slyg=slug):
+                raise Http404('Похоже поездка больше не существует')
             return super().get(self, request, *args, **kwargs)
         except Http404 as e:
-            logger.error(f'произошла ошибка {e}')
             return JsonResponse({
                 "errorMessage": str(e),
                 "status": 400
             })
-
-    def form_valid(self, form):
-        # здесь нужно дабавить отправку сигнала ввиде сообщения об изменениях в поездке
-        self.object = form.save()
-        return HttpResponseRedirect(self.get_success_url())
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -215,7 +211,7 @@ class Update_user_trip(DataMixin, BaseView, UpdateView):
 
 
 def page_not_found(request, exception):
-    return HttpResponseNotFound("<h>Упс ,что пошло не так</h>")
+    return HttpResponseNotFound("<h1>Упс, что пошло не так</h1>")
 
 
 class About(DataMixin, TemplateView):
