@@ -10,12 +10,12 @@ from bestcar.models import *
 from bestcar.forms import Update_form, Publishing_a_tripForm, SearchForm
 
 from common.elasticsearch.document import PublishingTripDocument
-from common.services.services import elasticsearch_formatting_date
 
 from django.http import HttpResponseNotFound, Http404, JsonResponse
 from django.views.generic import ListView, CreateView, TemplateView, UpdateView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from common.utils.services.services import elasticsearch_formatting_date
 
 logger = logging.getLogger('duration_request_view')
 

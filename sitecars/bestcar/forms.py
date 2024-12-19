@@ -124,4 +124,3 @@ class SearchForm(forms.Form):
     datetime = forms.DateTimeField(widget=forms.DateTimeInput(
                                         attrs={'type': 'datetime-local'})
     )
-
