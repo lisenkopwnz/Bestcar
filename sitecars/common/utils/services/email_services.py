@@ -6,8 +6,8 @@ from django.utils.html import strip_tags
 
 class EmailMessageBuilder:
     """
-    Класс для построения email-сообщений с текстовой и HTML версиями.
-    Используется для упрощения процесса создания и отправки писем.
+    РљР»Р°СЃСЃ РґР»СЏ РїРѕСЃС‚СЂРѕРµРЅРёСЏ email-СЃРѕРѕР±С‰РµРЅРёР№ СЃ С‚РµРєСЃС‚РѕРІРѕР№ Рё HTML РІРµСЂСЃРёСЏРјРё.
+    РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ СѓРїСЂРѕС‰РµРЅРёСЏ РїСЂРѕС†РµСЃСЃР° СЃРѕР·РґР°РЅРёСЏ Рё РѕС‚РїСЂР°РІРєРё РїРёСЃРµРј.
     """
 
     def __init__(
@@ -19,13 +19,13 @@ class EmailMessageBuilder:
         recipient_emails: List[str]
     ) -> None:
         """
-        Инициализирует объект EmailMessageBuilder.
+        РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РѕР±СЉРµРєС‚ EmailMessageBuilder.
 
-        :param subject: Тема письма
-        :param template_name: Имя шаблона для рендеринга
-        :param context: Контекст для рендеринга шаблона
-        :param sender_email: Список email-адресов отправителей
-        :param recipient_emails: Список email-адресов получателей
+        :param subject: РўРµРјР° РїРёСЃСЊРјР°
+        :param template_name: РРјСЏ С€Р°Р±Р»РѕРЅР° РґР»СЏ СЂРµРЅРґРµСЂРёРЅРіР°
+        :param context: РљРѕРЅС‚РµРєСЃС‚ РґР»СЏ СЂРµРЅРґРµСЂРёРЅРіР° С€Р°Р±Р»РѕРЅР°
+        :param sender_email: РЎРїРёСЃРѕРє email-Р°РґСЂРµСЃРѕРІ РѕС‚РїСЂР°РІРёС‚РµР»РµР№
+        :param recipient_emails: РЎРїРёСЃРѕРє email-Р°РґСЂРµСЃРѕРІ РїРѕР»СѓС‡Р°С‚РµР»РµР№
         """
         self.subject = subject
         self.template_name = template_name
@@ -35,25 +35,25 @@ class EmailMessageBuilder:
 
     def _render_html_message(self) -> str:
         """
-        Рендерит HTML-сообщение на основе шаблона и контекста.
+        Р РµРЅРґРµСЂРёС‚ HTML-СЃРѕРѕР±С‰РµРЅРёРµ РЅР° РѕСЃРЅРѕРІРµ С€Р°Р±Р»РѕРЅР° Рё РєРѕРЅС‚РµРєСЃС‚Р°.
 
-        :return: Сформированное HTML-сообщение.
+        :return: РЎС„РѕСЂРјРёСЂРѕРІР°РЅРЅРѕРµ HTML-СЃРѕРѕР±С‰РµРЅРёРµ.
         """
         return render_to_string(self.template_name, self.context)
 
     def _strip_html_tags(self) -> str:
         """
-        Удаляет HTML-теги из HTML-сообщения для получения текстовой версии.
+        РЈРґР°Р»СЏРµС‚ HTML-С‚РµРіРё РёР· HTML-СЃРѕРѕР±С‰РµРЅРёСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ С‚РµРєСЃС‚РѕРІРѕР№ РІРµСЂСЃРёРё.
 
-        :return: Текстовое сообщение без HTML-тегов.
+        :return: РўРµРєСЃС‚РѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ Р±РµР· HTML-С‚РµРіРѕРІ.
         """
         return strip_tags(self._render_html_message())
 
     def build_message(self) -> EmailMultiAlternatives:
         """
-        Создает и возвращает объект EmailMultiAlternatives для отправки email.
+        РЎРѕР·РґР°РµС‚ Рё РІРѕР·РІСЂР°С‰Р°РµС‚ РѕР±СЉРµРєС‚ EmailMultiAlternatives РґР»СЏ РѕС‚РїСЂР°РІРєРё email.
 
-        :return: Объект EmailMultiAlternatives с текстовой и HTML версиями.
+        :return: РћР±СЉРµРєС‚ EmailMultiAlternatives СЃ С‚РµРєСЃС‚РѕРІРѕР№ Рё HTML РІРµСЂСЃРёСЏРјРё.
         """
 
         msg = EmailMultiAlternatives(

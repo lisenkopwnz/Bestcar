@@ -24,10 +24,10 @@ class Confirmation_services:
         try:
             with transaction.atomic():
                 booking = Booking(trip = trip,
-                                  name_companion=request.user
+                                  name_companion=request.user,
+                                  slug = trip.slug
                                   )
                 booking.save()
-                logger.info(booking)
         except (SeatingError, DatabaseError) as e:
             return JsonResponse({
                 "errorMessage": str(e),

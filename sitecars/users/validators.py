@@ -5,8 +5,8 @@ from django.core.exceptions import ValidationError
 import inspect
 
 
-class Validators_date_model:
-    def __init__(self, message='Номер телефона должен начинаться с +7 и содержать 10 цифр.'):
+class Number_phone_validator:
+    def __init__(self, message='РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РґРѕР»Р¶РµРЅ РЅР°С‡РёРЅР°С‚СЊСЃСЏ СЃ +7 Рё СЃРѕРґРµСЂР¶Р°С‚СЊ 10 С†РёС„СЂ.'):
         self.message = message
 
     def __call__(self, value):

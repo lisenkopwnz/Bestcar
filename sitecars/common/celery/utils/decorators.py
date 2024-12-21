@@ -6,10 +6,10 @@ from booking.models import Booking
 
 from typing import Callable, Type, Any, List
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger()
 
 
-def email_address_decorator(model: Type[Booking] | Type[Publishing_a_trip]) -> Callable:
+def email_address_decorator(model: Type) -> Callable:
 
     """
     Декоратор декорирует функцию обработчик сигнала принимает объект модели который используется в сигнале,
@@ -19,33 +19,37 @@ def email_address_decorator(model: Type[Booking] | Type[Publishing_a_trip]) -> C
 
     :return func: Обернутая функция, которая принимает стандартные параметры сигнала.
     """
+
+    model_to_get_email = {
+        'Booking': lambda instance: (
+            Publishing_a_trip.objects
+            .select_related('author')
+            .filter(slug=instance.slug)
+            .values_list('author__email', flat=True)
+        ),
+        'Publishing_a_trip': lambda instance: (
+            Booking.objects
+            .select_related('name_companion')
+            .filter(slug=instance.slug)
+            .values_list('name_companion__email', flat=True)
+        ),
+    }
+
     def decorator(func: Callable) -> Callable:
         @functools.wraps(func)
         def wrapper(sender: Any, instance: Any, created: bool | None = None, **kwargs: Any) -> Any:
 
-            email_querySet = None
+            model_name = model.__name__  # Получаем имя модели
+            email_logic = model_to_get_email.get(model_name)  # Достаем логику из словаря
+            logger.info(email_logic)
 
-            if model == Booking:
-                email_querySet = (
-                    Booking.objects
-                    .select_related('name_companion')
-                    .filter(trip__slug=instance.trip.slug)
-                    .values_list('name_companion__email', flat=True)
-                )
+            if email_logic is None:
+                logging.error(f"Неизвестная модель: {model_name}")
+                email_list: List[str] = []
+            else:
+                email_querySet = email_logic(instance)
+                email_list: List[str] = list(email_querySet)
 
-            if model == Publishing_a_trip:
-                email_querySet = (
-                    Publishing_a_trip.objects
-                    .select_related('author')
-                    .filter(slug=instance.slug)
-                    .values_list('author__email', flat=True)
-                )
-
-            if email_querySet is None:
-                logging.error(f"Неизвестная модель: {model}")
-
-            # Преобразуем QuerySet в список
-            email_list: List[str] = list(email_querySet) if email_querySet else []
             logging.info(f'{email_list} успешно возвращены')
 
             match created:

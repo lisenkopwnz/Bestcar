@@ -8,6 +8,7 @@ from bestcar.validators import Validators_date_model
 from common.utils.validators import address_validator
 
 
+
 class Publishing_a_trip(models.Model):
     """
         Модель, представляющая информацию о поездке.

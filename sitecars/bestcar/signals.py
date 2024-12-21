@@ -30,22 +30,17 @@ def notify_about_change(
         now = timezone.now()
         from_email = settings.EMAIL_HOST_USER
 
-        # Создаём сообщение с помощью EmailMessageBuilder
-        msg = EmailMessageBuilder(
-            subject = 'Информация об изменении в параметрах поездки',
+        # Передаем данные в задачу Celery
+        send_email_task.delay(
+            subject='Информация об изменении в параметрах поездки',
             template_name = 'email.html',
-            context = {
+            context={
                 'information': f'Ваш водитель {instance.author.username} изменил условия поездки',
                 'current_data': now.strftime("%Y-%m-%d %H:%M")
             },
-            sender_email = email_list,
-            recipient_emails = from_email
+            sender_email=from_email,
+            recipient_emails=email_list
         )
-        message = msg.build_message()
-
-        # Передаём сообщение в Celery задачу для отправки
-        send_email_task.delay(message)
-
 
 @receiver(post_delete, sender=Publishing_a_trip)
 @email_address_decorator(model=Publishing_a_trip)
@@ -55,25 +50,22 @@ def notify_about_delete(
                     email_list: List[str],
                     **kwargs: dict
                 ) -> None:
-    """ Сигнал который оповещает пользовотелей забронировавших поездку об удалении
-        поездки автором роздки.
+    """
+    Сигнал который оповещает пользовотелей забронировавших поездку об удалении
+    поездки автором роздки.
     """
     # получаем текущую дату и время
     now = timezone.now()
     from_email = settings.EMAIL_HOST_USER
 
     # Создаём сообщение с помощью EmailMessageBuilder
-    msg = EmailMessageBuilder(
+    send_email_task.delay(
         subject='Информация об изменении в параметрах поездки',
         template_name='email.html',
         context={
-        'information': f'{instance.author.username} удалил поездку',
-        'current_data': now.strftime("%Y-%m-%d %H:%M")
+            'information': f'{instance.author.username} удалил поездку',
+            'current_data': now.strftime("%Y-%m-%d %H:%M")
         },
-        sender_email=email_list,
-        recipient_emails=from_email
+        sender_email=from_email,
+        recipient_emails=email_list
     )
-    message = msg.build_message()
-
-    # Передаём сообщение в Celery задачу для отправки
-    send_email_task.delay(message)

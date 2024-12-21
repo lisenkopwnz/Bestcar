@@ -196,7 +196,7 @@ class Update_user_trip(DataMixin, BaseView, UpdateView):
     def get(self, request, *args, **kwargs):
         slug = kwargs['slug']
         try:
-            if self.repository.exists(slyg=slug):
+            if not self.repository.exists(slug=slug):
                 raise Http404('Похоже поездка больше не существует')
             return super().get(self, request, *args, **kwargs)
         except Http404 as e:

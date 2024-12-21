@@ -6,7 +6,7 @@ import inspect
 logger = logging.getLogger('duration_request_view')
 
 
-class ValidatorsDateModel:
+class Validators_date_model:
     """
     Валидатор для проверки даты. Убедитесь, что введённая дата не меньше текущей.
     """

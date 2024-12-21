@@ -14,7 +14,11 @@ class Booking(models.Model):
     name_companion: models.ForeignKey = models.ForeignKey(
         get_user_model(),
         verbose_name="Имя пассажира",
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+    )
+    slug: str = models.SlugField(
+        max_length=100,
+        db_index=True,
     )
 
     class Meta:
