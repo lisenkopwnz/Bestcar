@@ -6,7 +6,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 from bestcar.models import Category
 from common.utils.validators import name_validator, model_auto_validator
-from users.validators import Number_phone_validator
+from users.validators import NumberPhoneValidator
 
 
 class User(AbstractUser):
@@ -44,7 +44,7 @@ class User(AbstractUser):
     phone_number: PhoneNumberField = PhoneNumberField(
         unique=True,
         verbose_name='Номер телефона',
-        validators=[Number_phone_validator,]
+        validators=[NumberPhoneValidator,]
     )
     email: str = models.EmailField(
         unique=True,

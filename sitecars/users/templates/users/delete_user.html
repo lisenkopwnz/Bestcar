@@ -8,11 +8,11 @@
      <link rel="stylesheet" type="text/css" href="{% static 'users/css/confirmation_deletion.css' %}">
 </head>
 <body>
-    <h1>Вы уверены, что хотите удалить поездку?</h1>
+    <h1>Вы уверены, что хотите удалить аккаунт?</h1>
     <form method="post">
         {% csrf_token %}
         <button type="submit">Да, удалить</button>
-        <a href="{% url 'users:trips_current'%}">Отмена</a>
+        <a href="{% url 'users:profile'%}">Отмена</a>
     </form>
 </body>
 </html>

@@ -2,23 +2,18 @@ import logging
 
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, PasswordChangeView
 
 from django.db.models import Prefetch
 
-from django.http import HttpResponseRedirect, JsonResponse
-
-from django.urls import reverse, reverse_lazy
-
 from django.views.generic import CreateView, UpdateView, ListView, DeleteView
-
+from django.urls import reverse_lazy
 from bestcar.models import Publishing_a_trip
-from bestcar.utils import DataMixin
 from booking.models import Booking
+from common.utils.base_view import BaseView
 from common.utils.repository.django_orm_repository import ORMRepository
-
+from bestcar.utils import DataMixin
 from users.forms import (
                          LoginUserForms,
                          UserProfile,
@@ -29,7 +24,7 @@ from users.forms import (
 logger = logging.getLogger('duration_request_view')
 
 
-class LoginUser(DataMixin, LoginView):
+class LoginUser(DataMixin, BaseView, LoginView):
     """Предстовление отвечающее за вход зарегестрированного пользователя в систему"""
     form_class = LoginUserForms
     template_name = 'users/login.html'
@@ -40,7 +35,7 @@ class LoginUser(DataMixin, LoginView):
         return self.get_mixin_context(context)
 
 
-class RegisterUser(DataMixin, CreateView):
+class RegisterUser(DataMixin, BaseView, CreateView):
     """Предстовление отвечающее за регестрацию пользователя в системе"""
     form_class = Registration_User_Form
     template_name = 'users/registration.html'
@@ -52,7 +47,7 @@ class RegisterUser(DataMixin, CreateView):
         return self.get_mixin_context(context)
 
 
-class ProfileUser(DataMixin, LoginRequiredMixin, UpdateView):
+class ProfileUser(DataMixin, BaseView, LoginRequiredMixin, UpdateView):
     """Предстовление отвечающее за профиль пользователя """
     model = get_user_model()
     form_class = UserProfile
@@ -77,15 +72,15 @@ class Users_Password_change(PasswordChangeView):
     template_name = "users/password_change_form.html"
 
 
-class User_trip(LoginRequiredMixin, DataMixin, ListView):
-    """Предстовление отвечающее за отображения списка опубликованных поездок аользователя """
+class User_trip(LoginRequiredMixin, BaseView, DataMixin, ListView):
+    """Предстовление отвечающее за отображения списка опубликованных поездок пользователя """
     context_object_name = 'mein_trip'
     template_name = 'users/users_trips_current.html'
     title_page = 'Ваши поездки'
     repository = ORMRepository(Publishing_a_trip)
 
     def get_queryset(self):
-        "Получаем поездки пользователя а также дополнительнуэ информацию о нем"
+        """Получаем поездки пользователя а также дополнительнуэ информацию о нем"""
         mein_trip = self.repository.filter(author=self.request.user).select_related('author')
 
         mein_trip = mein_trip.prefetch_related(
@@ -100,7 +95,8 @@ class User_trip(LoginRequiredMixin, DataMixin, ListView):
         return self.get_mixin_context(context)
 
 
-class DeleteUser(DeleteView):
+class DeleteUserTrip(BaseView, DeleteView):
+    """Предстовление отвечающее за удаление опубликованной поездки пользователя """
     model = Publishing_a_trip
     template_name = 'users/confirmation_deletion.html'
     success_url = reverse_lazy('users:trips_current')
@@ -110,10 +106,11 @@ class DeleteUser(DeleteView):
         return super().post(request, *args, **kwargs)
 
 
-@login_required
-def delete_user(request):
-    user = request.user
-    user.delete()
-    return HttpResponseRedirect(reverse('users:register'))
+class DeleteUser(BaseView, DeleteView):
+    """Предстовление отвечающее за удаление аккаунта пользователя """
+    model = get_user_model()
+    template_name = 'users/delete_user.html'
+    success_url = reverse_lazy('users:register')
 
-
+    def get_object(self, queryset=None):
+        return self.request.user

@@ -12,9 +12,9 @@ logger = logging.getLogger('duration_request_view')
 @contextmanager
 def calc_sql_time(sql: str) -> None:
     """
-     онтекстный менеджер дл¤ логировани¤ времени выполнени¤ SQL-запроса.
+    Контекстный менеджер для логирования времени выполнени¤ SQL-запроса.
 
-    :param sql: SQL-запрос, дл¤ которого будет логироватьс¤ врем¤ выполнени¤.
+    :param sql: SQL-запрос, дл¤ которого будет логироваться врем¤ выполнени¤.
     """
     timestamp = time.monotonic()
     logger.info(f'Ќачало выполнени¤ запроса: {sql}')  # Ћогируем начало выполнени¤ запроса
@@ -26,7 +26,7 @@ def calc_sql_time(sql: str) -> None:
 class CursorWrapper(DjangoCursorWrapper):
     def execute(self, sql: str, params: list = None) -> None:
         """
-        ¬ыполн¤ет SQL-запрос и логирует его продолжительность.
+        Выполн¤ет SQL-запрос и логирует его продолжительность.
         """
         with calc_sql_time(sql):  # »спользуем контекстный менеджер дл¤ логировани¤ времени запроса
             return super().execute(sql, params)
@@ -34,7 +34,7 @@ class CursorWrapper(DjangoCursorWrapper):
 
 class DatabaseWrapper(DjangoDatabaseWrapper):
     """
-    —оздает курсор дл¤ выполнени¤ SQL-запросов.
+    Cоздает курсор для выполнени¤ SQL-запросов.
     """
 
     def create_cursor(self, name: str = None) -> CursorWrapper:

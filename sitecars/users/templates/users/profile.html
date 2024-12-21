@@ -118,17 +118,13 @@
         </div>
 
         <p><button type="submit">Сохранить</button></p>
+        <a href="{% url 'users:delete_user' %}" class="btn_delete">Удалить аккаунт</a>
 
     </form>
 
     <form action="{% url 'users:password_change' %}" method="post">
                   {% csrf_token %}
         <button type="submit" class="btn btn-info">Сменить пароль</button>
-    </form>
-
-    <form action="{% url 'users:delete' %}" method="post">
-                  {% csrf_token %}
-        <button type="submit" class="btn btn-info">Удалить аккаунт</button>
     </form>
 
     <form action="{% url 'users:logout' %}" method="post">

@@ -9,46 +9,41 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+
 import logging.config
 import os
 import sys
-
+import socket
 from pathlib import Path
 from dotenv import load_dotenv
-
 from decouple import config
-import socket
 
-# Изначальные IP-адреса
-INTERNAL_IPS = ['127.0.0.1', ]
+# ---------------------------- Initial Setup ---------------------------- #
 
-# Получаем IP хостовой машины (того устройства, на котором работает Docker)
-ip = socket.gethostbyname(socket.gethostname())
-
-# Добавляем IP-адрес локальной сети (например, 192.168.1.1) в список INTERNAL_IPS
-INTERNAL_IPS += [ip[:-1] + '1']
-
-
-# Загружаем переменные из .env
+# Load environment variables
 load_dotenv()
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Base directory of the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Extend Python path to include common directory
 sys.path.append(os.path.join(BASE_DIR, 'common'))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
+# ---------------------------- Security Settings ---------------------------- #
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-k20078$#n&--mcid55e^481&c4z)m(p3v*=si748mi$n1s@klq'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
 
-# Application definition
+# ---------------------------- Internal IPs ---------------------------- #
+
+INTERNAL_IPS = ['127.0.0.1']
+
+# Add local network IP to INTERNAL_IPS
+ip = socket.gethostbyname(socket.gethostname())
+INTERNAL_IPS += [ip[:-1] + '1']
+
+# ---------------------------- Installed Applications ---------------------------- #
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -65,8 +60,9 @@ INSTALLED_APPS = [
     'common',
     'django_celery_results',
     'debug_toolbar',
-
 ]
+
+# ---------------------------- Middleware ---------------------------- #
 
 MIDDLEWARE = [
     'sitecars.middleware.LoggingMiddleware',
@@ -81,7 +77,11 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
+# ---------------------------- URL Configuration ---------------------------- #
+
 ROOT_URLCONF = 'sitecars.urls'
+
+# ---------------------------- Templates ---------------------------- #
 
 TEMPLATES = [
     {
@@ -101,10 +101,11 @@ TEMPLATES = [
     },
 ]
 
+# ---------------------------- WSGI Application ---------------------------- #
+
 WSGI_APPLICATION = 'sitecars.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+# ---------------------------- Database Configuration ---------------------------- #
 
 DATABASES = {
     'default': {
@@ -120,8 +121,7 @@ DATABASES = {
     }
 }
 
-# Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
+# ---------------------------- Authentication ---------------------------- #
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -138,56 +138,48 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'users.authentication.AuthenticationUserBackend',
+]
+
+AUTH_USER_MODEL = 'users.User'
+
+# ---------------------------- Internationalization ---------------------------- #
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
+# ---------------------------- Static and Media Files ---------------------------- #
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
-LOGIN_URL = 'users:login'
-
-AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend',
-                           'users.authentication.AuthenticationUserBackend']
-
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-
-#EMAIL_HOST_PASSWORD = 'acqozotcczqitrre'
-
-EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_PORT = '465'
-EMAIL_HOST_USER = 'pal3noa@yandex.ru'
-EMAIL_HOST_PASSWORD = 'acqozotcczqitrre'
-EMAIL_USE_SSL = True
-
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-SERVER_EMAIL = EMAIL_HOST_USER
-EMAIL_ADMIN = EMAIL_HOST_USER
-
-AUTH_USER_MODEL = 'users.User'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 DEFAULT_USER_IMAGE = MEDIA_URL + 'users/photo.jpg'
 
-# ---------------------------- Настройка брокера сообшений ---------------------------- #
+# ---------------------------- Login and Redirects ---------------------------- #
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+LOGIN_URL = 'users:login'
+
+# ---------------------------- Email Configuration ---------------------------- #
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = '465'
+EMAIL_HOST_USER = 'pal3noa@yandex.ru'
+EMAIL_HOST_PASSWORD = 'acqozotcczqitrre'
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_ADMIN = EMAIL_HOST_USER
+
+# ---------------------------- Celery Configuration ---------------------------- #
 
 REDIS_HOST = os.getenv('REDIS_HOST', 'localhost')
 REDIS_PORT = os.getenv('REDIS_PORT', '6379')
@@ -199,7 +191,7 @@ CELERY_TASK_SERIALIZER = os.getenv('CELERY_TASK_SERIALIZER', 'json')
 CELERY_TASK_TRACK_STARTED = os.getenv('CELERY_TASK_TRACK_STARTED', 'False') == 'True'
 CELERY_TASK_IGNORE_RESULT = os.getenv('CELERY_TASK_IGNORE_RESULT', 'False') == 'True'
 
-# ---------------------------- Настройки логирования ---------------------------- #
+# ---------------------------- Logging Configuration ---------------------------- #
 
 LOGGING_CONFIG = None
 logging.config.dictConfig({
@@ -238,7 +230,7 @@ logging.config.dictConfig({
     },
 })
 
-# ---------------------------- Настройки Elasticsearch ---------------------------- #
+# ---------------------------- Elasticsearch Configuration ---------------------------- #
 
 ELASTICSEARCH_DSL = {
     'default': {
@@ -247,3 +239,6 @@ ELASTICSEARCH_DSL = {
     }
 }
 
+# ---------------------------- Default Primary Key Field ---------------------------- #
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
