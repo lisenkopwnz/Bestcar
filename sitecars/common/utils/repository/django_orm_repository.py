@@ -1,23 +1,25 @@
 from typing import Any, Type, Dict, List
 
-from django.db.models import Model
+from django.db.models import Model, QuerySet, Prefetch
 
 from common.utils.interface.interface import StorageRepository
 
 
 class ORMRepository(StorageRepository):
     """
-        Универсальный репозиторий для работы с моделями.
-        При необходимости данный класс может быть расширен доп. методами
+        РЈРЅРёРІРµСЂСЃР°Р»СЊРЅС‹Р№ СЂРµРїРѕР·РёС‚РѕСЂРёР№ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РјРѕРґРµР»СЏРјРё.
+        РџСЂРё РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РґР°РЅРЅС‹Р№ РєР»Р°СЃСЃ РјРѕР¶РµС‚ Р±С‹С‚СЊ СЂР°СЃС€РёСЂРµРЅ РґРѕРї. РјРµС‚РѕРґР°РјРё
     """
 
     def __init__(self, model: Type[Model]) -> None:
         self.model = model
 
-    def filter(self, **kwargs:Dict[str:Any]) -> List[Any]:
-        """ Возвращаем список записей из базы данных с помощью джанго ORM"""
+    def filter(self, **kwargs:Dict[str,Any]) -> List[Any]:
+        """ Р’РѕР·РІСЂР°С‰Р°РµРј СЃРїРёСЃРѕРє Р·Р°РїРёСЃРµР№ РёР· Р±Р°Р·С‹ РґР°РЅРЅС‹С… СЃ РїРѕРјРѕС‰СЊСЋ РґР¶Р°РЅРіРѕ ORM"""
+        if not kwargs:
+            return self.model.objects.all()
         return self.model.objects.filter(**kwargs)
 
     def exists(self, **kwargs: Any)-> bool:
-        """ Проверяем на наличие обекта в базе данных с помощью джанго ORM"""
+        """ РџСЂРѕРІРµСЂСЏРµРј РЅР° РЅР°Р»РёС‡РёРµ РѕР±РµРєС‚Р° РІ Р±Р°Р·Рµ РґР°РЅРЅС‹С… СЃ РїРѕРјРѕС‰СЊСЋ РґР¶Р°РЅРіРѕ ORM"""
         return self.model.objects.filter(**kwargs).exists()

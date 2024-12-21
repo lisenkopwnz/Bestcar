@@ -10,7 +10,11 @@ class Booking(models.Model):
     и прибытия, времени поездки, цене, категории и связанных пользователях
     (автор поездки и пассажир).
     """
-    trip: models.ForeignKey = models.ForeignKey(Publishing_a_trip, on_delete=models.CASCADE, related_name="bookings")
+    trip: models.ForeignKey = models.ForeignKey(
+        Publishing_a_trip,
+        on_delete=models.CASCADE,
+        related_name="bookings"
+    )
     name_companion: models.ForeignKey = models.ForeignKey(
         get_user_model(),
         verbose_name="Имя пассажира",

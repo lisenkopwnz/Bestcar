@@ -1,14 +1,15 @@
 from abc import ABC, abstractmethod
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Generic, TypeVar
 
+T = TypeVar('T')
 
-class StorageRepository(ABC):
-    """ Абстрактный класс который определяет набор методов для работы с различными источниками данных"""
+class StorageRepository(ABC, Generic[T]):
+    """ РђР±СЃС‚СЂР°РєС‚РЅС‹Р№ РєР»Р°СЃСЃ РєРѕС‚РѕСЂС‹Р№ РѕРїСЂРµРґРµР»СЏРµС‚ РЅР°Р±РѕСЂ РјРµС‚РѕРґРѕРІ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЂР°Р·Р»РёС‡РЅС‹РјРё РёСЃС‚РѕС‡РЅРёРєР°РјРё РґР°РЅРЅС‹С…"""
     @abstractmethod
-    def filter(self, **kwargs:Dict[str:Any])-> List[Any]:
-        """ Возвращаем список записей из источника данных"""
+    def filter(self, **kwargs:Dict[str,Any])-> List[Any]:
+        """ Р’РѕР·РІСЂР°С‰Р°РµРј СЃРїРёСЃРѕРє Р·Р°РїРёСЃРµР№ РёР· РёСЃС‚РѕС‡РЅРёРєР° РґР°РЅРЅС‹С…"""
 
     @abstractmethod
     def exists(self, **kwargs: Any)-> bool:
-        """ Проверяем источник данных на наличие обекта"""
+        """ РџСЂРѕРІРµСЂСЏРµРј РёСЃС‚РѕС‡РЅРёРє РґР°РЅРЅС‹С… РЅР° РЅР°Р»РёС‡РёРµ РѕР±РµРєС‚Р°"""
         pass

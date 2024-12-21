@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Подтверждение удаления</title>
+</head>
+<body>
+    <h1>Вы уверены, что хотите удалить "{{ object }}"?</h1>
+    <p>Это действие нельзя отменить.</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Да, удалить</button>
+        <a href="{% url 'users:trips_current'%}">Отмена</a>
+    </form>
+</body>
+</html>
