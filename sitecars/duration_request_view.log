@@ -522,3 +522,37 @@ INFO 2024-12-21 13:20:20,216 base Ќачало выполнени¤ запрос
 INFO 2024-12-21 13:20:20,218 base ѕродолжительность SQL-запроса SELECT "django_celery_results_taskresult"."id", "django_celery_results_taskresult"."task_id", "django_celery_results_taskresult"."periodic_task_name", "django_celery_results_taskresult"."task_name", "django_celery_results_taskresult"."task_args", "django_celery_results_taskresult"."task_kwargs", "django_celery_results_taskresult"."status", "django_celery_results_taskresult"."worker", "django_celery_results_taskresult"."content_type", "django_celery_results_taskresult"."content_encoding", "django_celery_results_taskresult"."result", "django_celery_results_taskresult"."date_created", "django_celery_results_taskresult"."date_done", "django_celery_results_taskresult"."traceback", "django_celery_results_taskresult"."meta" FROM "django_celery_results_taskresult" WHERE "django_celery_results_taskresult"."task_id" = %s LIMIT 21 - 0.0021000 сек.
 INFO 2024-12-21 13:20:20,221 base Ќачало выполнени¤ запроса: UPDATE "django_celery_results_taskresult" SET "task_id" = %s, "periodic_task_name" = NULL, "task_name" = NULL, "task_args" = NULL, "task_kwargs" = NULL, "status" = %s, "worker" = NULL, "content_type" = %s, "content_encoding" = %s, "result" = %s, "date_created" = %s, "date_done" = %s, "traceback" = NULL, "meta" = %s WHERE "django_celery_results_taskresult"."id" = %s
 INFO 2024-12-21 13:20:20,227 base ѕродолжительность SQL-запроса UPDATE "django_celery_results_taskresult" SET "task_id" = %s, "periodic_task_name" = NULL, "task_name" = NULL, "task_args" = NULL, "task_kwargs" = NULL, "status" = %s, "worker" = NULL, "content_type" = %s, "content_encoding" = %s, "result" = %s, "date_created" = %s, "date_done" = %s, "traceback" = NULL, "meta" = %s WHERE "django_celery_results_taskresult"."id" = %s - 0.0056879 сек.
+INFO 2024-12-21 14:06:35,896 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1
+INFO 2024-12-21 14:06:35,911 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1 - 0.0151594 сек.
+INFO 2024-12-21 14:06:36,899 base Ќачало выполнени¤ запроса: 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        
+INFO 2024-12-21 14:06:36,924 base ѕродолжительность SQL-запроса 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+         - 0.0248881 сек.
+INFO 2024-12-21 14:06:36,928 base Ќачало выполнени¤ запроса: SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"
+INFO 2024-12-21 14:06:36,931 base ѕродолжительность SQL-запроса SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations" - 0.0022723 сек.

@@ -3,7 +3,6 @@ import logging
 from django.utils import timezone
 from django.urls import reverse_lazy
 
-from bestcar.services.repository import Repository
 from bestcar.services.services_search import TripFilterService
 from bestcar.utils import DataMixin
 from bestcar.models import *
@@ -15,6 +14,7 @@ from django.http import HttpResponseNotFound, Http404, JsonResponse
 from django.views.generic import ListView, CreateView, TemplateView, UpdateView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from common.utils.repository.django_orm_repository import ORMRepository
 from common.utils.services.services import elasticsearch_formatting_date
 
 logger = logging.getLogger('duration_request_view')
@@ -191,7 +191,7 @@ class Update_user_trip(DataMixin, BaseView, UpdateView):
     template_name = 'bestcar/update.html'
     success_url = reverse_lazy('home')
     title_page = 'Форма для изменения данных поездки'
-    repository = Repository(Publishing_a_trip)
+    repository = ORMRepository(Publishing_a_trip)
 
     def get(self, request, *args, **kwargs):
         slug = kwargs['slug']

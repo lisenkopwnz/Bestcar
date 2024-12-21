@@ -1,15 +1,16 @@
 import logging
-from multiprocessing.util import get_logger
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, PasswordChangeView
+
 from django.db.models import Prefetch
 
 from django.http import HttpResponseRedirect, JsonResponse
 
 from django.urls import reverse, reverse_lazy
+
 from django.views.generic import CreateView, UpdateView, ListView
 
 from bestcar.models import Publishing_a_trip
@@ -25,6 +26,7 @@ from users.forms import (
                          )
 
 logger = logging.getLogger('duration_request_view')
+
 
 class LoginUser(DataMixin, LoginView):
     form_class = LoginUserForms
