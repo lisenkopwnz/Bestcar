@@ -1,6 +1,0 @@
-# Ignore environment files
-.env
-.idea/
-*.log
-*.pyc
-venv/
