@@ -4,47 +4,17 @@ from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views import View
 from django.views.generic import ListView, DeleteView, DetailView
-from django_currentuser.middleware import get_current_user
 
 from bestcar.utils import DataMixin
 from bestcar.models import Publishing_a_trip
 from booking.models import Booking
-from booking.services import Confirmation_services, UsersBookedTripsServices, Bookings_services
+from booking.services.services import Confirmation_services, UsersBookedTripsServices
+from common.utils.base_view import BaseView
+from common.utils.repository.django_orm_repository import ORMRepository
 from sitecars import settings
 
 logger = logging.getLogger('duration_request_view')
-
-class BaseView(View):
-    """ Базовый класс который отлавливает все исклюяения ,которые
-        не были обработаны ранее """
-
-    def dispatch(self, request, *args, **kwargs):
-        try:
-            response = super().dispatch(request, *args, **kwargs)
-        except Exception as e:
-            return self._response(e, status=400)
-
-        if isinstance(response, (dict, list)):
-            return self._response(response)
-        else:
-            return response
-
-    @staticmethod
-    def _response(data, *, status=200):
-        """Форматируем HTTP ответ с описание ошибки или формируем JSON ответ в случае необходимости """
-        if status != 200:
-            res = JsonResponse({
-                "errorMessage": str(data),
-                "status": status
-            })
-        else:
-            res = JsonResponse({
-                "data": str(data),
-                "status": status
-            })
-        return res
 
 
 class Bookings(DataMixin, BaseView, DetailView):
@@ -63,7 +33,7 @@ class Bookings(DataMixin, BaseView, DetailView):
 class Checkout(DataMixin, BaseView, DetailView):
     """
          Представление в котором пользователь может проверить детали поездки
-     """
+    """
     model = Publishing_a_trip
     template_name = 'booking/booking_checkout.html'
     title_page = 'Проверьте детали поездки'
@@ -77,10 +47,13 @@ class Confirmation(BaseView):
     """
         Создает запись в базе данных о бронировании поездки
     """
+    @staticmethod
+    def get_data(**kwargs):
+        return kwargs.get('trip_slug')
 
     def get(self, request, *args, **kwargs):
-        trip_slug = kwargs.get('trip_slug', None)
-        logger.info(trip_slug)
+        trip_slug = self.get_data(**kwargs)
+
         if trip_slug is not None:
             try:
                 Confirmation_services.confirmation(trip_slug, request)
@@ -90,6 +63,7 @@ class Confirmation(BaseView):
                     "status": 400
                 })
             return redirect('home')
+
 
 
 class Users_booked_trips(DataMixin, BaseView, ListView):

@@ -3559,3 +3559,672 @@ INFO 2024-12-21 21:21:33,307 middleware Продолжительность за�
 INFO 2024-12-21 21:21:35,158 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
 INFO 2024-12-21 21:21:35,185 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0260914 сек.
 INFO 2024-12-21 21:21:35,247 middleware Продолжительность запроса / - 0.4673450 сек.
+INFO 2024-12-22 14:06:53,509 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1
+INFO 2024-12-22 14:06:53,672 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1 - 0.1629640 сек.
+INFO 2024-12-22 14:19:58,876 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1
+INFO 2024-12-22 14:19:58,960 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1 - 0.0837109 сек.
+INFO 2024-12-22 14:19:59,519 base Ќачало выполнени¤ запроса: 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        
+INFO 2024-12-22 14:19:59,656 base ѕродолжительность SQL-запроса 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+         - 0.1374555 сек.
+INFO 2024-12-22 14:19:59,660 base Ќачало выполнени¤ запроса: SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"
+INFO 2024-12-22 14:19:59,668 base ѕродолжительность SQL-запроса SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations" - 0.0081882 сек.
+INFO 2024-12-22 14:20:06,064 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1
+INFO 2024-12-22 14:20:06,076 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1 - 0.0120765 сек.
+INFO 2024-12-22 14:20:06,596 base Ќачало выполнени¤ запроса: 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        
+INFO 2024-12-22 14:20:06,650 base ѕродолжительность SQL-запроса 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+         - 0.0539038 сек.
+INFO 2024-12-22 14:20:06,654 base Ќачало выполнени¤ запроса: SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"
+INFO 2024-12-22 14:20:06,657 base ѕродолжительность SQL-запроса SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations" - 0.0021004 сек.
+INFO 2024-12-22 14:20:06,664 base Ќачало выполнени¤ запроса: 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        
+INFO 2024-12-22 14:20:06,669 base ѕродолжительность SQL-запроса 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+         - 0.0057119 сек.
+INFO 2024-12-22 14:20:06,672 base Ќачало выполнени¤ запроса: SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"
+INFO 2024-12-22 14:20:06,673 base ѕродолжительность SQL-запроса SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations" - 0.0016786 сек.
+INFO 2024-12-22 14:20:06,776 base Ќачало выполнени¤ запроса: 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        
+INFO 2024-12-22 14:20:06,788 base ѕродолжительность SQL-запроса 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+         - 0.0117252 сек.
+INFO 2024-12-22 14:20:06,790 base Ќачало выполнени¤ запроса: SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"
+INFO 2024-12-22 14:20:06,792 base ѕродолжительность SQL-запроса SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations" - 0.0011838 сек.
+INFO 2024-12-22 14:20:06,795 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:06,820 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0247033 сек.
+INFO 2024-12-22 14:20:06,823 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21
+INFO 2024-12-22 14:20:06,824 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21 - 0.0013616 сек.
+INFO 2024-12-22 14:20:06,830 base Ќачало выполнени¤ запроса: SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (%s) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC
+INFO 2024-12-22 14:20:06,852 base ѕродолжительность SQL-запроса SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (%s) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC - 0.0216730 сек.
+INFO 2024-12-22 14:20:06,855 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:06,857 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0016942 сек.
+INFO 2024-12-22 14:20:06,860 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:06,861 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0013454 сек.
+INFO 2024-12-22 14:20:06,865 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21
+INFO 2024-12-22 14:20:06,867 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21 - 0.0020557 сек.
+INFO 2024-12-22 14:20:06,871 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21
+INFO 2024-12-22 14:20:06,872 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21 - 0.0013898 сек.
+INFO 2024-12-22 14:20:06,877 base Ќачало выполнени¤ запроса: SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (%s, %s) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC
+INFO 2024-12-22 14:20:06,880 base ѕродолжительность SQL-запроса SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (%s, %s) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC - 0.0026343 сек.
+INFO 2024-12-22 14:20:06,885 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:06,886 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0012220 сек.
+INFO 2024-12-22 14:20:06,890 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:06,892 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0015012 сек.
+INFO 2024-12-22 14:20:06,897 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21
+INFO 2024-12-22 14:20:06,899 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21 - 0.0017230 сек.
+INFO 2024-12-22 14:20:06,906 base Ќачало выполнени¤ запроса: SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (%s) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC
+INFO 2024-12-22 14:20:06,908 base ѕродолжительность SQL-запроса SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (%s) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC - 0.0018789 сек.
+INFO 2024-12-22 14:20:06,911 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:06,913 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0017889 сек.
+INFO 2024-12-22 14:20:06,918 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:06,920 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0019027 сек.
+INFO 2024-12-22 14:20:06,924 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21
+INFO 2024-12-22 14:20:06,925 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21 - 0.0012438 сек.
+INFO 2024-12-22 14:20:06,932 base Ќачало выполнени¤ запроса: SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (%s) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC
+INFO 2024-12-22 14:20:06,933 base ѕродолжительность SQL-запроса SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (%s) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC - 0.0016013 сек.
+INFO 2024-12-22 14:20:06,937 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:06,938 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0016212 сек.
+INFO 2024-12-22 14:20:06,942 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:06,944 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0019688 сек.
+INFO 2024-12-22 14:20:06,947 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21
+INFO 2024-12-22 14:20:06,948 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21 - 0.0015499 сек.
+INFO 2024-12-22 14:20:06,952 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21
+INFO 2024-12-22 14:20:06,955 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21 - 0.0028868 сек.
+INFO 2024-12-22 14:20:06,961 base Ќачало выполнени¤ запроса: SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (%s, %s) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC
+INFO 2024-12-22 14:20:06,963 base ѕродолжительность SQL-запроса SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (%s, %s) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC - 0.0017614 сек.
+INFO 2024-12-22 14:20:06,966 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:06,967 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0011302 сек.
+INFO 2024-12-22 14:20:06,970 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:06,972 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0018976 сек.
+INFO 2024-12-22 14:20:06,978 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:06,979 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0012583 сек.
+INFO 2024-12-22 14:20:06,983 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:06,984 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0012397 сек.
+INFO 2024-12-22 14:20:06,990 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21
+INFO 2024-12-22 14:20:06,991 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21 - 0.0014146 сек.
+INFO 2024-12-22 14:20:06,996 base Ќачало выполнени¤ запроса: SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (%s) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC
+INFO 2024-12-22 14:20:06,998 base ѕродолжительность SQL-запроса SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (%s) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC - 0.0016867 сек.
+INFO 2024-12-22 14:20:07,002 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:07,004 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0017261 сек.
+INFO 2024-12-22 14:20:07,007 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:07,008 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0012186 сек.
+INFO 2024-12-22 14:20:07,012 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21
+INFO 2024-12-22 14:20:07,014 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21 - 0.0015243 сек.
+INFO 2024-12-22 14:20:07,022 base Ќачало выполнени¤ запроса: SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (%s) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC
+INFO 2024-12-22 14:20:07,025 base ѕродолжительность SQL-запроса SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (%s) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC - 0.0031404 сек.
+INFO 2024-12-22 14:20:07,029 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:07,031 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0023921 сек.
+INFO 2024-12-22 14:20:07,035 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:07,038 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0028719 сек.
+INFO 2024-12-22 14:20:07,041 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21
+INFO 2024-12-22 14:20:07,043 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21 - 0.0019458 сек.
+INFO 2024-12-22 14:20:07,047 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21
+INFO 2024-12-22 14:20:07,049 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21 - 0.0014872 сек.
+INFO 2024-12-22 14:20:07,054 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21
+INFO 2024-12-22 14:20:07,055 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = %s AND "django_content_type"."model" = %s) LIMIT 21 - 0.0015549 сек.
+INFO 2024-12-22 14:20:07,061 base Ќачало выполнени¤ запроса: SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (%s, %s, %s) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC
+INFO 2024-12-22 14:20:07,063 base ѕродолжительность SQL-запроса SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (%s, %s, %s) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC - 0.0020613 сек.
+INFO 2024-12-22 14:20:07,067 base Ќачало выполнени¤ запроса: SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s
+INFO 2024-12-22 14:20:07,069 base ѕродолжительность SQL-запроса SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = %s - 0.0012610 сек.
+INFO 2024-12-22 14:24:35,390 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1
+INFO 2024-12-22 14:24:35,414 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1 - 0.0244685 сек.
+INFO 2024-12-22 14:24:42,389 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1
+INFO 2024-12-22 14:24:42,394 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1 - 0.0046844 сек.
+INFO 2024-12-22 14:24:47,636 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1
+INFO 2024-12-22 14:24:47,643 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1 - 0.0067161 сек.
+INFO 2024-12-22 14:24:48,216 base Ќачало выполнени¤ запроса: 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        
+INFO 2024-12-22 14:24:48,256 base ѕродолжительность SQL-запроса 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+         - 0.0400682 сек.
+INFO 2024-12-22 14:24:48,260 base Ќачало выполнени¤ запроса: SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"
+INFO 2024-12-22 14:24:48,264 base ѕродолжительность SQL-запроса SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations" - 0.0042401 сек.
+INFO 2024-12-22 14:27:11,669 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 14:27:11,703 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0345620 сек.
+INFO 2024-12-22 14:27:11,786 middleware Продолжительность запроса / - 0.8129624 сек.
+INFO 2024-12-22 14:27:12,847 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 14:27:12,860 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0127386 сек.
+INFO 2024-12-22 14:27:12,886 middleware Продолжительность запроса /favicon.ico - 0.2184263 сек.
+INFO 2024-12-22 14:32:45,462 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1
+INFO 2024-12-22 14:32:45,483 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1 - 0.0203779 сек.
+INFO 2024-12-22 14:32:46,012 base Ќачало выполнени¤ запроса: 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        
+INFO 2024-12-22 14:32:46,048 base ѕродолжительность SQL-запроса 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+         - 0.0362087 сек.
+INFO 2024-12-22 14:32:46,052 base Ќачало выполнени¤ запроса: SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"
+INFO 2024-12-22 14:32:46,055 base ѕродолжительность SQL-запроса SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations" - 0.0034007 сек.
+INFO 2024-12-22 14:39:58,492 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1
+INFO 2024-12-22 14:39:58,509 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1 - 0.0167183 сек.
+INFO 2024-12-22 14:39:59,230 base Ќачало выполнени¤ запроса: 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        
+INFO 2024-12-22 14:39:59,277 base ѕродолжительность SQL-запроса 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+         - 0.0466682 сек.
+INFO 2024-12-22 14:39:59,281 base Ќачало выполнени¤ запроса: SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"
+INFO 2024-12-22 14:39:59,286 base ѕродолжительность SQL-запроса SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations" - 0.0053835 сек.
+INFO 2024-12-22 14:42:03,528 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1
+INFO 2024-12-22 14:42:03,532 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1 - 0.0042116 сек.
+INFO 2024-12-22 14:42:04,017 base Ќачало выполнени¤ запроса: 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        
+INFO 2024-12-22 14:42:04,044 base ѕродолжительность SQL-запроса 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+         - 0.0269060 сек.
+INFO 2024-12-22 14:42:04,047 base Ќачало выполнени¤ запроса: SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"
+INFO 2024-12-22 14:42:04,050 base ѕродолжительность SQL-запроса SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations" - 0.0023660 сек.
+INFO 2024-12-22 14:49:03,169 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1
+INFO 2024-12-22 14:49:03,199 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1 - 0.0305795 сек.
+INFO 2024-12-22 14:49:03,713 base Ќачало выполнени¤ запроса: 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        
+INFO 2024-12-22 14:49:03,740 base ѕродолжительность SQL-запроса 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+         - 0.0269937 сек.
+INFO 2024-12-22 14:49:03,744 base Ќачало выполнени¤ запроса: SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"
+INFO 2024-12-22 14:49:03,746 base ѕродолжительность SQL-запроса SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations" - 0.0022294 сек.
+INFO 2024-12-22 14:53:18,484 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1
+INFO 2024-12-22 14:53:18,488 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1 - 0.0036663 сек.
+INFO 2024-12-22 14:53:19,017 base Ќачало выполнени¤ запроса: 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        
+INFO 2024-12-22 14:53:19,048 base ѕродолжительность SQL-запроса 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+         - 0.0315222 сек.
+INFO 2024-12-22 14:53:19,052 base Ќачало выполнени¤ запроса: SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"
+INFO 2024-12-22 14:53:19,054 base ѕродолжительность SQL-запроса SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations" - 0.0023066 сек.
+INFO 2024-12-22 15:16:42,072 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1
+INFO 2024-12-22 15:16:42,082 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1 - 0.0099299 сек.
+INFO 2024-12-22 15:34:07,925 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1
+INFO 2024-12-22 15:34:07,932 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1 - 0.0071691 сек.
+INFO 2024-12-22 15:34:08,510 base Ќачало выполнени¤ запроса: 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        
+INFO 2024-12-22 15:34:08,565 base ѕродолжительность SQL-запроса 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+         - 0.0551387 сек.
+INFO 2024-12-22 15:34:08,569 base Ќачало выполнени¤ запроса: SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"
+INFO 2024-12-22 15:34:08,577 base ѕродолжительность SQL-запроса SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations" - 0.0079122 сек.
+INFO 2024-12-22 16:47:55,874 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1
+INFO 2024-12-22 16:47:55,985 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1 - 0.1108931 сек.
+INFO 2024-12-22 16:47:56,532 base Ќачало выполнени¤ запроса: 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        
+INFO 2024-12-22 16:47:56,593 base ѕродолжительность SQL-запроса 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+         - 0.0613195 сек.
+INFO 2024-12-22 16:47:56,598 base Ќачало выполнени¤ запроса: SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"
+INFO 2024-12-22 16:47:56,604 base ѕродолжительность SQL-запроса SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations" - 0.0057049 сек.
+INFO 2024-12-22 16:48:29,225 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 16:48:29,257 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0320089 сек.
+INFO 2024-12-22 16:48:29,332 middleware Продолжительность запроса / - 0.2822455 сек.
+INFO 2024-12-22 16:48:30,399 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 16:48:30,408 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0085945 сек.
+INFO 2024-12-22 16:48:30,429 middleware Продолжительность запроса / - 0.1837030 сек.
+INFO 2024-12-22 16:48:31,366 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 16:48:31,371 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0052127 сек.
+INFO 2024-12-22 16:48:31,392 middleware Продолжительность запроса / - 0.1334696 сек.
+INFO 2024-12-22 16:48:32,062 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 16:48:32,070 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0087807 сек.
+INFO 2024-12-22 16:48:32,093 middleware Продолжительность запроса / - 0.1387823 сек.
+INFO 2024-12-22 16:48:32,414 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 16:48:32,424 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0094884 сек.
+INFO 2024-12-22 16:48:32,450 middleware Продолжительность запроса / - 0.1452746 сек.
+INFO 2024-12-22 16:48:35,126 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 16:48:35,141 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0151627 сек.
+INFO 2024-12-22 16:48:38,852 base Ќачало выполнени¤ запроса: SELECT "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."first_name", "users_user"."last_name", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."username", "users_user"."photo", "users_user"."category_id", "users_user"."models_auto", "users_user"."phone_number", "users_user"."email" FROM "users_user" WHERE "users_user"."id" = %s LIMIT 21
+INFO 2024-12-22 16:48:38,874 base ѕродолжительность SQL-запроса SELECT "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."first_name", "users_user"."last_name", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."username", "users_user"."photo", "users_user"."category_id", "users_user"."models_auto", "users_user"."phone_number", "users_user"."email" FROM "users_user" WHERE "users_user"."id" = %s LIMIT 21 - 0.0225613 сек.
+INFO 2024-12-22 16:48:38,888 base Ќачало выполнени¤ запроса: SELECT "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."first_name", "users_user"."last_name", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."username", "users_user"."photo", "users_user"."category_id", "users_user"."models_auto", "users_user"."phone_number", "users_user"."email" FROM "users_user" WHERE "users_user"."id" = %s LIMIT 21
+INFO 2024-12-22 16:48:38,889 base ѕродолжительность SQL-запроса SELECT "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."first_name", "users_user"."last_name", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."username", "users_user"."photo", "users_user"."category_id", "users_user"."models_auto", "users_user"."phone_number", "users_user"."email" FROM "users_user" WHERE "users_user"."id" = %s LIMIT 21 - 0.0012434 сек.
+INFO 2024-12-22 16:48:38,910 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" WHERE "bestcar_category"."id" = %s LIMIT 21
+INFO 2024-12-22 16:48:38,912 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" WHERE "bestcar_category"."id" = %s LIMIT 21 - 0.0020254 сек.
+INFO 2024-12-22 16:48:39,096 middleware Продолжительность запроса /post/ - 1.0615281 сек.
+INFO 2024-12-22 16:48:53,123 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 16:48:53,130 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0070395 сек.
+INFO 2024-12-22 16:48:53,137 base Ќачало выполнени¤ запроса: SELECT "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."first_name", "users_user"."last_name", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."username", "users_user"."photo", "users_user"."category_id", "users_user"."models_auto", "users_user"."phone_number", "users_user"."email" FROM "users_user" WHERE "users_user"."id" = %s LIMIT 21
+INFO 2024-12-22 16:48:53,141 base ѕродолжительность SQL-запроса SELECT "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."first_name", "users_user"."last_name", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."username", "users_user"."photo", "users_user"."category_id", "users_user"."models_auto", "users_user"."phone_number", "users_user"."email" FROM "users_user" WHERE "users_user"."id" = %s LIMIT 21 - 0.0035042 сек.
+INFO 2024-12-22 16:48:53,144 base Ќачало выполнени¤ запроса: SELECT "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."first_name", "users_user"."last_name", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."username", "users_user"."photo", "users_user"."category_id", "users_user"."models_auto", "users_user"."phone_number", "users_user"."email" FROM "users_user" WHERE "users_user"."id" = %s LIMIT 21
+INFO 2024-12-22 16:48:53,146 base ѕродолжительность SQL-запроса SELECT "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."first_name", "users_user"."last_name", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."username", "users_user"."photo", "users_user"."category_id", "users_user"."models_auto", "users_user"."phone_number", "users_user"."email" FROM "users_user" WHERE "users_user"."id" = %s LIMIT 21 - 0.0020165 сек.
+INFO 2024-12-22 16:48:53,151 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" WHERE "bestcar_category"."id" = %s LIMIT 21
+INFO 2024-12-22 16:48:53,153 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" WHERE "bestcar_category"."id" = %s LIMIT 21 - 0.0017163 сек.
+INFO 2024-12-22 16:48:53,158 base Ќачало выполнени¤ запроса: INSERT INTO "bestcar_publishing_a_trip" ("departure", "arrival", "departure_time", "arrival_time", "free_seating", "reserved_seats", "price", "author_id", "slug") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING "bestcar_publishing_a_trip"."id"
+INFO 2024-12-22 16:48:53,220 base ѕродолжительность SQL-запроса INSERT INTO "bestcar_publishing_a_trip" ("departure", "arrival", "departure_time", "arrival_time", "free_seating", "reserved_seats", "price", "author_id", "slug") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING "bestcar_publishing_a_trip"."id" - 0.0620913 сек.
+INFO 2024-12-22 16:48:53,241 base Ќачало выполнени¤ запроса: SELECT "users_user"."email" FROM "booking_booking" INNER JOIN "users_user" ON ("booking_booking"."name_companion_id" = "users_user"."id") WHERE "booking_booking"."slug" = %s
+INFO 2024-12-22 16:48:53,261 base ѕродолжительность SQL-запроса SELECT "users_user"."email" FROM "booking_booking" INNER JOIN "users_user" ON ("booking_booking"."name_companion_id" = "users_user"."id") WHERE "booking_booking"."slug" = %s - 0.0198877 сек.
+INFO 2024-12-22 16:48:53,284 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" WHERE "bestcar_category"."id" = %s LIMIT 21
+INFO 2024-12-22 16:48:53,286 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" WHERE "bestcar_category"."id" = %s LIMIT 21 - 0.0011325 сек.
+INFO 2024-12-22 16:48:56,483 middleware Продолжительность запроса /post/ - 3.3807052 сек.
+INFO 2024-12-22 16:48:56,631 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 16:48:56,647 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0159605 сек.
+INFO 2024-12-22 16:48:56,700 middleware Продолжительность запроса / - 0.1951988 сек.
+INFO 2024-12-22 16:49:05,819 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 16:49:05,825 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0059313 сек.
+INFO 2024-12-22 16:49:05,845 middleware Продолжительность запроса /search/ - 1.1562903 сек.
+INFO 2024-12-22 16:49:06,111 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 16:49:06,121 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0102553 сек.
+INFO 2024-12-22 16:49:06,149 middleware Продолжительность запроса /media/users/$Y/12/21/user_avatar_image.jpg - 0.2296964 сек.
+INFO 2024-12-22 16:49:06,832 base Ќачало выполнени¤ запроса: SELECT "bestcar_publishing_a_trip"."id", "bestcar_publishing_a_trip"."departure", "bestcar_publishing_a_trip"."arrival", "bestcar_publishing_a_trip"."departure_time", "bestcar_publishing_a_trip"."arrival_time", "bestcar_publishing_a_trip"."free_seating", "bestcar_publishing_a_trip"."reserved_seats", "bestcar_publishing_a_trip"."price", "bestcar_publishing_a_trip"."author_id", "bestcar_publishing_a_trip"."slug" FROM "bestcar_publishing_a_trip" WHERE "bestcar_publishing_a_trip"."slug" = %s LIMIT 21
+INFO 2024-12-22 16:49:06,849 base ѕродолжительность SQL-запроса SELECT "bestcar_publishing_a_trip"."id", "bestcar_publishing_a_trip"."departure", "bestcar_publishing_a_trip"."arrival", "bestcar_publishing_a_trip"."departure_time", "bestcar_publishing_a_trip"."arrival_time", "bestcar_publishing_a_trip"."free_seating", "bestcar_publishing_a_trip"."reserved_seats", "bestcar_publishing_a_trip"."price", "bestcar_publishing_a_trip"."author_id", "bestcar_publishing_a_trip"."slug" FROM "bestcar_publishing_a_trip" WHERE "bestcar_publishing_a_trip"."slug" = %s LIMIT 21 - 0.0174274 сек.
+INFO 2024-12-22 16:49:06,889 base Ќачало выполнени¤ запроса: SELECT "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."first_name", "users_user"."last_name", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."username", "users_user"."photo", "users_user"."category_id", "users_user"."models_auto", "users_user"."phone_number", "users_user"."email" FROM "users_user" WHERE "users_user"."id" = %s LIMIT 21
+INFO 2024-12-22 16:49:06,893 base ѕродолжительность SQL-запроса SELECT "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."first_name", "users_user"."last_name", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."username", "users_user"."photo", "users_user"."category_id", "users_user"."models_auto", "users_user"."phone_number", "users_user"."email" FROM "users_user" WHERE "users_user"."id" = %s LIMIT 21 - 0.0041080 сек.
+INFO 2024-12-22 16:49:07,039 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 16:49:07,043 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0038257 сек.
+INFO 2024-12-22 16:49:07,074 middleware Продолжительность запроса /booking/to_book/Q83EQEMM0DW1UN4D4A08N3NY83FJPUSASEXTMIU9X0OT3M3F3Q4GH47LNTWVMEPC91Z2I9CRJL102NQ8TNQEFNTJFZP2N74NKAJF/ - 0.2704184 сек.
+INFO 2024-12-22 16:49:08,568 base Ќачало выполнени¤ запроса: SELECT "bestcar_publishing_a_trip"."id", "bestcar_publishing_a_trip"."departure", "bestcar_publishing_a_trip"."arrival", "bestcar_publishing_a_trip"."departure_time", "bestcar_publishing_a_trip"."arrival_time", "bestcar_publishing_a_trip"."free_seating", "bestcar_publishing_a_trip"."reserved_seats", "bestcar_publishing_a_trip"."price", "bestcar_publishing_a_trip"."author_id", "bestcar_publishing_a_trip"."slug" FROM "bestcar_publishing_a_trip" WHERE "bestcar_publishing_a_trip"."slug" = %s LIMIT 21
+INFO 2024-12-22 16:49:08,580 base ѕродолжительность SQL-запроса SELECT "bestcar_publishing_a_trip"."id", "bestcar_publishing_a_trip"."departure", "bestcar_publishing_a_trip"."arrival", "bestcar_publishing_a_trip"."departure_time", "bestcar_publishing_a_trip"."arrival_time", "bestcar_publishing_a_trip"."free_seating", "bestcar_publishing_a_trip"."reserved_seats", "bestcar_publishing_a_trip"."price", "bestcar_publishing_a_trip"."author_id", "bestcar_publishing_a_trip"."slug" FROM "bestcar_publishing_a_trip" WHERE "bestcar_publishing_a_trip"."slug" = %s LIMIT 21 - 0.0114883 сек.
+INFO 2024-12-22 16:49:08,610 base Ќачало выполнени¤ запроса: SELECT "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."first_name", "users_user"."last_name", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."username", "users_user"."photo", "users_user"."category_id", "users_user"."models_auto", "users_user"."phone_number", "users_user"."email" FROM "users_user" WHERE "users_user"."id" = %s LIMIT 21
+INFO 2024-12-22 16:49:08,614 base ѕродолжительность SQL-запроса SELECT "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."first_name", "users_user"."last_name", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."username", "users_user"."photo", "users_user"."category_id", "users_user"."models_auto", "users_user"."phone_number", "users_user"."email" FROM "users_user" WHERE "users_user"."id" = %s LIMIT 21 - 0.0038134 сек.
+INFO 2024-12-22 16:49:08,714 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 16:49:08,717 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0031082 сек.
+INFO 2024-12-22 16:49:08,739 middleware Продолжительность запроса /booking/booking/checkout/Q83EQEMM0DW1UN4D4A08N3NY83FJPUSASEXTMIU9X0OT3M3F3Q4GH47LNTWVMEPC91Z2I9CRJL102NQ8TNQEFNTJFZP2N74NKAJF/ - 0.1919363 сек.
+INFO 2024-12-22 16:49:10,122 base Ќачало выполнени¤ запроса: SELECT "bestcar_publishing_a_trip"."id", "bestcar_publishing_a_trip"."departure", "bestcar_publishing_a_trip"."arrival", "bestcar_publishing_a_trip"."departure_time", "bestcar_publishing_a_trip"."arrival_time", "bestcar_publishing_a_trip"."free_seating", "bestcar_publishing_a_trip"."reserved_seats", "bestcar_publishing_a_trip"."price", "bestcar_publishing_a_trip"."author_id", "bestcar_publishing_a_trip"."slug", "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."first_name", "users_user"."last_name", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."username", "users_user"."photo", "users_user"."category_id", "users_user"."models_auto", "users_user"."phone_number", "users_user"."email" FROM "bestcar_publishing_a_trip" INNER JOIN "users_user" ON ("bestcar_publishing_a_trip"."author_id" = "users_user"."id") WHERE "bestcar_publishing_a_trip"."slug" = %s LIMIT 21
+INFO 2024-12-22 16:49:10,138 base ѕродолжительность SQL-запроса SELECT "bestcar_publishing_a_trip"."id", "bestcar_publishing_a_trip"."departure", "bestcar_publishing_a_trip"."arrival", "bestcar_publishing_a_trip"."departure_time", "bestcar_publishing_a_trip"."arrival_time", "bestcar_publishing_a_trip"."free_seating", "bestcar_publishing_a_trip"."reserved_seats", "bestcar_publishing_a_trip"."price", "bestcar_publishing_a_trip"."author_id", "bestcar_publishing_a_trip"."slug", "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."first_name", "users_user"."last_name", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."username", "users_user"."photo", "users_user"."category_id", "users_user"."models_auto", "users_user"."phone_number", "users_user"."email" FROM "bestcar_publishing_a_trip" INNER JOIN "users_user" ON ("bestcar_publishing_a_trip"."author_id" = "users_user"."id") WHERE "bestcar_publishing_a_trip"."slug" = %s LIMIT 21 - 0.0165839 сек.
+INFO 2024-12-22 16:49:10,167 base Ќачало выполнени¤ запроса: UPDATE "bestcar_publishing_a_trip" SET "reserved_seats" = ("bestcar_publishing_a_trip"."reserved_seats" + %s) WHERE "bestcar_publishing_a_trip"."slug" = %s
+INFO 2024-12-22 16:49:10,181 base ѕродолжительность SQL-запроса UPDATE "bestcar_publishing_a_trip" SET "reserved_seats" = ("bestcar_publishing_a_trip"."reserved_seats" + %s) WHERE "bestcar_publishing_a_trip"."slug" = %s - 0.0138287 сек.
+INFO 2024-12-22 16:49:10,185 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 16:49:10,189 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0037659 сек.
+INFO 2024-12-22 16:49:10,201 base Ќачало выполнени¤ запроса: SELECT "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."first_name", "users_user"."last_name", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."username", "users_user"."photo", "users_user"."category_id", "users_user"."models_auto", "users_user"."phone_number", "users_user"."email" FROM "users_user" WHERE "users_user"."id" = %s LIMIT 21
+INFO 2024-12-22 16:49:10,203 base ѕродолжительность SQL-запроса SELECT "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."first_name", "users_user"."last_name", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."username", "users_user"."photo", "users_user"."category_id", "users_user"."models_auto", "users_user"."phone_number", "users_user"."email" FROM "users_user" WHERE "users_user"."id" = %s LIMIT 21 - 0.0017697 сек.
+INFO 2024-12-22 16:49:10,206 base Ќачало выполнени¤ запроса: INSERT INTO "booking_booking" ("trip_id", "name_companion_id", "slug") VALUES (%s, %s, %s) RETURNING "booking_booking"."id"
+INFO 2024-12-22 16:49:10,217 base ѕродолжительность SQL-запроса INSERT INTO "booking_booking" ("trip_id", "name_companion_id", "slug") VALUES (%s, %s, %s) RETURNING "booking_booking"."id" - 0.0111183 сек.
+INFO 2024-12-22 16:49:10,221 base Ќачало выполнени¤ запроса: SELECT "users_user"."email" FROM "bestcar_publishing_a_trip" INNER JOIN "users_user" ON ("bestcar_publishing_a_trip"."author_id" = "users_user"."id") WHERE "bestcar_publishing_a_trip"."slug" = %s ORDER BY "bestcar_publishing_a_trip"."departure_time" ASC
+INFO 2024-12-22 16:49:10,230 base ѕродолжительность SQL-запроса SELECT "users_user"."email" FROM "bestcar_publishing_a_trip" INNER JOIN "users_user" ON ("bestcar_publishing_a_trip"."author_id" = "users_user"."id") WHERE "bestcar_publishing_a_trip"."slug" = %s ORDER BY "bestcar_publishing_a_trip"."departure_time" ASC - 0.0091058 сек.
+INFO 2024-12-22 16:49:13,811 middleware Продолжительность запроса /booking/confirm/Q83EQEMM0DW1UN4D4A08N3NY83FJPUSASEXTMIU9X0OT3M3F3Q4GH47LNTWVMEPC91Z2I9CRJL102NQ8TNQEFNTJFZP2N74NKAJF/ - 0.7917171 сек.
+INFO 2024-12-22 16:49:13,912 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 16:49:13,919 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0071346 сек.
+INFO 2024-12-22 16:49:13,936 middleware Продолжительность запроса / - 0.1180350 сек.
+INFO 2024-12-22 16:49:14,985 base Ќачало выполнени¤ запроса: SELECT "django_celery_results_taskresult"."id", "django_celery_results_taskresult"."task_id", "django_celery_results_taskresult"."periodic_task_name", "django_celery_results_taskresult"."task_name", "django_celery_results_taskresult"."task_args", "django_celery_results_taskresult"."task_kwargs", "django_celery_results_taskresult"."status", "django_celery_results_taskresult"."worker", "django_celery_results_taskresult"."content_type", "django_celery_results_taskresult"."content_encoding", "django_celery_results_taskresult"."result", "django_celery_results_taskresult"."date_created", "django_celery_results_taskresult"."date_done", "django_celery_results_taskresult"."traceback", "django_celery_results_taskresult"."meta" FROM "django_celery_results_taskresult" WHERE "django_celery_results_taskresult"."task_id" = %s LIMIT 21
+INFO 2024-12-22 16:49:15,034 base ѕродолжительность SQL-запроса SELECT "django_celery_results_taskresult"."id", "django_celery_results_taskresult"."task_id", "django_celery_results_taskresult"."periodic_task_name", "django_celery_results_taskresult"."task_name", "django_celery_results_taskresult"."task_args", "django_celery_results_taskresult"."task_kwargs", "django_celery_results_taskresult"."status", "django_celery_results_taskresult"."worker", "django_celery_results_taskresult"."content_type", "django_celery_results_taskresult"."content_encoding", "django_celery_results_taskresult"."result", "django_celery_results_taskresult"."date_created", "django_celery_results_taskresult"."date_done", "django_celery_results_taskresult"."traceback", "django_celery_results_taskresult"."meta" FROM "django_celery_results_taskresult" WHERE "django_celery_results_taskresult"."task_id" = %s LIMIT 21 - 0.0620561 сек.
+INFO 2024-12-22 16:49:15,104 base Ќачало выполнени¤ запроса: INSERT INTO "django_celery_results_taskresult" ("task_id", "periodic_task_name", "task_name", "task_args", "task_kwargs", "status", "worker", "content_type", "content_encoding", "result", "date_created", "date_done", "traceback", "meta") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING "django_celery_results_taskresult"."id"
+INFO 2024-12-22 16:49:15,114 base ѕродолжительность SQL-запроса INSERT INTO "django_celery_results_taskresult" ("task_id", "periodic_task_name", "task_name", "task_args", "task_kwargs", "status", "worker", "content_type", "content_encoding", "result", "date_created", "date_done", "traceback", "meta") VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING "django_celery_results_taskresult"."id" - 0.0095387 сек.
+INFO 2024-12-22 16:49:18,069 base Ќачало выполнени¤ запроса: SELECT "django_celery_results_taskresult"."id", "django_celery_results_taskresult"."task_id", "django_celery_results_taskresult"."periodic_task_name", "django_celery_results_taskresult"."task_name", "django_celery_results_taskresult"."task_args", "django_celery_results_taskresult"."task_kwargs", "django_celery_results_taskresult"."status", "django_celery_results_taskresult"."worker", "django_celery_results_taskresult"."content_type", "django_celery_results_taskresult"."content_encoding", "django_celery_results_taskresult"."result", "django_celery_results_taskresult"."date_created", "django_celery_results_taskresult"."date_done", "django_celery_results_taskresult"."traceback", "django_celery_results_taskresult"."meta" FROM "django_celery_results_taskresult" WHERE "django_celery_results_taskresult"."task_id" = %s LIMIT 21
+INFO 2024-12-22 16:49:18,071 base ѕродолжительность SQL-запроса SELECT "django_celery_results_taskresult"."id", "django_celery_results_taskresult"."task_id", "django_celery_results_taskresult"."periodic_task_name", "django_celery_results_taskresult"."task_name", "django_celery_results_taskresult"."task_args", "django_celery_results_taskresult"."task_kwargs", "django_celery_results_taskresult"."status", "django_celery_results_taskresult"."worker", "django_celery_results_taskresult"."content_type", "django_celery_results_taskresult"."content_encoding", "django_celery_results_taskresult"."result", "django_celery_results_taskresult"."date_created", "django_celery_results_taskresult"."date_done", "django_celery_results_taskresult"."traceback", "django_celery_results_taskresult"."meta" FROM "django_celery_results_taskresult" WHERE "django_celery_results_taskresult"."task_id" = %s LIMIT 21 - 0.0029350 сек.
+INFO 2024-12-22 16:49:18,085 base Ќачало выполнени¤ запроса: UPDATE "django_celery_results_taskresult" SET "task_id" = %s, "periodic_task_name" = NULL, "task_name" = NULL, "task_args" = NULL, "task_kwargs" = NULL, "status" = %s, "worker" = NULL, "content_type" = %s, "content_encoding" = %s, "result" = %s, "date_created" = %s, "date_done" = %s, "traceback" = NULL, "meta" = %s WHERE "django_celery_results_taskresult"."id" = %s
+INFO 2024-12-22 16:49:18,091 base ѕродолжительность SQL-запроса UPDATE "django_celery_results_taskresult" SET "task_id" = %s, "periodic_task_name" = NULL, "task_name" = NULL, "task_args" = NULL, "task_kwargs" = NULL, "status" = %s, "worker" = NULL, "content_type" = %s, "content_encoding" = %s, "result" = %s, "date_created" = %s, "date_done" = %s, "traceback" = NULL, "meta" = %s WHERE "django_celery_results_taskresult"."id" = %s - 0.0062178 сек.
+INFO 2024-12-22 17:12:39,031 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 17:12:39,043 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0125882 сек.
+INFO 2024-12-22 17:12:39,069 middleware Продолжительность запроса / - 0.1553145 сек.
+INFO 2024-12-22 17:12:40,689 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 17:12:40,700 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0117390 сек.
+INFO 2024-12-22 17:12:40,723 middleware Продолжительность запроса / - 0.1472662 сек.
+INFO 2024-12-22 17:12:41,800 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 17:12:41,809 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0091146 сек.
+INFO 2024-12-22 17:12:41,832 middleware Продолжительность запроса / - 0.1454020 сек.
+INFO 2024-12-22 17:12:42,726 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 17:12:42,734 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0072711 сек.
+INFO 2024-12-22 17:12:42,754 middleware Продолжительность запроса / - 0.1274034 сек.
+INFO 2024-12-22 17:13:03,823 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 17:13:03,833 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0105859 сек.
+INFO 2024-12-22 17:13:03,860 middleware Продолжительность запроса / - 0.1503692 сек.
+INFO 2024-12-22 17:13:04,761 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 17:13:04,768 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0073841 сек.
+INFO 2024-12-22 17:13:04,807 middleware Продолжительность запроса / - 0.1835160 сек.
+INFO 2024-12-22 17:13:18,136 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1
+INFO 2024-12-22 17:13:18,166 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1 - 0.0301489 сек.
+INFO 2024-12-22 17:13:19,166 base Ќачало выполнени¤ запроса: 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        
+INFO 2024-12-22 17:13:19,226 base ѕродолжительность SQL-запроса 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+         - 0.0604554 сек.
+INFO 2024-12-22 17:13:19,231 base Ќачало выполнени¤ запроса: SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"
+INFO 2024-12-22 17:13:19,239 base ѕродолжительность SQL-запроса SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations" - 0.0086082 сек.
+INFO 2024-12-22 17:13:22,214 base Ќачало выполнени¤ запроса: SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21
+INFO 2024-12-22 17:13:22,223 base ѕродолжительность SQL-запроса SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > %s AND "django_session"."session_key" = %s) LIMIT 21 - 0.0093471 сек.
+INFO 2024-12-22 17:13:22,301 middleware Продолжительность запроса / - 0.2518425 сек.
+INFO 2024-12-22 17:13:28,274 base Ќачало выполнени¤ запроса: SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1
+INFO 2024-12-22 17:13:28,279 base ѕродолжительность SQL-запроса SELECT "bestcar_category"."id", "bestcar_category"."name" FROM "bestcar_category" ORDER BY "bestcar_category"."id" ASC LIMIT 1 - 0.0044746 сек.
+INFO 2024-12-22 17:13:28,830 base Ќачало выполнени¤ запроса: 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        
+INFO 2024-12-22 17:13:28,853 base ѕродолжительность SQL-запроса 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+         - 0.0222350 сек.
+INFO 2024-12-22 17:13:28,856 base Ќачало выполнени¤ запроса: SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"
+INFO 2024-12-22 17:13:28,859 base ѕродолжительность SQL-запроса SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations" - 0.0024689 сек.

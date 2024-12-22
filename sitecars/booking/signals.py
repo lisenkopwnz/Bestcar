@@ -1,5 +1,7 @@
 import logging
+
 from typing import List, Type
+
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from django.utils import timezone

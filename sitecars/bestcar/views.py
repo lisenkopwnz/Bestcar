@@ -15,6 +15,7 @@ from django.views.generic import ListView, CreateView, TemplateView, UpdateView,
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from common.utils.repository.django_orm_repository import ORMRepository
+from common.utils.repository.elasticsearch_repository import ELASTRepository
 from common.utils.services.services import elasticsearch_formatting_date
 
 logger = logging.getLogger('duration_request_view')
@@ -98,6 +99,7 @@ class SearchTrip(DataMixin, BaseView, ListView):
     context_object_name = 'search_trip_result'
     template_name = 'bestcar/search.html'
     title_page = 'Поиск'
+    repository = ELASTRepository(PublishingTripDocument)
 
     def get_context_data(self, **kwargs):
         """
@@ -151,8 +153,12 @@ class SearchTrip(DataMixin, BaseView, ListView):
 
         # Создаем запрос для поиска документов,
         # где значение поля departure_time больше или равно текущему времени
-        queryset = PublishingTripDocument.search().filter(
-            'range', departure_time={'gte': elasticsearch_formatting_date(timezone.now())}
+        search = self.repository.create_search_query()
+
+        queryset = self.repository.filter(
+            search,
+            'range',
+            departure_time={'gte': elasticsearch_formatting_date(timezone.now())}
         )
 
         # Создаем экземпляр формы
@@ -164,7 +170,7 @@ class SearchTrip(DataMixin, BaseView, ListView):
 
         if SearchTrip.is_transport_category(cat):
 
-            queryset = queryset.filter('term', author__category_name=cat)
+            queryset = self.repository.filter(queryset,'term', author__category_name=cat)
 
             return TripFilterService(queryset, data).filter_trip()
 

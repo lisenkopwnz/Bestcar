@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 
 from bestcar.models import Publishing_a_trip
 from booking.decorators import booking_decorator
-from booking.exeption import SeatingError
+from booking.exeption.exeption import SeatingError
 from booking.models import Booking
 
 logger = logging.getLogger('duration_request_view')
@@ -20,19 +20,21 @@ class Confirmation_services:
     @staticmethod
     @booking_decorator
     def confirmation(trip_slug, request, trip):
-        logger.info(trip)
         try:
             with transaction.atomic():
-                booking = Booking(trip = trip,
-                                  name_companion=request.user,
-                                  slug = trip.slug
-                                  )
+                booking = Booking(
+                    trip = trip,
+                    name_companion=request.user,
+                    slug = trip.slug
+                    )
                 booking.save()
-        except (SeatingError, DatabaseError) as e:
-            return JsonResponse({
+        except(SeatingError, DatabaseError) as e:
+            return JsonResponse(
+                {
                 "errorMessage": str(e),
                 "status": 400
-            })
+                }
+            )
 
 
 class UsersBookedTripsServices:
@@ -42,10 +44,12 @@ class UsersBookedTripsServices:
             user = kwargs['name_companion']
             return Booking.objects.filter(name_companion=user).select_related('trip')
         except DatabaseError as e:
-            return JsonResponse({
+            return JsonResponse(
+                {
                 "errorMessage": str(e),
                 "status": 400
-            })
+                }
+            )
 
 
 class Bookings_services:
